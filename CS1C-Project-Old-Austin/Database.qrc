@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>CustomerDatabase.txt</file>
+        <file>ProductDatabase.txt</file>
+    </qresource>
+</RCC>

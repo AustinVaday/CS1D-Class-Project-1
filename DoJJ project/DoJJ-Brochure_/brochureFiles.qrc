@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>Brochure_Banner.png</file>
+    </qresource>
+    <qresource prefix="/Text">
+        <file>concept.txt</file>
+        <file>salesPitch.txt</file>
+        <file>ListOfEnvitemnets.txt</file>
+        <file>GuaranteePolicy.txt</file>
+        <file>maintenance.txt</file>
+    </qresource>
+</RCC>

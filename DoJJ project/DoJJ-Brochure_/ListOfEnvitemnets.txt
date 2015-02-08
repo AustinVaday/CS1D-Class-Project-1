@@ -1,0 +1,1 @@
+The robot can operate in numerous environments, these include urban, desert, and forest. The only environments that the robot will have trouble in are places that have a very high humidity percentage. The robot will also fail in an environment that it will get wet.

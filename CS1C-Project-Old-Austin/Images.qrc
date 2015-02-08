@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../Resources/cat robot.jpg</file>
+        <file>../Resources/images.jpeg</file>
+        <file>../Resources/H51s.jpg</file>
+        <file>../Resources/guest.jpg</file>
+        <file>../Resources/hqdefault.jpg</file>
+        <file>../Resources/space cat.jpg</file>
+        <file>../Resources/galaxy-cool-photo-3-2-s-307x512.jpg</file>
+        <file>../Resources/concept.jpg</file>
+        <file>../Resources/yellowrain.jpg</file>
+        <file>../Resources/storm.jpg</file>
+        <file>../Resources/peacebridgeout.jpg</file>
+        <file>../Resources/city whhaaa.jpg</file>
+        <file>../Resources/login.jpg</file>
+        <file>../Resources/fireworks.jpg</file>
+        <file>../Resources/night.jpg</file>
+    </qresource>
+</RCC>
