@@ -177,21 +177,18 @@ bool MainWindow::ReadFromFile()
 {
     bool readSuccessFull;
     QDir dataPath = QDir::current();
-
+    QFileInfoList listDirs;
     readSuccessFull = false;
 
     // QDir datapath is a pointer that points towards each directory
-
-    while(dataPath.dirName() != "CS1D-Class-Project-1")
+    while(!dataPath.cd("TextFiles"))
     {
         dataPath.cdUp();
 
-
-        qDebug() << "WHILE LOOP";
+        qDebug() << "MISSING TEXT FILES";
     }
 
     qDebug() << dataPath.currentPath();
-    dataPath.cd("TextFiles");
 
     QFile wineryDataFile((dataPath.path() + "/MasterList.txt"));
 
