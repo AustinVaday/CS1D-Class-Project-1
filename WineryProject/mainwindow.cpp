@@ -95,7 +95,7 @@ void MainWindow::on_admin_log_ok_button_clicked()
 {
     // admin credentials!!
     if (ui->userNameLine->text() == "admin" &&    (ui->passwordLine->text() == "password"
-                                                || ui->passwordLine->text() == "anthonysux"))
+                                                || ui->passwordLine->text() == "admin"))
     {
         QMessageBox::information(this, "Notification", "Access Granted!");
 
@@ -184,8 +184,6 @@ bool MainWindow::ReadFromFile()
     while(!dataPath.cd("TextFiles"))
     {
         dataPath.cdUp();
-
-        qDebug() << "MISSING TEXT FILES";
     }
 
     qDebug() << dataPath.currentPath();
