@@ -18,7 +18,10 @@ SOURCES += main.cpp\
     helpwindow.cpp
 
 HEADERS  += mainwindow.h \
-    helpwindow.h
+    helpwindow.h \
+    Wine.h \
+    Winery.h \
+    SortedList.h
 
 FORMS    += mainwindow.ui \
     helpwindow.ui

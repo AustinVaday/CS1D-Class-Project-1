@@ -9,6 +9,10 @@
 #include <QDir>
 #include <QFile>
 #include <QQueue>
+#include "Wine.h"
+#include "Winery.h"
+#include "SortedList.h"
+
 //cool
 namespace Ui {
 class MainWindow;
@@ -60,6 +64,7 @@ private:
     char userType; //'c' for customer, 'a' for admin, 'n' for none(no login made)
     bool ReadFromFile();
     bool WriteToFile();
+
 
 };
 
