@@ -60,37 +60,38 @@ int Winery::DistanceFrom(int x, int y)
 
 void Winery::SetName(QString newName)
 {
-
+    name = newName;
 }
 
 void Winery::SetPosX(int newX)
 {
-
+    posX = newX;
 }
 
 void Winery::SetPosY(int newY)
 {
-
+    posY = newY;
 }
 
 void Winery::SetPosition(int newX, int newY)
 {
-
+    posX = newX;
+    posY = newY;
 }
 
 void Winery::SetWineList(SortedList<Wine, Int> newWines)
 {
-
+    wines = newWines;
 }
 
 void Winery::AddWine(Wine newWine)
 {
-
+    wines.Add(newWine);
 }
-
-void Winery::RemoveWine(QString removeName)
+\
+bool Winery::RemoveWine(QString removeName)
 {
-
+    return wines.Remove(removeName);
 }
 
 

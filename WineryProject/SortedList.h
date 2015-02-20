@@ -13,12 +13,13 @@
  *
  * 	A_Type = the object
  * 	B_Type = the value you want the object to be sorted by
+ *  C_Type = The data type object will be searched by
  *
  * ******example******
  *
- * 	SortedList<Object_Type,string> theList;
+ * 	SortedList<Object_Type, string, int> theList;
  *
- * 	theList.Add( Object_Name, "Jeff Lo");
+ * 	theList.Add( Object_Name, "Kyle Serio", 20);
  ************************************************************/
 
 struct contactUsInfo
@@ -34,11 +35,12 @@ struct testiInfo
 };
 
 //STRUCT - what the list is made out of
-template <class A_Type,class B_Type>
+template <class A_Type,class B_Type, class C_Type>
 struct node
 {
     A_Type item;
-    B_Type value;
+    B_Type sortValue;
+    C_Type searchValue;
     node* next;
     node* prev;
 };
@@ -129,7 +131,7 @@ node<A_Type,B_Type>* SortedList<A_Type,B_Type>::SearchForPtr(B_Type search)
 
     while(!found && temp!=NULL)
     {
-        if(temp->value == search)
+        if(temp->sortValue == search)
         {
             found = true;
         }
@@ -205,7 +207,7 @@ A_Type SortedList<A_Type,B_Type>::SearchFor(B_Type search)
 
     while(!found && temp!=NULL)
     {
-        if(temp->value == search)
+        if(temp->sortValue == search)
         {
             found = true;
         }
@@ -228,7 +230,7 @@ bool SortedList<A_Type,B_Type>::SearchForBool(B_Type search)
 
     while(!found && temp!=NULL)
     {
-        if(temp->value == search)
+        if(temp->sortValue == search)
         {
             found = true;
         }
@@ -259,7 +261,7 @@ void SortedList<A_Type,B_Type>::Add(A_Type newVariable,B_Type ValueOfNew)
 {
     node<A_Type,B_Type>* temp = new node<A_Type,B_Type>;
     temp->item = newVariable;
-    temp->value = ValueOfNew;
+    temp->sortValue = ValueOfNew;
 
     if(head == NULL)
     {
@@ -281,7 +283,7 @@ void SortedList<A_Type,B_Type>::SortAsReadIn(node<A_Type,B_Type>* newNode)
 {
     node<A_Type,B_Type>* temp = head;
 
-    if(newNode->value <= head->value)
+    if(newNode->sortValue <= head->sortValue)
     {
         newNode->next = temp;
         head->prev = newNode;
@@ -290,7 +292,7 @@ void SortedList<A_Type,B_Type>::SortAsReadIn(node<A_Type,B_Type>* newNode)
     }
     else if(head->next == NULL && head->prev == NULL)
     {
-        if(newNode->value <= head->value)
+        if(newNode->sortValue <= head->sortValue)
         {
             newNode->next = head;
             head->prev = newNode;
@@ -307,7 +309,7 @@ void SortedList<A_Type,B_Type>::SortAsReadIn(node<A_Type,B_Type>* newNode)
     }
     else
     {
-        while(temp != NULL && newNode->value > temp->value)
+        while(temp != NULL && newNode->sortValue > temp->sortValue)
         {
             temp = temp->next;
         }
