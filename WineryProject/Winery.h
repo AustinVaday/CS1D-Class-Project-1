@@ -5,6 +5,11 @@
 #include "SortedList.h"
 #include "Wine.h"
 
+struct Distance
+{
+	int dist;
+	string name;
+};
 class Winery
 {
 public:
@@ -13,10 +18,9 @@ public:
     Winery(QString newName, int newX, int newY, SortedList<Wine, int> newList);
     ~Winery();
 
-    int DistanceFrom(int x, int y);
+    int DistanceFrom(string);
     void SetName(QString newName);
-    void SetPosX(int newX);
-    void SetPosY(int newY);
+
     void SetPosition(int newX, int newY);
     void SetWineList(SortedList<Wine, Int> newWines);
     void AddWine(Wine newWine);
@@ -30,9 +34,8 @@ public:
 
 private:
     QString name;
-    int posX;
-    int posY;
-    SortedList<Wine, Int> wines;
+    SortedList<Distance, int> distances;
+    SortedList<Wine, int> wines;
 };
 
 
