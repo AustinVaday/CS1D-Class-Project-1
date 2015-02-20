@@ -23,5 +23,6 @@ private slots:
 private:
     Ui::HelpWindow *ui;
 };
+//testing push
 
 #endif // HELPWINDOW_H

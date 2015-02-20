@@ -32,6 +32,7 @@ Wine::Wine() : name(""), year(0), price(0)
 }
 
 Wine::Wine(QString newName, int newYear, int newPrice)
+       : name (newName), year(newYear), price (newPrice)
 {
     SetName(newName);
     SetYear(newYear);
