@@ -47,11 +47,15 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../WineryProject/main.cpp \
 		../WineryProject/mainwindow.cpp \
-		../WineryProject/helpwindow.cpp moc_mainwindow.cpp \
+		../WineryProject/helpwindow.cpp \
+		../WineryProject/Winery.cpp \
+		../WineryProject/Wine.cpp moc_mainwindow.cpp \
 		moc_helpwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		helpwindow.o \
+		Winery.o \
+		Wine.o \
 		moc_mainwindow.o \
 		moc_helpwindow.o
 DIST          = ../../../QT/5.3/clang_64/mkspecs/features/spec_pre.prf \
@@ -149,6 +153,7 @@ DIST          = ../../../QT/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf \
+		../WineryProject/.qmake.stash \
 		../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -171,7 +176,9 @@ DIST          = ../../../QT/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/lex.prf \
 		../WineryProject/CS1D-Class-Project-1.pro ../WineryProject/main.cpp \
 		../WineryProject/mainwindow.cpp \
-		../WineryProject/helpwindow.cpp
+		../WineryProject/helpwindow.cpp \
+		../WineryProject/Winery.cpp \
+		../WineryProject/Wine.cpp
 QMAKE_TARGET  = CS1D-Class-Project-1
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = CS1D-Class-Project-1.app/Contents/MacOS/CS1D-Class-Project-1
@@ -310,6 +317,7 @@ Makefile: ../WineryProject/CS1D-Class-Project-1.pro ../../../QT/5.3/clang_64/mks
 		../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -430,6 +438,7 @@ Makefile: ../WineryProject/CS1D-Class-Project-1.pro ../../../QT/5.3/clang_64/mks
 ../../../QT/5.3/clang_64/mkspecs/features/qt_config.prf:
 ../../../QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../QT/5.3/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../QT/5.3/clang_64/mkspecs/features/default_pre.prf:
 ../../../QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -473,7 +482,7 @@ CS1D-Class-Project-1.app/Contents/Info.plist:
 	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@ICON@,,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.CS1D-Class-Project-1,g" -e "s,@EXECUTABLE@,CS1D-Class-Project-1,g" -e "s,@TYPEINFO@,????,g" ../../../QT/5.3/clang_64/mkspecs/macx-clang/Info.plist.app >CS1D-Class-Project-1.app/Contents/Info.plist
 dist: 
 	@test -d .tmp/CS1D-Class-Project-11.0.0 || mkdir -p .tmp/CS1D-Class-Project-11.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/CS1D-Class-Project-11.0.0/ && $(COPY_FILE) --parents ../WineryProject/mainwindow.h ../WineryProject/helpwindow.h ../WineryProject/Wine.h ../WineryProject/Winery.h ../WineryProject/SortedList.h .tmp/CS1D-Class-Project-11.0.0/ && $(COPY_FILE) --parents ../WineryProject/main.cpp ../WineryProject/mainwindow.cpp ../WineryProject/helpwindow.cpp .tmp/CS1D-Class-Project-11.0.0/ && $(COPY_FILE) --parents ../WineryProject/mainwindow.ui ../WineryProject/helpwindow.ui .tmp/CS1D-Class-Project-11.0.0/ && (cd `dirname .tmp/CS1D-Class-Project-11.0.0` && $(TAR) CS1D-Class-Project-11.0.0.tar CS1D-Class-Project-11.0.0 && $(COMPRESS) CS1D-Class-Project-11.0.0.tar) && $(MOVE) `dirname .tmp/CS1D-Class-Project-11.0.0`/CS1D-Class-Project-11.0.0.tar.gz . && $(DEL_FILE) -r .tmp/CS1D-Class-Project-11.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/CS1D-Class-Project-11.0.0/ && $(COPY_FILE) --parents ../WineryProject/mainwindow.h ../WineryProject/helpwindow.h ../WineryProject/Wine.h ../WineryProject/Winery.h ../WineryProject/SortedList.h .tmp/CS1D-Class-Project-11.0.0/ && $(COPY_FILE) --parents ../WineryProject/main.cpp ../WineryProject/mainwindow.cpp ../WineryProject/helpwindow.cpp ../WineryProject/Winery.cpp ../WineryProject/Wine.cpp .tmp/CS1D-Class-Project-11.0.0/ && $(COPY_FILE) --parents ../WineryProject/mainwindow.ui ../WineryProject/helpwindow.ui .tmp/CS1D-Class-Project-11.0.0/ && (cd `dirname .tmp/CS1D-Class-Project-11.0.0` && $(TAR) CS1D-Class-Project-11.0.0.tar CS1D-Class-Project-11.0.0 && $(COMPRESS) CS1D-Class-Project-11.0.0.tar) && $(MOVE) `dirname .tmp/CS1D-Class-Project-11.0.0`/CS1D-Class-Project-11.0.0.tar.gz . && $(DEL_FILE) -r .tmp/CS1D-Class-Project-11.0.0
 
 
 clean:compiler_clean 
@@ -512,20 +521,25 @@ moc_mainwindow.cpp: ../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QCheckBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcheckbox.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDir \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdir.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../WineryProject/Winery.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QQueue \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qqueue.h \
-		../WineryProject/Wine.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		../WineryProject/Winery.h \
 		../WineryProject/SortedList.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDir \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdir.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QResource \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qresource.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QMap \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qmap.h \
+		../WineryProject/Wine.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
 		../WineryProject/mainwindow.h
 	/Users/AustinVaday/QT/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/AustinVaday/QT/5.3/clang_64/mkspecs/macx-clang -I/Users/AustinVaday/git/CS1D-Class-Project-1/WineryProject -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/AustinVaday/QT/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/AustinVaday/QT/5.3/clang_64/lib ../WineryProject/mainwindow.h -o moc_mainwindow.cpp
 
@@ -569,20 +583,25 @@ main.o: ../WineryProject/main.cpp ../WineryProject/mainwindow.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QCheckBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcheckbox.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDir \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdir.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../WineryProject/Winery.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QQueue \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qqueue.h \
-		../WineryProject/Wine.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		../WineryProject/Winery.h \
 		../WineryProject/SortedList.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDir \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdir.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QResource \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qresource.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QMap \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qmap.h \
+		../WineryProject/Wine.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../WineryProject/main.cpp
@@ -599,23 +618,26 @@ mainwindow.o: ../WineryProject/mainwindow.cpp ../WineryProject/mainwindow.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QCheckBox \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qcheckbox.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDir \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdir.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../WineryProject/Winery.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QQueue \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qqueue.h \
-		../WineryProject/Wine.h \
-		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
-		../WineryProject/Winery.h \
 		../WineryProject/SortedList.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDir \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdir.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QResource \
 		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qresource.h \
-		ui_mainwindow.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QMap \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qmap.h \
+		../WineryProject/Wine.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QVBoxLayout \
-		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qboxlayout.h \
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../WineryProject/mainwindow.cpp
 
 helpwindow.o: ../WineryProject/helpwindow.cpp ../WineryProject/helpwindow.h \
@@ -623,6 +645,31 @@ helpwindow.o: ../WineryProject/helpwindow.cpp ../WineryProject/helpwindow.h \
 		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qwidget.h \
 		ui_helpwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o helpwindow.o ../WineryProject/helpwindow.cpp
+
+Winery.o: ../WineryProject/Winery.cpp ../WineryProject/Winery.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QString \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QQueue \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qqueue.h \
+		../WineryProject/SortedList.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QFile \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDir \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdir.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTextStream \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qtextstream.h \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMessageBox \
+		../../../QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QResource \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qresource.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QMap \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qmap.h \
+		../WineryProject/Wine.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Winery.o ../WineryProject/Winery.cpp
+
+Wine.o: ../WineryProject/Wine.cpp ../WineryProject/Wine.h \
+		../../../QT/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Wine.o ../WineryProject/Wine.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

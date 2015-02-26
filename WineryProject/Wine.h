@@ -18,7 +18,6 @@ public:
     int GetYear() const;
     int GetPrice() const;
 
-
 private:
     QString name;
     int year;

@@ -18,7 +18,6 @@
 //#include "Wine.h"
 //#include "SortedList.h"
 
-//cool
 namespace Ui {
 class MainWindow;
 }
@@ -87,6 +86,8 @@ private:
     char userType; //'c' for customer, 'a' for admin, 'n' for none(no login made)
     bool ReadFromFile();
     bool WriteToFile();
+
+    SortedList<Winery, float> *wineryList;   // sort wineries by distance to VILLA
 
 
 };

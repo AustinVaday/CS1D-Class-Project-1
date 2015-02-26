@@ -7,6 +7,7 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QResource>
+#include <QMap>
 
 /*************************************************************
  * 		HOW TO USE
@@ -20,9 +21,10 @@
  * 	SortedList<Object_Type, string, int> theList;
  *
  * 	theList.Add( Object_Name, "Kyle Serio", 20);
+ *
  ************************************************************/
 
-struct contactUsInfo
+/*struct contactUsInfo
 {
     QString name;
     QString message;
@@ -32,7 +34,7 @@ struct testiInfo
 {
     QString name;
     QString message;
-};
+};*/
 
 //STRUCT - what the list is made out of
 template <class A_Type,class B_Type>
@@ -54,7 +56,7 @@ public:
     node<A_Type, B_Type>* GetHead();
     A_Type SearchFor(B_Type serch);
     bool   Remove(B_Type search);
-    A_Type operator[](int index);
+    A_Type operator[](int index) const;
     void   operator= (SortedList<A_Type, B_Type> newList);
     void   DeleteAll();
     void   SaveContactMessages();
@@ -103,7 +105,7 @@ void SortedList<A_Type, B_Type>::Print()
     }
 }
 template <class A_Type,class B_Type>
-A_Type SortedList<A_Type,B_Type>::operator[](int index)
+A_Type SortedList<A_Type,B_Type>::operator[](int index) const
 {
     if(index < size && index > -1)
     {
@@ -264,6 +266,7 @@ SortedList<A_Type,B_Type>::SortedList()
 template <class A_Type,class B_Type>
 SortedList<A_Type,B_Type>::~SortedList()
 {
+    DeleteAll();
 }
 
 template <class A_Type,class B_Type>

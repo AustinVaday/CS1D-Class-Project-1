@@ -15,7 +15,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    helpwindow.cpp
+    helpwindow.cpp \
+    Winery.cpp \
+    Wine.cpp \
+
 
 HEADERS  += mainwindow.h \
     helpwindow.h \

@@ -10,6 +10,10 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("Winery Tours!");
     userType = 'n';
     helpWindow = new HelpWindow;
+    helpWindow = NULL;
+
+    // will allocate memory as needed.
+//    wineryList = new SortedList<Winery, float>;
 
     // if failed to read from file, output error
     if (!ReadFromFile())
@@ -23,7 +27,6 @@ MainWindow::MainWindow(QWidget *parent) :
     //make sure to display first stacked widget widnow!
     ui->stackedWidget->currentWidget()->hide();
     ui->page_main_window->show();
-
 
     //creates checkboxes dynamically and the list of wineries
     //needs to be modified once the SortedList is implemented
@@ -52,6 +55,13 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete helpWindow;
+
+    WriteToFile();
+
+    if (wineryList != NULL )
+    {
+        delete wineryList;
+    }
 }
 //GET/SET FOR USER DATA
 void MainWindow::setUser(char type)
@@ -350,75 +360,11 @@ bool MainWindow::ReadFromFile()
 * ------------------------------------------------------------
 * File path is set when first establishing the database
 *************************************************************/
-//bool MainWindow::WriteToFile()
-//{
-//	Node<Customer>* _customerPtr;
-//	QDir dataPath = QDir::current();
-//	bool writeStatus;
-
-//	// Failstate signal
-//	writeStatus = false;
-
-//	// Initialize QFile and write failed, Appended File to path, QFile Creates
-
-//	while(dataPath.dirName() != "Class-Project")
-//	{
-//		dataPath.cdUp();
-//	}
-
-//	dataPath.cd("Database-Files");
-
-//	dataPath.remove((dataPath.path() + "/CustomerList.txt"));
-
-//	qDebug() << "Does the customer list file exist in the directory?" << dataPath.exists((dataPath.path() + "/CustomerList.txt"));
-
-//qDebug() << "Customer path: line 896 : " << dataPath.path();
-//	QFile customerDataFile((dataPath.path() + "/CustomerList.txt"));
-
-//qDebug() << "1) Is it open? "<< customerDataFile.isOpen() << "and can it be written? " <<
-//customerDataFile.isWritable();
-
-//	if(customerDataFile.open((QIODevice::ReadWrite | QIODevice::Text)|QIODevice::Truncate) && !isEmpty())
-//	{
-
-//	qDebug() << "1) Is it open? "<< customerDataFile.isOpen() << "and can it be written? " <<
-//customerDataFile.isWritable();
-//		qDebug() << "Debugging:: WRITE Customer :::  It opened ::: ";
-//		QTextStream out(&customerDataFile);
-//		_customerPtr = _head;
-
-//		while(_customerPtr != 0)
-//		{
-//			out << _customerPtr->GetData().getUserName() << "\n";
-//			out << _customerPtr->GetData().getAddressLine1()  << "\n";
-//			out << _customerPtr->GetData().getAddressLine2()  << "\n";
-//			out << _customerPtr->GetData().getInterest() << "\n";
-//			out << _customerPtr->GetData().getKey()      << "\n";
-//			out << _customerPtr->GetData().getPassword() << "\n";
-//			out << _customerPtr->GetData().getEmail() << "\n";
-//			out << _customerPtr->GetData().getAccountNum() << "\n";
-
-//			if((_customerPtr = _customerPtr->GetNext()) != 0)
-//			{
-//				out << "\n";
-//			}
-
-//		}// END WHILE
-//		// Flushes output buffer
-
-//		out.flush();
-//		writeStatus = true;
-
-//// Flushes and coses the data file
-//	customerDataFile.flush();
-//	customerDataFile.close();
-//	} // END OPEN FILE IF
+bool MainWindow::WriteToFile()
+{
 
 
-//	// Returns True or False status
-//	return writeStatus;
-
-//}// **** END METHOD **** //
+}// **** END METHOD **** //
 
 
 
