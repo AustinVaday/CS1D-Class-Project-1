@@ -9,8 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("Winery Tours!");
     userType = 'n';
-    helpWindow = new HelpWindow;
-    helpWindow = NULL;
 
     // will allocate memory as needed.
 //    wineryList = new SortedList<Winery, float>;
@@ -58,10 +56,6 @@ MainWindow::~MainWindow()
 
     WriteToFile();
 
-    if (wineryList != NULL )
-    {
-        delete wineryList;
-    }
 }
 //GET/SET FOR USER DATA
 void MainWindow::setUser(char type)
@@ -216,7 +210,7 @@ bool MainWindow::ReadFromFile()
 {
     bool readSuccessFull;
     QDir dataPath = QDir::current();
-    QFileInfoList listDirs;
+//    QFileInfoList listDirs;
     readSuccessFull = false;
 
     // QDir datapath is a pointer that points towards each directory
@@ -237,19 +231,27 @@ bool MainWindow::ReadFromFile()
         QString wineryName;
         int     wineryNum;
         int     numOtherWineries;
-        QQueue<float>  distanceToOthers;
         float   milesToCanyonVilla;
         int     numWinesOffered;
         QString  tempString;
-       // QQueue  wineClass ... WINE CLASS GOES HERE
-
-
+        Wine    *wineObject = NULL;
+        Winery  *wineryObject = NULL;
+        float
+                distanceToOther;
         // Points Text stream to input file to read in.
         QTextStream inFile(&wineryDataFile);
 
+qDebug() << 244;
         while(!inFile.atEnd())
         {
+            wineryObject = new Winery;
+
+            qDebug() << 247;
+
             wineryName       = inFile.readLine().remove("name of winery: ");
+
+            wineryObject->SetName(wineryName);
+
             wineryNum         = inFile.readLine().remove("winery number ").toInt();
             numOtherWineries = inFile.readLine().remove("distance to other wineries - ").toInt();
 
@@ -276,12 +278,20 @@ bool MainWindow::ReadFromFile()
                     }
                 }
                 // read line, remove the leading digits, convert the string to float
-                distanceToOthers.enqueue(inFile.readLine().remove(0, numDigits).toFloat());
+                distanceToOther = inFile.readLine().remove(0, numDigits).toFloat();
 
+                qDebug() << "TESTTTTTTTTTTING : " << distanceToOther;
+                wineryObject->AddDistance(i, distanceToOther);
+//                qDebug() << "MORE TESTTING: " << (wineryObject->GetDistances()).operator [](0);
+
+                intStruct test;
+                test.val = i;
+                qDebug() << ((wineryObject->GetDistances().SearchForReverse(test)));
             }
 
-
             milesToCanyonVilla = inFile.readLine().remove(" miles to Canyon Villa").toFloat();
+
+            wineryObject->setDistanceToVilla(milesToCanyonVilla);
 
             tempString = inFile.readLine();
 
@@ -300,29 +310,58 @@ bool MainWindow::ReadFromFile()
 
             for(int i = 0; i < numWinesOffered; i++)
             {
-                // does nothing for now, will fix this later..
-                inFile.readLine();
-                inFile.readLine();
-                inFile.readLine();
+                wineObject = new Wine;
+                qDebug() << 306;
 
-                // STORE INTO WINE CLASS
+                // does nothing for now, will fix this later..
+                wineObject->SetName(inFile.readLine());
+                wineObject->SetYear(inFile.readLine().toInt());
+                wineObject->SetPrice(inFile.readLine().toFloat());
+
+                // add wine to winery
+                wineryObject->AddWine(*wineObject);
+
+                // do not allocate memory on last loop
+                if (i != numWinesOffered - 1)
+                {
+                    wineObject = new Wine;
+                }
             }
+            qDebug() << 322;
 
             // Do Something
             inFile.skipWhiteSpace();
             inFile.flush();
 
-            qDebug() << wineryName;
-            qDebug() << wineryNum;
-            qDebug() << numOtherWineries;
-            while (!distanceToOthers.isEmpty())
-            {
-                qDebug() << distanceToOthers.front();
-                distanceToOthers.pop_front();
-            }
-            qDebug() << "Miles: " << milesToCanyonVilla;
-            qDebug() << numWinesOffered;
-            qDebug() << endl;
+//            qDebug() << wineryName;
+//            qDebug() << wineryNum;
+//            qDebug() << numOtherWineries;
+////            while (!distanceToOthers.isEmpty())
+////            {
+////                qDebug() << distanceToOthers.front();
+////                distanceToOthers.pop_front();
+////            }
+//            qDebug() << "Miles: " << milesToCanyonVilla;
+//            qDebug() << numWinesOffered;
+//            qDebug() << endl;
+
+            // add list into sorted wine list.
+            qDebug() << 241;
+            intStruct test3;
+            test3.val = 5;
+
+
+            qDebug() << "TEST BEFORE" << wineryObject->GetDistances().SearchForReverse(test3);
+
+            this->wineryList.Add(*wineryObject, milesToCanyonVilla);
+
+            qDebug() <<  " TEST AFTER" << wineryList[0].GetDistances().SearchForReverse(test3);
+            qDebug() << 342;
+
+            // prepare for next iteration
+//            wineryObject = new Winery;
+            qDebug() << 346;
+
         }
         // sets read true, flushes the Qtextstream buffer
         readSuccessFull = true;
@@ -333,6 +372,44 @@ bool MainWindow::ReadFromFile()
 
     }
 
+    for (int i = 0; i < this->wineryList.Size(); i++)
+    {
+        intStruct testo;
+        testo.val = 5;
+        qDebug() << "TESTO: " << wineryList[0].GetDistances().SearchForReverse(testo);
+        qDebug() << "name of winery: " << wineryList[i].GetName();
+
+        qDebug() << "winery number " << i;
+        qDebug() << "distance to other wineries - " << wineryList.Size();
+
+
+        /** NO */
+        for (int j = 0; j < this->wineryList.Size(); j++)
+        {
+            // list all winery distances (sorted by distance)
+//            qDebug() << j << ((wineryList[i].GetDistances())[j]).val;
+            intStruct intVal;
+
+            intVal.val = j;
+            qDebug() << "should be float: " << ((wineryList[i].GetDistances().SearchForReverse(intVal)));
+
+
+        }
+
+        qDebug() << wineryList[i].GetDistanceToVilla() << " miles to Canyon Villa";
+        qDebug() << wineryList[i].GetWines().Size() << "wines offered";
+
+        for (int k = 0; k < wineryList[i].GetWines().Size(); k++)
+        {
+            qDebug() << ((wineryList[i].GetWines())[k]).GetName();
+            qDebug() << ((wineryList[i].GetWines())[k]).GetYear();
+            qDebug() << ((wineryList[i].GetWines())[k]).GetPrice();
+        }
+
+        qDebug() << endl;
+
+
+    }
 
 //    for(count=0;count<wineries;count++)
 //    {

@@ -13,6 +13,7 @@ struct intStruct
 {
     int val;
     int GetName(){ return val;} // returns integer value..
+    bool operator==(const intStruct &other) { return (val == other.val);}
 };
 
 class Winery
@@ -25,6 +26,7 @@ public:
 
     void SetName(QString newName);
     void SetDistances(SortedList<intStruct, float> newMap);
+    void setDistanceToVilla(int villaDist);
     void SetWineList(SortedList<Wine, QString> newWines);
     void AddWine(Wine newWine);
     void AddDistance(int wineryNum, float distanceTo);
@@ -32,6 +34,9 @@ public:
     void RemoveDistance(int wineryNum);
 
     QString GetName() const;
+    SortedList<intStruct, float> GetDistances() const;
+    float GetDistanceToVilla() const;
+
     Wine SearchWine(QString searchWine);
     SortedList<Wine, QString> GetWines() const;
 

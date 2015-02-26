@@ -27,6 +27,10 @@ void Winery::SetDistances(SortedList<intStruct, float> newMap)
 {
    distanceMap = newMap;
 }
+void Winery::setDistanceToVilla(int villaDist)
+{
+   distanceToCanyonVilla = villaDist;
+}
 
 void Winery::SetWineList(SortedList<Wine, QString> newWines)
 {
@@ -63,6 +67,15 @@ QString Winery::GetName() const
     return name;
 }
 
+SortedList<intStruct, float> Winery::GetDistances() const
+{
+    return distanceMap;
+}
+
+float Winery::GetDistanceToVilla() const
+{
+    return distanceToCanyonVilla;
+}
 Wine Winery::SearchWine(QString searchWine)
 {
     return wines.SearchFor(searchWine);

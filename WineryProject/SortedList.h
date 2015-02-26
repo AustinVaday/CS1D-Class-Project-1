@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QResource>
 #include <QMap>
+#include <QDebug>
 
 /*************************************************************
  * 		HOW TO USE
@@ -51,13 +52,15 @@ class SortedList
 {
 public:
     SortedList();
+//    SortedList(const SortedList<A_Type, B_Type>& otherList); // copy constructor
     ~SortedList();
     void   Add(A_Type newVariable,B_Type ValueOfNew);
     node<A_Type, B_Type>* GetHead();
     A_Type SearchFor(B_Type serch);
+    B_Type SearchForReverse(A_Type search);
     bool   Remove(B_Type search);
     A_Type operator[](int index) const;
-    void   operator= (SortedList<A_Type, B_Type> newList);
+    SortedList<A_Type, B_Type>& operator= (const SortedList<A_Type, B_Type> &newList);
     void   DeleteAll();
     void   SaveContactMessages();
     int    Size() const;
@@ -100,7 +103,7 @@ void SortedList<A_Type, B_Type>::Print()
     node<A_Type, B_Type>* temp = head;
     while(temp != NULL)
     {
-        //QTextStream(stdout) << 1 << endl;
+//        QTextStream(stdout) << 1 << endl;
         temp = temp->next;
     }
 }
@@ -121,16 +124,27 @@ A_Type SortedList<A_Type,B_Type>::operator[](int index) const
 }
 
 template <class A_Type,class B_Type>
-void SortedList<A_Type, B_Type>::operator= (SortedList<A_Type, B_Type> newList)
+SortedList<A_Type, B_Type>& SortedList<A_Type, B_Type>::operator= (const SortedList<A_Type, B_Type>& newList)
 {
-    DeleteAll();
+    qDebug() << "INSIDE op =";
+
+    if (head != NULL)
+    {
+        this->DeleteAll();
+    }
+    qDebug() << "131";
     for (int i = 0; i < newList.Size(); i++)
     {
+        qDebug() << "134";
+
         if (!SearchForBool(newList[i].GetName()))
         {
-            Add(newList[i], newList[i].GetName());
+            this->Add(newList[i], newList[i].GetName());
         }
     }
+    qDebug() << "141";
+
+    return *this;
 }
 
 template <class A_Type,class B_Type>
@@ -225,12 +239,38 @@ A_Type SortedList<A_Type,B_Type>::SearchFor(B_Type search)
         }
         else
         {
+            qDebug() << "LAAA" << temp->sortValue;
             temp = temp->next;
         }
     }
 
     return temp->item;
 }
+template <class A_Type,class B_Type>
+B_Type SortedList<A_Type,B_Type>::SearchForReverse(A_Type search)
+{
+    node<A_Type,B_Type>* temp;
+    bool found = false;
+
+    qDebug() << search.val;
+
+    temp = head;
+
+    while(!found && temp!=NULL)
+    {
+        if(temp->item == search)
+        {
+            found = true;
+        }
+        else
+        {
+            temp = temp->next;
+        }
+    }
+
+    return temp->sortValue;
+}
+
 
 template <class A_Type,class B_Type>
 bool SortedList<A_Type,B_Type>::SearchForBool(B_Type search)
@@ -263,10 +303,19 @@ SortedList<A_Type,B_Type>::SortedList()
     tail = NULL;
 }
 
+//template <class A_Type,class B_Type>
+//SortedList<A_Type,B_Type>::SortedList(const SortedList<A_Type, B_Type>& otherList) // copy constructor
+//{
+//    if (this != &otherList)
+//    {
+//        *this = otherList;
+//    }
+//}
+
 template <class A_Type,class B_Type>
 SortedList<A_Type,B_Type>::~SortedList()
 {
-    DeleteAll();
+//    DeleteAll();
 }
 
 template <class A_Type,class B_Type>
@@ -275,13 +324,15 @@ void SortedList<A_Type,B_Type>::Add(A_Type newVariable,B_Type ValueOfNew)
     node<A_Type,B_Type>* temp = new node<A_Type,B_Type>;
     temp->item = newVariable;
     temp->sortValue = ValueOfNew;
+    temp->next = NULL;
+    temp->prev = NULL;
 
+    qDebug() << "\n\n\n\n\nSORT VL: " << temp->sortValue;
     if(head == NULL)
     {
         head = temp;
         tail = temp;
-        temp->next = NULL;
-        temp->prev = NULL;
+
         size ++;
     }
     else
@@ -289,6 +340,10 @@ void SortedList<A_Type,B_Type>::Add(A_Type newVariable,B_Type ValueOfNew)
         SortAsReadIn(temp);
         size++;
     }
+    temp = NULL;
+
+    qDebug() << " SORTEDLIST.H";
+
 }
 
 template <class A_Type,class B_Type>
@@ -371,22 +426,35 @@ void SortedList<A_Type, B_Type>::SaveContactMessages()
 template<class A_Type, class B_Type>
 void SortedList<A_Type,B_Type>::DeleteAll()
 {
-    //While List is not empty, delete from front
-    while(head != NULL){
-        node<A_Type,B_Type>* temp = head;
-        if(head == tail){
-            head = NULL;
-            tail = NULL;
-            --size;
-        }
-        else
+    qDebug() << "INSIDE DELETEALL";
+
+   node<A_Type,B_Type> *traversePtr;
+
+        traversePtr = head;
+        qDebug() << "430";
+
+
+        while(traversePtr != NULL)
         {
-            head->next->prev = NULL;
+            qDebug() << "434";
+
             head = head->next;
-            --size;
+
+            qDebug() << "438";
+
+            delete traversePtr;
+
+
+            qDebug() << "442";
+
+            traversePtr = head;
+            qDebug() << "446";
+
         }
-        delete temp;
-    }
+
+        head = NULL;
+        tail = NULL;
+        size = 0;
 }
 
 #endif // SORTEDLIST_H

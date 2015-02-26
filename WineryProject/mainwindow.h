@@ -87,8 +87,7 @@ private:
     bool ReadFromFile();
     bool WriteToFile();
 
-    SortedList<Winery, float> *wineryList;   // sort wineries by distance to VILLA
-
+    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
 
 };
 
