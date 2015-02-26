@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox::information(this, "Error 0x333456", "An error has occured, please restart the program. If this error persists, contact your administration with the error id.");
     }
 
+    //comment
     //make sure to display first stacked widget widnow!
     ui->stackedWidget->currentWidget()->hide();
     ui->page_main_window->show();
