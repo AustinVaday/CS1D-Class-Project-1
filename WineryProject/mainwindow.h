@@ -6,6 +6,7 @@
 #include "helpwindow.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <QCheckBox>
 #include <QDir>
 #include <QFile>
 #include <QQueue>
@@ -57,6 +58,18 @@ private slots:
     void on_TourBack_clicked();
 
     void on_LogInBack_clicked();
+
+
+    void on_listView_activated(const QModelIndex &index);
+
+    void on_listWidget_2_activated(const QModelIndex &index);
+
+
+    void on_page_view_list_wineries_destroyed();
+
+    void on_scrollArea_destroyed();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;

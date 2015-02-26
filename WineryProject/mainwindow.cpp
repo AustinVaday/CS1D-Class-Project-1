@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,6 +20,28 @@ MainWindow::MainWindow(QWidget *parent) :
     //make sure to display first stacked widget widnow!
     ui->stackedWidget->currentWidget()->hide();
     ui->page_main_window->show();
+
+
+    //creates checkboxes dynamically and the list of wineries
+    //needs to be modified once the SortedList is implemented
+    QString s;
+    QVBoxLayout *layTrip = new QVBoxLayout(this);
+    QVBoxLayout *layList = new QVBoxLayout(this);
+    for(int i=0;i<20;i++)
+    {
+        s = QString::number(i+1);
+        QCheckBox *checkbox = new QCheckBox("Winery " + s, this);
+        QLabel *wineryList = new QLabel("Winery " + s);
+        checkbox->setChecked (false);
+        layTrip->addWidget(checkbox);
+        layList->addWidget(wineryList);
+//      QObject::connect(checkbox, SIGNAL(isChecked()), this, SLOT(clicledCkeckBox()));
+    }
+
+
+    ui->scrollAreaWidgetContents_2->setLayout(layTrip);
+    ui->scrollAreaWidgetContents->setLayout(layList);
+
 
 }
 
@@ -74,6 +97,7 @@ void MainWindow::on_viewListWineriesButton_clicked()
     ui->page_main_window->hide();
     ui->stackedWidget->currentWidget()->hide();
     ui->page_view_list_wineries->show();
+
 }
 
 void MainWindow::on_planDayTripButton_clicked()
@@ -293,6 +317,19 @@ bool MainWindow::ReadFromFile()
 
 
     }
+
+
+//    for(count=0;count<wineries;count++)
+//    {
+//        YSpacer += 26;
+//        QCheckBox *dynamicCheckBox = new QCheckBox();
+//        dynamicCheckBox->setObjectName ("dynamicCheckBox" + QString(count));
+//        dynamicCheckBox->setCheckable (false);
+//        dynamicCheckBox->setChecked (false);
+//        //layout ()->addWidget (dynamicCheckBox);
+//        ui->scrollArea->setWidget  (dynamicCheckBox); //this line
+//    }
+
     return readSuccessFull;
 
 }// **** END METHOD **** //
@@ -377,3 +414,5 @@ bool MainWindow::ReadFromFile()
 //	return writeStatus;
 
 //}// **** END METHOD **** //
+
+
