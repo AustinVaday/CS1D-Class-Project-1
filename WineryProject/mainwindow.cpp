@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     //comment
+    // austin's test comment!
     //make sure to display first stacked widget widnow!
     ui->stackedWidget->currentWidget()->hide();
     ui->page_main_window->show();
