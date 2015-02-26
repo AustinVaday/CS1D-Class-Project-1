@@ -35,12 +35,11 @@ struct testiInfo
 };
 
 //STRUCT - what the list is made out of
-template <class A_Type,class B_Type, class C_Type>
+template <class A_Type,class B_Type>
 struct node
 {
     A_Type item;
     B_Type sortValue;
-    C_Type searchValue;
     node* next;
     node* prev;
 };
@@ -56,9 +55,7 @@ public:
     A_Type SearchFor(B_Type serch);
     bool   Remove(B_Type search);
     A_Type operator[](int index);
-    void   SaveCustList(SortedList<A_Type, B_Type> theList);
-    void   SavePendingCustList(SortedList<A_Type, B_Type> theList);
-    void   SaveTestimonials();
+    void   operator= (SortedList<A_Type, B_Type> newList);
     void   DeleteAll();
     void   SaveContactMessages();
     int    Size() const;
@@ -118,6 +115,19 @@ A_Type SortedList<A_Type,B_Type>::operator[](int index)
         }
 
         return temp->item;
+    }
+}
+
+template <class A_Type,class B_Type>
+void SortedList<A_Type, B_Type>::operator= (SortedList<A_Type, B_Type> newList)
+{
+    DeleteAll();
+    for (int i = 0; i < newList.Size(); i++)
+    {
+        if (!SearchForBool(newList[i].GetName()))
+        {
+            Add(newList[i], newList[i].GetName());
+        }
     }
 }
 
@@ -327,91 +337,6 @@ void SortedList<A_Type,B_Type>::SortAsReadIn(node<A_Type,B_Type>* newNode)
             newNode->prev = tail;
             newNode->prev->next = newNode;
             tail = newNode;
-        }
-    }
-}
-
-template<class A_Type, class B_Type>
-void SortedList<A_Type, B_Type>::SaveCustList(SortedList<A_Type, B_Type> theList)
-{
-    QFile       common("CustomerList.txt");
-    QTextStream listFileOut(&common);
-    QString     listFileString;
-
-    if(!common.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-    {
-        QMessageBox::information(0,"Critical Failure","Customer list file has failed to load");
-    }
-    else
-    {
-        node<A_Type,B_Type>* temp = theList.GetHead();
-
-        while(temp != NULL)
-        {
-            listFileString = temp->item.GetCompName();
-            listFileOut << listFileString << endl;
-            listFileString = temp->item.GetAddress();
-            listFileOut << listFileString << endl;
-            listFileString = temp->item.GetInterest();
-            listFileOut << listFileString << endl;
-            listFileString = temp->item.GetKey();
-            listFileOut << listFileString << endl;
-            listFileString = temp->item.GetBrochureStat();
-            listFileOut << listFileString << endl;
-            listFileString = temp->item.GetTestimonial();
-            listFileOut << listFileString << endl << endl;
-            temp = temp->next;
-        }
-    }
-}
-
-template<class A_Type, class B_Type>
-void SortedList<A_Type, B_Type>::SavePendingCustList(SortedList<A_Type, B_Type> theList)
-{
-    QFile       common("PendingAcc.txt");
-    QTextStream listFileOut(&common);
-    QString     listFileString;
-
-    if(!common.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-    {
-        QMessageBox::information(0,"Critical Failure","Customer list file has failed to load");
-    }
-    else
-    {
-        node<A_Type,B_Type>* temp = theList.GetHead();
-
-        while(temp != NULL)
-        {
-            listFileString = temp->item.GetCompName();
-            listFileOut << listFileString << endl;
-            listFileString = temp->item.GetAddress();
-            listFileOut << listFileString << endl;
-            listFileString = temp->item.GetInterest();
-            listFileOut << listFileString << endl << endl;
-            temp = temp->next;
-        }
-    }
-}
-
-template<class A_Type, class B_Type>
-void SortedList<A_Type, B_Type>::SaveTestimonials()
-{
-    QFile       testiFile("testi.txt");
-    QTextStream listFileOut(&testiFile);
-
-    if(!testiFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
-    {
-        QMessageBox::information(0,"Critical Failure","Testimonial file has failed to load");
-    }
-    else
-    {
-        node<A_Type,B_Type>* temp = GetHead();
-
-        while(temp != NULL)
-        {
-            listFileOut << temp->item.name    << endl;
-            listFileOut << temp->item.message << endl;
-            temp = temp->next;
         }
     }
 }
