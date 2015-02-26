@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QVBoxLayout>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -92,6 +92,8 @@ void MainWindow::on_adminLogButton_clicked()
     {
         ui->page_admin_login_success->show();
     }
+
+    ui->userNameLine->setFocus();
 }
 
 void MainWindow::on_viewListWineriesButton_clicked()
@@ -419,3 +421,11 @@ bool MainWindow::ReadFromFile()
 //}// **** END METHOD **** //
 
 
+
+void MainWindow::on_passwordLine_returnPressed()
+{
+    // if someone presses enter, let it be as if
+    // they clicked the "ok" button
+
+    this->on_admin_log_ok_button_clicked();
+}

@@ -7,12 +7,16 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QCheckBox>
-#include <QDir>
-#include <QFile>
-#include <QQueue>
-#include "Wine.h"
 #include "Winery.h"
-#include "SortedList.h"
+#include <QVBoxLayout>
+
+/* The following header files are included
+ * in other header files...*/
+//#include <QDir>
+//#include <QFile>
+//#include <QQueue>
+//#include "Wine.h"
+//#include "SortedList.h"
 
 //cool
 namespace Ui {
@@ -60,16 +64,22 @@ private slots:
     void on_LogInBack_clicked();
 
 
-    void on_listView_activated(const QModelIndex &index);
+    // The following methods are not defined in mainwindow.cpp
+    // If you do not define them in mainwindow.cpp, you will get
+    // an Architecture x86 error.
 
-    void on_listWidget_2_activated(const QModelIndex &index);
+//    void on_listView_activated(const QModelIndex &index);
+
+//    void on_listWidget_2_activated(const QModelIndex &index);
 
 
-    void on_page_view_list_wineries_destroyed();
+//    void on_page_view_list_wineries_destroyed();
 
-    void on_scrollArea_destroyed();
+//    void on_scrollArea_destroyed();
 
-    void on_pushButton_2_clicked();
+//    void on_pushButton_2_clicked();
+
+    void on_passwordLine_returnPressed();
 
 private:
     Ui::MainWindow *ui;

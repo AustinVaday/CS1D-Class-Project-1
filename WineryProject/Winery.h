@@ -1,8 +1,8 @@
 #ifndef WINERIE_H
 #define WINERIE_H
 
-#include <qstring.h>
-#include <qqueue.h>
+#include <QString>
+#include <QQueue>
 #include "SortedList.h"
 #include "Wine.h"
 

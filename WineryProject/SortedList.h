@@ -13,7 +13,7 @@
  *
  * 	A_Type = the object
  * 	B_Type = the value you want the object to be sorted by
- *  C_Type = The data type object will be searched by
+ *  C_Type = The data type object will be searched by **currently not implemented**
  *
  * ******example******
  *
