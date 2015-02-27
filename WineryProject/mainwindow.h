@@ -80,13 +80,15 @@ private slots:
 
     void on_passwordLine_returnPressed();
 
+    void on_plan_trip_submit_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
     char userType; //'c' for customer, 'a' for admin, 'n' for none(no login made)
     bool ReadFromFile();
     bool WriteToFile();
-
+    QList<QCheckBox*> wineryCheckBoxList1;
     SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
 
 };

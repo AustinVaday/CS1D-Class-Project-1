@@ -35,16 +35,20 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         s = QString::number(i+1);
         QCheckBox *checkbox = new QCheckBox("Winery " + s, this);
+
+        wineryCheckBoxList1.push_back(checkbox);
+
         QLabel *wineryList = new QLabel("Winery " + s);
         checkbox->setChecked (false);
+
         layTrip->addWidget(checkbox);
         layList->addWidget(wineryList);
 //      QObject::connect(checkbox, SIGNAL(isChecked()), this, SLOT(clicledCkeckBox()));
     }
 
-
     ui->scrollAreaWidgetContents_2->setLayout(layTrip);
     ui->scrollAreaWidgetContents->setLayout(layList);
+
 
 
 }
@@ -451,4 +455,22 @@ void MainWindow::on_passwordLine_returnPressed()
     // they clicked the "ok" button
 
     this->on_admin_log_ok_button_clicked();
+}
+
+void MainWindow::on_plan_trip_submit_button_clicked()
+{
+    for (int i = 0; i < 20; i ++)
+    {
+        qDebug() << "Instance " << i + 1 << "is: ";
+
+        if (wineryCheckBoxList1[i]->isChecked())
+        {
+            qDebug() << "CHECKED!";
+        }
+        else
+        {
+            qDebug() << "NOT CHECKED!";
+        }
+
+    }
 }

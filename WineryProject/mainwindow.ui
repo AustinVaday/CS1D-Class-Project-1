@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -267,17 +267,17 @@ password: password</string>
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Your Trip:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="plan_trip_submit_button">
         <property name="geometry">
          <rect>
-          <x>310</x>
+          <x>290</x>
           <y>190</y>
-          <width>75</width>
+          <width>111</width>
           <height>23</height>
          </rect>
         </property>
         <property name="text">
-         <string>Add to Trip</string>
+         <string>Submit</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_3">
@@ -323,7 +323,7 @@ password: password</string>
         <property name="geometry">
          <rect>
           <x>80</x>
-          <y>160</y>
+          <y>150</y>
           <width>181</width>
           <height>321</height>
          </rect>
@@ -368,7 +368,7 @@ password: password</string>
        <zorder>label_4</zorder>
        <zorder>PlanTripBack</zorder>
        <zorder>label_11</zorder>
-       <zorder>pushButton_2</zorder>
+       <zorder>plan_trip_submit_button</zorder>
        <zorder>pushButton_3</zorder>
        <zorder>label_12</zorder>
        <zorder>pushButton_4</zorder>

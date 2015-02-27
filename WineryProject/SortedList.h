@@ -324,15 +324,15 @@ void SortedList<A_Type,B_Type>::Add(A_Type newVariable,B_Type ValueOfNew)
     node<A_Type,B_Type>* temp = new node<A_Type,B_Type>;
     temp->item = newVariable;
     temp->sortValue = ValueOfNew;
-    temp->next = NULL;
-    temp->prev = NULL;
+
 
     qDebug() << "\n\n\n\n\nSORT VL: " << temp->sortValue;
     if(head == NULL)
     {
         head = temp;
         tail = temp;
-
+        temp->next = NULL;
+        temp->prev = NULL;
         size ++;
     }
     else
