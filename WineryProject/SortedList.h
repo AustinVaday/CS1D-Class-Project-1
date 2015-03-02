@@ -41,10 +41,10 @@ struct testiInfo
 template <class A_Type,class B_Type>
 struct node
 {
-    A_Type item;
-    B_Type sortValue;
-    node* next;
-    node* prev;
+    A_Type item = A_Type();
+    B_Type sortValue = B_Type();
+    node* next = NULL;
+    node* prev = NULL;
 };
 
 template <class A_Type,class B_Type>
@@ -81,14 +81,16 @@ private:
 template <class A_Type,class B_Type>
 int SortedList<A_Type,B_Type>::Size() const
 {
-    node<A_Type,B_Type>* temp = head;
-    int count = 0;
-    while(temp != NULL)
-    {
-        temp = temp->next;
-        count++;
-    }
-    return count;
+//    node<A_Type,B_Type>* temp = head;
+//    int count = 0;
+//    while(temp != NULL)
+//    {
+//        temp = temp->next;
+//        count++;
+//    }
+//    return count;
+
+    return size;
 }
 
 template <class A_Type,class B_Type>
@@ -119,7 +121,10 @@ A_Type SortedList<A_Type,B_Type>::operator[](int index) const
             temp = temp->next;
         }
 
+        if (temp!= NULL)
+        {
         return temp->item;
+        }
     }
 }
 
@@ -128,10 +133,16 @@ SortedList<A_Type, B_Type>& SortedList<A_Type, B_Type>::operator= (const SortedL
 {
     qDebug() << "INSIDE op =";
 
-    if (head != NULL)
+    if (head != NULL && this->size != 0 && tail != NULL)
     {
+        qDebug() << "INSIDE if";
         this->DeleteAll();
+        qDebug() << "INSIDE if 2 ";
+
     }
+
+    this->size = newList.size;
+
     qDebug() << "131";
     for (int i = 0; i < newList.Size(); i++)
     {
@@ -139,10 +150,12 @@ SortedList<A_Type, B_Type>& SortedList<A_Type, B_Type>::operator= (const SortedL
 
         if (!SearchForBool(newList[i].GetName()))
         {
+            qDebug() << "142";
+
             this->Add(newList[i], newList[i].GetName());
         }
     }
-    qDebug() << "141";
+    qDebug() << "147";
 
     return *this;
 }
@@ -308,14 +321,15 @@ SortedList<A_Type,B_Type>::SortedList()
 //{
 //    if (this != &otherList)
 //    {
-//        *this = otherList;
+//        qDebug() << "inside copy constructor";
+//        this->operator=( otherList);
 //    }
 //}
 
 template <class A_Type,class B_Type>
 SortedList<A_Type,B_Type>::~SortedList()
 {
-//    DeleteAll();
+    DeleteAll();
 }
 
 template <class A_Type,class B_Type>
@@ -438,16 +452,18 @@ void SortedList<A_Type,B_Type>::DeleteAll()
         {
             qDebug() << "434";
 
-            head = head->next;
+            qDebug() << "Size: " << this->size;
+//            qDebug() << "data" <<
+            traversePtr = traversePtr->next;
 
             qDebug() << "438";
 
-            delete traversePtr;
+            delete head;
 
 
             qDebug() << "442";
 
-            traversePtr = head;
+            head = traversePtr;
             qDebug() << "446";
 
         }

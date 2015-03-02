@@ -4,7 +4,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    wineryList()
 {
     ui->setupUi(this);
     this->setWindowTitle("Winery Tours!");
@@ -38,11 +39,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
         wineryCheckBoxList1.push_back(checkbox);
 
-        QLabel *wineryList = new QLabel("Winery " + s);
+        QLabel *wineryListLabels = new QLabel("Winery " + s);
         checkbox->setChecked (false);
 
         layTrip->addWidget(checkbox);
-        layList->addWidget(wineryList);
+        layList->addWidget(wineryListLabels);
 //      QObject::connect(checkbox, SIGNAL(isChecked()), this, SLOT(clicledCkeckBox()));
     }
 
@@ -290,7 +291,7 @@ qDebug() << 244;
 
                 intStruct test;
                 test.val = i;
-                qDebug() << ((wineryObject->GetDistances().SearchForReverse(test)));
+//                qDebug() << ((wineryObject->GetDistances().SearchForReverse(test)));
             }
 
             milesToCanyonVilla = inFile.readLine().remove(" miles to Canyon Villa").toFloat();
