@@ -54,10 +54,15 @@ void Winery::AddWine(Wine newWine)
 void Winery::AddDistance(int wineryNum, float distanceTo)
 {
 
+    // if we have a duplicate key
+    if (distanceMap.keys().contains(distanceTo))
+    {
+        // add unnoticable distance difference (so we can have two of the same keys!)
+        // NOTE: this makes the subscript operator inaccessible, it is best to only use
+        // iterators in this program.
+        distanceTo += .000001;
+    }
     distanceMap.insert(distanceTo, wineryNum);
-
-    qDebug() << "INSIDE WINERY: AddDistance, inserted value" << wineryNum << "and: "<< distanceTo;
-//    distanceMap[distanceTo] = wineryNum;
 }
 
 

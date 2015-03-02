@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     wineObject = NULL;
     wineryObject = NULL;
+    helpWindow = NULL;
     this->setWindowTitle("Winery Tours!");
     userType = 'n';
 
@@ -29,28 +30,28 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidget->currentWidget()->hide();
     ui->page_main_window->show();
 
-//    //creates checkboxes dynamically and the list of wineries
-//    //needs to be modified once the SortedList is implemented
-//    QString s;
-//    QVBoxLayout *layTrip = new QVBoxLayout(this);
-//    QVBoxLayout *layList = new QVBoxLayout(this);
-//    for(int i=0;i<20;i++)
-//    {
-//        s = QString::number(i+1);
-//        QCheckBox *checkbox = new QCheckBox("Winery " + s, this);
+    //creates checkboxes dynamically and the list of wineries
+    //needs to be modified once the SortedList is implemented
+    QString s;
+    QVBoxLayout *layTrip = new QVBoxLayout(this);
+    QVBoxLayout *layList = new QVBoxLayout(this);
+    for(int i=0;i<20;i++)
+    {
+        s = QString::number(i+1);
+        QCheckBox *checkbox = new QCheckBox("Winery " + s, this);
 
-//        wineryCheckBoxList1.push_back(checkbox);
+        wineryCheckBoxList1.push_back(checkbox);
 
-//        QLabel *wineryListLabels = new QLabel("Winery " + s);
-//        checkbox->setChecked (false);
+        QLabel *wineryListLabels = new QLabel("Winery " + s);
+        checkbox->setChecked (false);
 
-//        layTrip->addWidget(checkbox);
-//        layList->addWidget(wineryListLabels);
-////      QObject::connect(checkbox, SIGNAL(isChecked()), this, SLOT(clicledCkeckBox()));
-//    }
+        layTrip->addWidget(checkbox);
+        layList->addWidget(wineryListLabels);
+//      QObject::connect(checkbox, SIGNAL(isChecked()), this, SLOT(clicledCkeckBox()));
+    }
 
-//    ui->scrollAreaWidgetContents_2->setLayout(layTrip);
-//    ui->scrollAreaWidgetContents->setLayout(layList);
+    ui->scrollAreaWidgetContents_2->setLayout(layTrip);
+    ui->scrollAreaWidgetContents->setLayout(layList);
 
 
 
@@ -58,11 +59,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    WriteToFile();
+    if (WriteToFile())
+    {
+        QMessageBox::information(this, "Success", "Write to file success!");
+    }
 
     delete ui;
-    delete helpWindow;
 
+    if (helpWindow != NULL)
+    {
+    delete helpWindow;
+    }
     if (wineObject != NULL)
     {
         delete wineObject;
@@ -295,6 +302,7 @@ bool MainWindow::ReadFromFile()
                 string1 = inFile.readLine();
                 string2 = string1;
 
+                numDigits = string1.indexOf(' ');
                 loopWineryNum = string1.remove(numDigits, string1.size() - 1).toInt();
 
 
@@ -414,6 +422,68 @@ bool MainWindow::ReadFromFile()
 *************************************************************/
 bool MainWindow::WriteToFile()
 {
+    QDir dataPath = QDir::current();
+    bool writeStatus;
+
+    // Failstate signal
+    writeStatus = false;
+
+    // Initialize QFile and write failed, Appended File to path, QFile Creates
+    while(!dataPath.cd("TextFiles"))
+    {
+        dataPath.cdUp();
+    }
+
+
+    dataPath.remove((dataPath.path() + "/MasterList.txt"));
+
+    QFile wineryDataFile((dataPath.path() + "/MasterList.txt"));
+
+    if(wineryDataFile.open((QIODevice::ReadWrite | QIODevice::Text)|QIODevice::Truncate) && !wineryList.empty())
+    {
+        QTextStream out(&wineryDataFile);
+
+        for (QMap<float, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
+        {
+            out << "name of winery: " << it.value().GetName() << endl;
+            out << "winery number " << it.value().GetWineryNum() << endl;
+            out << "distance to other wineries - " << it.value().GetDistances().size() << endl;
+
+            for (QMap<float, int>::const_iterator it2 = it.value().GetDistances().cbegin(); it2 != it.value().GetDistances().cend(); ++it2)
+            {
+                // list all winery distances (sorted by distance)
+                out << it2.value() << " " << it2.key() << endl;
+
+            }
+
+            out << it.value().GetDistanceToVilla() << " miles to Canyon Villa" << endl;
+            out << it.value().GetWines().size()    << " wines offered" << endl;
+
+            for (QMap<QString, Wine>::const_iterator it3 = it.value().GetWines().cbegin(); it3 != it.value().GetWines().cend(); ++it3)
+            {
+                out << it3.value().GetName() << endl;
+                out << it3.value().GetYear() << endl;
+                out << it3.value().GetPrice() << endl;
+            }
+
+            out << endl;
+
+
+        }
+
+        // Flushes output buffer
+
+        out.flush();
+        writeStatus = true;
+
+// Flushes and coses the data file
+    wineryDataFile.flush();
+    wineryDataFile.close();
+    } // END OPEN FILE IF
+
+
+    // Returns True or False status
+    return writeStatus;
 
 
 }// **** END METHOD **** //
