@@ -53,10 +53,10 @@ void Winery::AddWine(Wine newWine)
 
 void Winery::AddDistance(int wineryNum, float distanceTo)
 {
+
     distanceMap.insert(distanceTo, wineryNum);
 
-    qDebug() << "INSIDE WINERY: AddDistance, inserted value: ";
-    qDebug() << distanceMap[distanceTo];
+    qDebug() << "INSIDE WINERY: AddDistance, inserted value" << wineryNum << "and: "<< distanceTo;
 //    distanceMap[distanceTo] = wineryNum;
 }
 

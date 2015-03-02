@@ -234,8 +234,6 @@ bool MainWindow::ReadFromFile()
         dataPath.cdUp();
     }
 
-    qDebug() << dataPath.currentPath();
-
     QFile wineryDataFile((dataPath.path() + "/MasterList.txt"));
 
     // This checks if the file opens, if it does not, it will display an
@@ -266,9 +264,13 @@ bool MainWindow::ReadFromFile()
 
             numOtherWineries = inFile.readLine().remove("distance to other wineries - ").toInt();
 
+
             // loop to gather all the distances to all other wineries.
             for (int i = 0; i < numOtherWineries; i++)
             {
+                int     loopWineryNum;  // corresponding winery number
+                QString string1;
+                QString string2;
                 int numDigits = 1;  // corresponds to length of the number
                                     // that is before the distance in the TEXT
                                     // file. i.e -->     1 0.0
@@ -277,9 +279,10 @@ bool MainWindow::ReadFromFile()
                                     // we have two digits and thus more things to
                                     // remove!
 
-                if (i >= 10)
+
+                if (i >= 9)
                 {
-                    if (i >= 100)
+                    if (i >= 99)
                     {
                         numDigits = numDigits + 2;
                     }
@@ -288,10 +291,16 @@ bool MainWindow::ReadFromFile()
                         numDigits = numDigits + 1;
                     }
                 }
-                // read line, remove the leading digits, convert the string to float
-                distanceToOther = inFile.readLine().remove(0, numDigits).toFloat();
 
-                wineryObject->AddDistance(i, distanceToOther);
+                string1 = inFile.readLine();
+                string2 = string1;
+
+                loopWineryNum = string1.remove(numDigits, string1.size() - 1).toInt();
+
+
+                // read line, remove the leading digits, convert the string to float
+                distanceToOther = string2.remove(0, numDigits).toFloat();
+                wineryObject->AddDistance(loopWineryNum, distanceToOther);
 
             }
 
