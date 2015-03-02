@@ -91,6 +91,8 @@ private:
     QList<QCheckBox*> wineryCheckBoxList1;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
     QMap<float, Winery> wineryList; // sort wineries by distance to VILLA
+    Wine    *wineObject = NULL;
+    Winery  *wineryObject = NULL;
 };
 
 #endif // MAINWINDOW_H

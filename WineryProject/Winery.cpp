@@ -1,6 +1,6 @@
 #include "Winery.h"
-
-Winery::Winery(QString newName,int newWineryNum, QMap<float, int> newDistances, QMap<QString, Wine> newList, float distanceToVilla)
+#include <QDebug>
+Winery::Winery(QString newName, int newWineryNum, QMap<float, int> newDistances, QMap<QString, Wine> newList, float distanceToVilla)
         : name(newName), wineryNum(newWineryNum), distanceMap(newDistances),  distanceToCanyonVilla(distanceToVilla), wines(newList)
 {
 //    distance = newDistances;
@@ -54,6 +54,10 @@ void Winery::AddWine(Wine newWine)
 void Winery::AddDistance(int wineryNum, float distanceTo)
 {
     distanceMap.insert(distanceTo, wineryNum);
+
+    qDebug() << "INSIDE WINERY: AddDistance, inserted value: ";
+    qDebug() << distanceMap[distanceTo];
+//    distanceMap[distanceTo] = wineryNum;
 }
 
 
@@ -74,7 +78,7 @@ QString Winery::GetName() const
     return name;
 }
 
-QMap<float, int> Winery::GetDistances() const
+const QMap<float, int>& Winery::GetDistances() const
 {
     return distanceMap;
 }

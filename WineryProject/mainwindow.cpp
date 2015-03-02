@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     wineryList()
 {
     ui->setupUi(this);
+    wineObject = NULL;
+    wineryObject = NULL;
     this->setWindowTitle("Winery Tours!");
     userType = 'n';
 
@@ -27,28 +29,28 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidget->currentWidget()->hide();
     ui->page_main_window->show();
 
-    //creates checkboxes dynamically and the list of wineries
-    //needs to be modified once the SortedList is implemented
-    QString s;
-    QVBoxLayout *layTrip = new QVBoxLayout(this);
-    QVBoxLayout *layList = new QVBoxLayout(this);
-    for(int i=0;i<20;i++)
-    {
-        s = QString::number(i+1);
-        QCheckBox *checkbox = new QCheckBox("Winery " + s, this);
+//    //creates checkboxes dynamically and the list of wineries
+//    //needs to be modified once the SortedList is implemented
+//    QString s;
+//    QVBoxLayout *layTrip = new QVBoxLayout(this);
+//    QVBoxLayout *layList = new QVBoxLayout(this);
+//    for(int i=0;i<20;i++)
+//    {
+//        s = QString::number(i+1);
+//        QCheckBox *checkbox = new QCheckBox("Winery " + s, this);
 
-        wineryCheckBoxList1.push_back(checkbox);
+//        wineryCheckBoxList1.push_back(checkbox);
 
-        QLabel *wineryListLabels = new QLabel("Winery " + s);
-        checkbox->setChecked (false);
+//        QLabel *wineryListLabels = new QLabel("Winery " + s);
+//        checkbox->setChecked (false);
 
-        layTrip->addWidget(checkbox);
-        layList->addWidget(wineryListLabels);
-//      QObject::connect(checkbox, SIGNAL(isChecked()), this, SLOT(clicledCkeckBox()));
-    }
+//        layTrip->addWidget(checkbox);
+//        layList->addWidget(wineryListLabels);
+////      QObject::connect(checkbox, SIGNAL(isChecked()), this, SLOT(clicledCkeckBox()));
+//    }
 
-    ui->scrollAreaWidgetContents_2->setLayout(layTrip);
-    ui->scrollAreaWidgetContents->setLayout(layList);
+//    ui->scrollAreaWidgetContents_2->setLayout(layTrip);
+//    ui->scrollAreaWidgetContents->setLayout(layList);
 
 
 
@@ -56,10 +58,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    WriteToFile();
+
     delete ui;
     delete helpWindow;
 
-    WriteToFile();
+    if (wineObject != NULL)
+    {
+        delete wineObject;
+    }
+    if (wineryObject != NULL)
+    {
+        delete wineryObject;
+    }
 
 }
 //GET/SET FOR USER DATA
@@ -215,7 +226,6 @@ bool MainWindow::ReadFromFile()
 {
     bool readSuccessFull;
     QDir dataPath = QDir::current();
-//    QFileInfoList listDirs;
     readSuccessFull = false;
 
     // QDir datapath is a pointer that points towards each directory
@@ -232,31 +242,28 @@ bool MainWindow::ReadFromFile()
     //  error message
     if(wineryDataFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        // NEEDS A DATA STRUCTURE...
         QString wineryName;
         int     wineryNum;
         int     numOtherWineries;
         float   milesToCanyonVilla;
         int     numWinesOffered;
         QString  tempString;
-        Wine    *wineObject = NULL;
-        Winery  *wineryObject = NULL;
         float   distanceToOther;
         // Points Text stream to input file to read in.
         QTextStream inFile(&wineryDataFile);
 
-qDebug() << 244;
         while(!inFile.atEnd())
         {
             wineryObject = new Winery;
-
-            qDebug() << 247;
 
             wineryName       = inFile.readLine().remove("name of winery: ");
 
             wineryObject->SetName(wineryName);
 
             wineryNum         = inFile.readLine().remove("winery number ").toInt();
+
+            wineryObject->SetWineryNum(wineryNum);
+
             numOtherWineries = inFile.readLine().remove("distance to other wineries - ").toInt();
 
             // loop to gather all the distances to all other wineries.
@@ -284,13 +291,8 @@ qDebug() << 244;
                 // read line, remove the leading digits, convert the string to float
                 distanceToOther = inFile.readLine().remove(0, numDigits).toFloat();
 
-                qDebug() << "TESTTTTTTTTTTING : " << distanceToOther;
                 wineryObject->AddDistance(i, distanceToOther);
-//                qDebug() << "MORE TESTTING: " << (wineryObject->GetDistances()).operator [](0);
 
-                intStruct test;
-                test.val = i;
-//                qDebug() << ((wineryObject->GetDistances().SearchForReverse(test)));
             }
 
             milesToCanyonVilla = inFile.readLine().remove(" miles to Canyon Villa").toFloat();
@@ -315,7 +317,6 @@ qDebug() << 244;
             for(int i = 0; i < numWinesOffered; i++)
             {
                 wineObject = new Wine;
-                qDebug() << 306;
 
                 // does nothing for now, will fix this later..
                 wineObject->SetName(inFile.readLine());
@@ -331,42 +332,13 @@ qDebug() << 244;
                     wineObject = new Wine;
                 }
             }
-            qDebug() << 322;
 
             // Do Something
             inFile.skipWhiteSpace();
             inFile.flush();
 
-//            qDebug() << wineryName;
-//            qDebug() << wineryNum;
-//            qDebug() << numOtherWineries;
-////            while (!distanceToOthers.isEmpty())
-////            {
-////                qDebug() << distanceToOthers.front();
-////                distanceToOthers.pop_front();
-////            }
-//            qDebug() << "Miles: " << milesToCanyonVilla;
-//            qDebug() << numWinesOffered;
-//            qDebug() << endl;
-
             // add list into sorted wine list.
-            qDebug() << 241;
-            intStruct test3;
-            test3.val = 5;
-
-
-//            qDebug() << "TEST BEFORE" << wineryObject->GetDistances().SearchForReverse(test3);
-
             this->wineryList.insert(milesToCanyonVilla, *wineryObject);
-//            this->wineryList.Add(*wineryObject, milesToCanyonVilla);
-
-//            qDebug() <<  " TEST AFTER" << wineryList[0].GetDistances().SearchForReverse(test3);
-            qDebug() << 342;
-
-            // prepare for next iteration
-//            wineryObject = new Winery;
-            qDebug() << 346;
-
         }
         // sets read true, flushes the Qtextstream buffer
         readSuccessFull = true;
@@ -383,8 +355,7 @@ qDebug() << 244;
         qDebug() << "winery number " << it.value().GetWineryNum();
         qDebug() << "distance to other wineries - " << it.value().GetDistances().size();
 
-
-        for (QMap<float, int>::iterator it2 = it.value().GetDistances().begin(); it2 != it.value().GetDistances().end(); ++it2)
+        for (QMap<float, int>::const_iterator it2 = it.value().GetDistances().cbegin(); it2 != it.value().GetDistances().cend(); ++it2)
         {
             // list all winery distances (sorted by distance)
             qDebug() << it2.value() << it2.key();
@@ -394,7 +365,7 @@ qDebug() << 244;
         qDebug() << it.value().GetDistanceToVilla() << " miles to Canyon Villa";
         qDebug() << it.value().GetWines().size()    << "wines offered";
 
-        for (QMap<QString, Wine>::iterator it3 = it.value().GetWines().begin(); it3 != it.value().GetWines().end(); ++it3)
+        for (QMap<QString, Wine>::const_iterator it3 = it.value().GetWines().cbegin(); it3 != it.value().GetWines().cend(); ++it3)
         {
             qDebug() << it3.value().GetName();
             qDebug() << it3.value().GetYear();

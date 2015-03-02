@@ -37,7 +37,7 @@ public:
 
     QString GetName() const;
     int  GetWineryNum() const;
-    QMap<float, int> GetDistances() const;
+    const QMap<float, int>& GetDistances() const;
     float GetDistanceToVilla() const;
 
     Wine SearchWine(QString searchWine);
@@ -54,7 +54,7 @@ private:
     QMap<float, int> distanceMap;                 // int: the winery number to compare to
                                                     // float: the distance to the winery (SORTED BY THIS)
 
-    QList<Wine> wines;
+    QMap<QString, Wine> wines;
 };
 
 #endif // WINERIE_H
