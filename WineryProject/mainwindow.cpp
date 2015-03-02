@@ -241,8 +241,7 @@ bool MainWindow::ReadFromFile()
         QString  tempString;
         Wine    *wineObject = NULL;
         Winery  *wineryObject = NULL;
-        float
-                distanceToOther;
+        float   distanceToOther;
         // Points Text stream to input file to read in.
         QTextStream inFile(&wineryDataFile);
 
@@ -356,11 +355,12 @@ qDebug() << 244;
             test3.val = 5;
 
 
-            qDebug() << "TEST BEFORE" << wineryObject->GetDistances().SearchForReverse(test3);
+//            qDebug() << "TEST BEFORE" << wineryObject->GetDistances().SearchForReverse(test3);
 
-            this->wineryList.Add(*wineryObject, milesToCanyonVilla);
+            this->wineryList.insert(milesToCanyonVilla, *wineryObject);
+//            this->wineryList.Add(*wineryObject, milesToCanyonVilla);
 
-            qDebug() <<  " TEST AFTER" << wineryList[0].GetDistances().SearchForReverse(test3);
+//            qDebug() <<  " TEST AFTER" << wineryList[0].GetDistances().SearchForReverse(test3);
             qDebug() << 342;
 
             // prepare for next iteration
@@ -377,38 +377,28 @@ qDebug() << 244;
 
     }
 
-    for (int i = 0; i < this->wineryList.Size(); i++)
+    for (QMap<float, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
     {
-        intStruct testo;
-        testo.val = 5;
-        qDebug() << "TESTO: " << wineryList[0].GetDistances().SearchForReverse(testo);
-        qDebug() << "name of winery: " << wineryList[i].GetName();
-
-        qDebug() << "winery number " << i;
-        qDebug() << "distance to other wineries - " << wineryList.Size();
+        qDebug() << "name of winery: " << it.value().GetName();
+        qDebug() << "winery number " << it.value().GetWineryNum();
+        qDebug() << "distance to other wineries - " << it.value().GetDistances().size();
 
 
-        /** NO */
-        for (int j = 0; j < this->wineryList.Size(); j++)
+        for (QMap<float, int>::iterator it2 = it.value().GetDistances().begin(); it2 != it.value().GetDistances().end(); ++it2)
         {
             // list all winery distances (sorted by distance)
-//            qDebug() << j << ((wineryList[i].GetDistances())[j]).val;
-            intStruct intVal;
-
-            intVal.val = j;
-            qDebug() << "should be float: " << ((wineryList[i].GetDistances().SearchForReverse(intVal)));
-
+            qDebug() << it2.value() << it2.key();
 
         }
 
-        qDebug() << wineryList[i].GetDistanceToVilla() << " miles to Canyon Villa";
-        qDebug() << wineryList[i].GetWines().Size() << "wines offered";
+        qDebug() << it.value().GetDistanceToVilla() << " miles to Canyon Villa";
+        qDebug() << it.value().GetWines().size()    << "wines offered";
 
-        for (int k = 0; k < wineryList[i].GetWines().Size(); k++)
+        for (QMap<QString, Wine>::iterator it3 = it.value().GetWines().begin(); it3 != it.value().GetWines().end(); ++it3)
         {
-            qDebug() << ((wineryList[i].GetWines())[k]).GetName();
-            qDebug() << ((wineryList[i].GetWines())[k]).GetYear();
-            qDebug() << ((wineryList[i].GetWines())[k]).GetPrice();
+            qDebug() << it3.value().GetName();
+            qDebug() << it3.value().GetYear();
+            qDebug() << it3.value().GetPrice();
         }
 
         qDebug() << endl;

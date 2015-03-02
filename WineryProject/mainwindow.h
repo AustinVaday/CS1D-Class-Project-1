@@ -12,7 +12,7 @@
 
 /* The following header files are included
  * in other header files...*/
-//#include <QDir>
+#include <QDir>
 //#include <QFile>
 //#include <QQueue>
 //#include "Wine.h"
@@ -89,8 +89,8 @@ private:
     bool ReadFromFile();
     bool WriteToFile();
     QList<QCheckBox*> wineryCheckBoxList1;
-    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
-
+//    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
+    QMap<float, Winery> wineryList; // sort wineries by distance to VILLA
 };
 
 #endif // MAINWINDOW_H

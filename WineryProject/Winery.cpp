@@ -1,14 +1,14 @@
 #include "Winery.h"
 
-Winery::Winery(QString newName, SortedList<intStruct, float> newDistances, SortedList<Wine, QString> newList, float distanceToVilla)
-        : name(newName), distanceMap(newDistances),  distanceToCanyonVilla(distanceToVilla), wines(newList)
+Winery::Winery(QString newName,int newWineryNum, QMap<float, int> newDistances, QMap<QString, Wine> newList, float distanceToVilla)
+        : name(newName), wineryNum(newWineryNum), distanceMap(newDistances),  distanceToCanyonVilla(distanceToVilla), wines(newList)
 {
 //    distance = newDistances;
 //    wines = newList;
 }
 
 
-Winery::Winery() : name(""), distanceToCanyonVilla(0.0)
+Winery::Winery() : name(""), distanceToCanyonVilla(0.0), wineryNum(0)
 {
 
 }
@@ -23,7 +23,7 @@ void Winery::SetName(QString newName)
     name = newName;
 }
 
-void Winery::SetDistances(SortedList<intStruct, float> newMap)
+void Winery::SetDistances(QMap<float, int> newMap)
 {
    distanceMap = newMap;
 }
@@ -32,34 +32,41 @@ void Winery::setDistanceToVilla(int villaDist)
    distanceToCanyonVilla = villaDist;
 }
 
-void Winery::SetWineList(SortedList<Wine, QString> newWines)
+void Winery::SetWineList(QMap<QString, Wine> newWines)
 {
     wines = newWines;
 }
+void Winery::SetWineryNum(int newWineryNum)
+{
+    wineryNum = newWineryNum;
+}
 
+int Winery::GetWineryNum() const
+{
+    return wineryNum;
+}
 void Winery::AddWine(Wine newWine)
 {
-    wines.Add(newWine, newWine.GetName());
+    wines.insert(newWine.GetName(), newWine);
+//    wines.Add(newWine, newWine.GetName());
 }
 
 void Winery::AddDistance(int wineryNum, float distanceTo)
 {
-    intStruct integer;
-
-    integer.val = wineryNum;
-
-    distanceMap.Add(integer, distanceTo);
+    distanceMap.insert(distanceTo, wineryNum);
 }
 
 
 void Winery::RemoveWine(QString removeName)
 {
-    wines.Remove(removeName);
+    wines.remove(removeName);
 }
 
 void Winery::RemoveDistance(int wineryNum)
 {
 //    distanceMap.re
+    // got to find the int val :(
+//    distanceMap.remove();
 }
 
 QString Winery::GetName() const
@@ -67,7 +74,7 @@ QString Winery::GetName() const
     return name;
 }
 
-SortedList<intStruct, float> Winery::GetDistances() const
+QMap<float, int> Winery::GetDistances() const
 {
     return distanceMap;
 }
@@ -78,10 +85,10 @@ float Winery::GetDistanceToVilla() const
 }
 Wine Winery::SearchWine(QString searchWine)
 {
-    return wines.SearchFor(searchWine);
+    return wines[searchWine];
 }
 
-SortedList<Wine, QString> Winery::GetWines() const
+QMap<QString, Wine> Winery::GetWines() const
 {
     return wines;
 }
@@ -91,5 +98,5 @@ int Winery::ShortestWineryNumTo() const
     // since the first distance at index 0 is 0.0 (the distance
     // to itself), we will ignore this and will instead
     // treat the next distance as the shortest winery num dist.
-    return (distanceMap[1]).val;
+    return (distanceMap.begin() + 1).value();
 }

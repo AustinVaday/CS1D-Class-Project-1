@@ -2,6 +2,7 @@
 #define WINERIE_H
 
 #include <QString>
+#include <QMap>
 #include <QQueue>
 #include "SortedList.h"
 #include "Wine.h"
@@ -21,36 +22,39 @@ class Winery
 public:
 
     Winery();
-    Winery(QString newName, SortedList<intStruct, float> newDistances, SortedList<Wine, QString> newList, float distanceToVilla);
+    Winery(QString newName, int newWineryNum, QMap<float, int> newDistances, QMap<QString, Wine> newList, float distanceToVilla);
     ~Winery();
 
     void SetName(QString newName);
-    void SetDistances(SortedList<intStruct, float> newMap);
+    void SetDistances(QMap<float, int> newMap);
     void setDistanceToVilla(int villaDist);
-    void SetWineList(SortedList<Wine, QString> newWines);
+    void SetWineList(QMap<QString, Wine> newWines);
+    void SetWineryNum(int newWineryNum);
     void AddWine(Wine newWine);
     void AddDistance(int wineryNum, float distanceTo);
     void RemoveWine(QString removeName);
     void RemoveDistance(int wineryNum);
 
     QString GetName() const;
-    SortedList<intStruct, float> GetDistances() const;
+    int  GetWineryNum() const;
+    QMap<float, int> GetDistances() const;
     float GetDistanceToVilla() const;
 
     Wine SearchWine(QString searchWine);
-    SortedList<Wine, QString> GetWines() const;
+    QMap<QString, Wine> GetWines() const;
 
     int ShortestWineryNumTo() const;
 private:
     QString name;
     float distanceToCanyonVilla;
+    int wineryNum;
 //    QQueue<int>  distance;
 
     // Map that sorts wineries by distance!
-    SortedList<intStruct, float> distanceMap;       // int: the winery number to compare to
-                                                    // float: the distance to the winery
+    QMap<float, int> distanceMap;                 // int: the winery number to compare to
+                                                    // float: the distance to the winery (SORTED BY THIS)
 
-    SortedList<Wine, QString> wines;
+    QList<Wine> wines;
 };
 
 #endif // WINERIE_H
