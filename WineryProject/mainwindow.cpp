@@ -535,11 +535,6 @@ void MainWindow::on_visit_all_clicked()
 
             layWineList->addWidget(wineCheckbox);
 
-//            if(i==0)
-//            {
-//                ui->list_of_wines_scroll_area->setLayout(layWineList);
-//            }
-
 
         }
 
@@ -547,10 +542,6 @@ void MainWindow::on_visit_all_clicked()
             ui->list_of_wines_scroll_area->setLayout(layWineList);
             i++;
     }
-
-
-
-
 
 }
 
@@ -563,6 +554,5 @@ void MainWindow::on_backToTripType_clicked()
 
 void MainWindow::on_next_clicked()
 {
-//    ui->list_of_wines_scroll_area->
 //    ui->list_of_wines_scroll_area->setLayout(wineryLayoutList.at(1));
 }
