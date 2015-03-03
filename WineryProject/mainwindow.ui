@@ -15,10 +15,10 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
+    <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -61,13 +61,6 @@ password: password</string>
           <widget class="QPushButton" name="planDayTripButton">
            <property name="text">
             <string>Plan A Day Trip</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="tourWineriesButton">
-           <property name="text">
-            <string>Tour Your Wineries and Purchase Wines</string>
            </property>
           </widget>
          </item>
@@ -180,7 +173,7 @@ password: password</string>
          <rect>
           <x>111</x>
           <y>140</y>
-          <width>191</width>
+          <width>521</width>
           <height>331</height>
          </rect>
         </property>
@@ -192,7 +185,7 @@ password: password</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>189</width>
+           <width>519</width>
            <height>329</height>
           </rect>
          </property>
@@ -200,24 +193,6 @@ password: password</string>
        </widget>
       </widget>
       <widget class="QWidget" name="page_plan_day_trip">
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>20</y>
-          <width>271</width>
-          <height>81</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>24</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Plan your Trip</string>
-        </property>
-       </widget>
        <widget class="QPushButton" name="PlanTripBack">
         <property name="geometry">
          <rect>
@@ -231,150 +206,39 @@ password: password</string>
          <string>Back</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_10">
+       <widget class="QWidget" name="verticalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>430</x>
-          <y>120</y>
-          <width>261</width>
-          <height>51</height>
+          <x>180</x>
+          <y>110</y>
+          <width>371</width>
+          <height>301</height>
          </rect>
         </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reference the Winery List:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="visit_all">
+           <property name="text">
+            <string>Visit All the Wineries</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="shortest_trip">
+           <property name="text">
+            <string>Shortest Trip</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="custom_trip">
+           <property name="text">
+            <string>Custom Trip</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
-       <widget class="QLabel" name="label_11">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>120</y>
-          <width>131</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>18</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Your Trip:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="plan_trip_submit_button">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>190</y>
-          <width>111</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Submit</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="geometry">
-         <rect>
-          <x>310</x>
-          <y>230</y>
-          <width>81</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Take off Trip</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_12">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>490</y>
-          <width>91</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Total Distance:</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="geometry">
-         <rect>
-          <x>310</x>
-          <y>270</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Add All</string>
-        </property>
-       </widget>
-       <widget class="QScrollArea" name="scrollArea">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>150</y>
-          <width>181</width>
-          <height>321</height>
-         </rect>
-        </property>
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents_2">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>179</width>
-           <height>319</height>
-          </rect>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QScrollArea" name="scrollArea_2">
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>160</y>
-          <width>181</width>
-          <height>321</height>
-         </rect>
-        </property>
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents_3">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>179</width>
-           <height>319</height>
-          </rect>
-         </property>
-        </widget>
-       </widget>
-       <zorder>label_4</zorder>
-       <zorder>PlanTripBack</zorder>
-       <zorder>label_11</zorder>
-       <zorder>plan_trip_submit_button</zorder>
-       <zorder>pushButton_3</zorder>
-       <zorder>label_12</zorder>
-       <zorder>pushButton_4</zorder>
-       <zorder>scrollArea</zorder>
-       <zorder>label_10</zorder>
-       <zorder>scrollArea_2</zorder>
       </widget>
       <widget class="QWidget" name="page_tour_and_purchase">
        <widget class="QLabel" name="label_5">
@@ -580,7 +444,7 @@ password: password</string>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page_admin_login_form">
          <widget class="QWidget" name="layoutWidget_3">
@@ -723,8 +587,150 @@ password: password</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_7"/>
-      <widget class="QWidget" name="page_8"/>
+      <widget class="QWidget" name="visit_all_wineries">
+       <widget class="QPushButton" name="backToTripType">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="wineryName">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>20</y>
+          <width>221</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+       <widget class="QScrollArea" name="scrollArea">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>120</y>
+          <width>221</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="list_of_wines_scroll_area">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>219</width>
+           <height>319</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="listOfWines">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>80</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>List of Wines</string>
+        </property>
+       </widget>
+       <widget class="QScrollArea" name="scrollArea_2">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>120</y>
+          <width>221</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="cart_scroll_area">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>219</width>
+           <height>319</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="cart">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>80</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Cart</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="addToCart">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>150</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add to Cart</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="next">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>460</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Next</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_8">
+       <widget class="QPushButton" name="goBack">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -735,7 +741,7 @@ password: password</string>
      <x>0</x>
      <y>0</y>
      <width>781</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

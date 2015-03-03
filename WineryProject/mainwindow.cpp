@@ -31,29 +31,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->page_main_window->show();
 
     //creates checkboxes dynamically and the list of wineries
-    //needs to be modified once the SortedList is implemented
-    QString s;
-    QVBoxLayout *layTrip = new QVBoxLayout(this);
     QVBoxLayout *layList = new QVBoxLayout(this);
-    for(int i=0;i<20;i++)
+
+    for (QMap<float, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
     {
-        s = QString::number(i+1);
-        QCheckBox *checkbox = new QCheckBox("Winery " + s, this);
+        QString d = QString::number(it.value().GetDistanceToVilla());
 
-        wineryCheckBoxList1.push_back(checkbox);
+        QLabel *wineryListLabels = new QLabel(it.value().GetName());
+        wineryListLabels->setStyleSheet("font: 16pt;");
+        QLabel *wineryListDistance = new QLabel(d + " mi\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
-        QLabel *wineryListLabels = new QLabel("Winery " + s);
-        checkbox->setChecked (false);
+        wineryListDistance->setAlignment(Qt::AlignRight);
 
-        layTrip->addWidget(checkbox);
         layList->addWidget(wineryListLabels);
-//      QObject::connect(checkbox, SIGNAL(isChecked()), this, SLOT(clicledCkeckBox()));
+        layList->addWidget(wineryListDistance);
     }
 
-    ui->scrollAreaWidgetContents_2->setLayout(layTrip);
     ui->scrollAreaWidgetContents->setLayout(layList);
-
-
 
 }
 
@@ -514,4 +508,61 @@ void MainWindow::on_plan_trip_submit_button_clicked()
         }
 
     }
+}
+
+void MainWindow::on_visit_all_clicked()
+{
+    ui->page_plan_day_trip->hide();
+    ui->visit_all_wineries->show();
+
+    int i=0;
+    QVBoxLayout *layCart = new QVBoxLayout(this);
+
+    for (QMap<float, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
+    {
+          QVBoxLayout *layWineList = new QVBoxLayout(this);
+
+
+        for (QMap<QString, Wine>::const_iterator it3 = it.value().GetWines().cbegin(); it3 != it.value().GetWines().cend(); ++it3)
+        {
+
+
+            QString year = QString::number(it3.value().GetYear());
+            QString price = QString::number(it3.value().GetPrice());
+            QCheckBox *wineCheckbox = new QCheckBox(it3.value().GetName() + '\n' + year + '\n' +'$' + price, this);
+            wineCheckbox->setChecked (false);
+
+
+            layWineList->addWidget(wineCheckbox);
+
+//            if(i==0)
+//            {
+//                ui->list_of_wines_scroll_area->setLayout(layWineList);
+//            }
+
+
+        }
+
+            wineryLayoutList.push_back(layWineList);
+            ui->list_of_wines_scroll_area->setLayout(layWineList);
+            i++;
+    }
+
+
+
+
+
+}
+
+void MainWindow::on_backToTripType_clicked()
+{
+    ui -> visit_all_wineries -> hide();
+    ui -> page_plan_day_trip -> show();
+}
+
+
+void MainWindow::on_next_clicked()
+{
+//    ui->list_of_wines_scroll_area->
+//    ui->list_of_wines_scroll_area->setLayout(wineryLayoutList.at(1));
 }

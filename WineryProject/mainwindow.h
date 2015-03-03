@@ -82,12 +82,24 @@ private slots:
 
     void on_plan_trip_submit_button_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_visit_all_clicked();
+
+    void on_backToTripType_clicked();
+
+    void on_TourBack_2_clicked();
+
+    void on_next_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
     char userType; //'c' for customer, 'a' for admin, 'n' for none(no login made)
     bool ReadFromFile();
     bool WriteToFile();
+    QList<QVBoxLayout*> wineryLayoutList;
+    QList<QCheckBox*> wineCheckBoxList1;
     QList<QCheckBox*> wineryCheckBoxList1;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
     QMap<float, Winery> wineryList; // sort wineries by distance to VILLA
