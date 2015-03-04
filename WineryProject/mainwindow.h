@@ -82,13 +82,13 @@ private slots:
 
     void on_plan_trip_submit_button_clicked();
 
-    void on_pushButton_3_clicked();
+//    void on_pushButton_3_clicked();
 
     void on_visit_all_clicked();
 
     void on_backToTripType_clicked();
 
-    void on_TourBack_2_clicked();
+//    void on_TourBack_2_clicked();
 
     void on_next_clicked();
 
