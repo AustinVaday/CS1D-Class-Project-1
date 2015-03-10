@@ -123,6 +123,8 @@ private slots:
 
     void on_shortest_trip_clicked();
 
+    void on_custom_trip_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;

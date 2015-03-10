@@ -513,6 +513,36 @@ void MainWindow::on_plan_trip_submit_button_clicked()
 
 void MainWindow::on_visit_all_clicked()
 {
+    QList<Winery>       wineries;
+    float               totalDist       = 0.0;
+
+
+    // return shortest path of wineries, total distance traversed.
+
+    /* ENTIRE TRIP */
+    ShortestPath(wineries,
+                 totalDist,
+                 false,     // NOT shortest trip
+                 NULL,      // no specifieddata
+                 0,         // no specified data
+                 false,     // NOT custom Trip
+                 NULL);     // no specified data
+
+
+    qDebug() << "\n\n\n OUTPUTTING ENTIRE TRIP PATH\n";
+    qDebug() << "TOTAL DISTANCE IS: " << totalDist;
+    for (QList<Winery>::iterator it = wineries.begin(); it != wineries.end(); it++)
+    {
+        qDebug() << "WINERY NUMBER " << (*it).GetWineryNum();
+    }
+
+
+
+
+
+
+
+
     ui->page_plan_day_trip->hide();
     ui->visit_all_wineries->show();
 
@@ -770,25 +800,6 @@ void MainWindow::on_shortest_trip_clicked()
 
 
     // return shortest path of wineries, total distance traversed.
-
-    /* ENTIRE TRIP */
-    ShortestPath(wineries,
-                 totalDist,
-                 false,     // NOT shortest trip
-                 NULL,      // no specifieddata
-                 0,         // no specified data
-                 false,     // NOT custom Trip
-                 NULL);     // no specified data
-
-
-    qDebug() << "\n\n\n OUTPUTTING ENTIRE TRIP PATH\n";
-    qDebug() << "TOTAL DISTANCE IS: " << totalDist;
-    for (QList<Winery>::iterator it = wineries.begin(); it != wineries.end(); it++)
-    {
-        qDebug() << "WINERY NUMBER " << (*it).GetWineryNum();
-    }
-
-
     /* SHORTEST TRIP*/
     ShortestPath(wineries,
                  totalDist,
@@ -798,6 +809,28 @@ void MainWindow::on_shortest_trip_clicked()
                  false,                 // NOT custom Trip
                  NULL);                 // no specified data
 
+
+
+    qDebug() << "\n\n\n OUTPUTTING SHORTEST TRIP PATH\n";
+    qDebug() << "TOTAL DISTANCE IS: " << totalDist;
+    for (QList<Winery>::iterator it = wineries.begin(); it != wineries.end(); it++)
+    {
+        qDebug() << "WINERY NUMBER " << (*it).GetWineryNum();
+    }
+
+}
+
+void MainWindow::on_custom_trip_clicked()
+{
+    QList<Winery>       wineries;
+    float               totalDist       = 0.0;
+    int                 wineriesToVisit = 0;
+    Winery*             beginningWinery = NULL;
+    QMap<int, Winery>*  customWineryList= NULL;
+
+
+    // return shortest path of wineries, total distance traversed.
+
     /* CUSTOM TRIP */
     ShortestPath(wineries,
                  totalDist,
@@ -806,4 +839,13 @@ void MainWindow::on_shortest_trip_clicked()
                  0,                 // no specified data
                  true,              // YES custom Trip
                  customWineryList); // specified winery list to traverse
+
+
+    qDebug() << "\n\n\n OUTPUTTING CUSTOM TRIP PATH\n";
+    qDebug() << "TOTAL DISTANCE IS: " << totalDist;
+    for (QList<Winery>::iterator it = wineries.begin(); it != wineries.end(); it++)
+    {
+        qDebug() << "WINERY NUMBER " << (*it).GetWineryNum();
+    }
+
 }
