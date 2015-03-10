@@ -1,14 +1,14 @@
 #include "Winery.h"
 #include <QDebug>
 Winery::Winery(QString newName, int newWineryNum, QMap<float, int> newDistances, QMap<QString, Wine> newList, float distanceToVilla)
-        : name(newName), wineryNum(newWineryNum), distanceMap(newDistances),  distanceToCanyonVilla(distanceToVilla), wines(newList)
+        : name(newName), wineryNum(newWineryNum), visited(false), distanceMap(newDistances),  distanceToCanyonVilla(distanceToVilla), wines(newList)
 {
 //    distance = newDistances;
 //    wines = newList;
 }
 
 
-Winery::Winery() : name(""), distanceToCanyonVilla(0.0), wineryNum(0)
+Winery::Winery() : name(""), distanceToCanyonVilla(0.0), wineryNum(0), visited(false)
 {
 
 }

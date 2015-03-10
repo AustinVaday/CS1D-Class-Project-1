@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //creates checkboxes dynamically and the list of wineries
     QVBoxLayout *layList = new QVBoxLayout(this);
 
-    for (QMap<float, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
+    for (QMap<int, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
     {
         QString d = QString::number(it.value().GetDistanceToVilla());
 
@@ -44,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
         wineryListDistance->setAlignment(Qt::AlignRight);
 
         layList->addWidget(wineryListLabels);
+
         layList->addWidget(wineryListDistance);
     }
 
@@ -329,10 +330,10 @@ bool MainWindow::ReadFromFile()
             {
                 wineObject = new Wine;
 
-                // does nothing for now, will fix this later..
                 wineObject->SetName(inFile.readLine());
                 wineObject->SetYear(inFile.readLine().toInt());
                 wineObject->SetPrice(inFile.readLine().toFloat());
+
 
                 // add wine to winery
                 wineryObject->AddWine(*wineObject);
@@ -349,7 +350,7 @@ bool MainWindow::ReadFromFile()
             inFile.flush();
 
             // add list into sorted wine list.
-            this->wineryList.insert(milesToCanyonVilla, *wineryObject);
+            this->wineryList.insert(wineryObject->GetWineryNum(), *wineryObject);
         }
         // sets read true, flushes the Qtextstream buffer
         readSuccessFull = true;
@@ -360,7 +361,7 @@ bool MainWindow::ReadFromFile()
 
     }
 
-    for (QMap<float, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
+    for (QMap<int, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
     {
         qDebug() << "name of winery: " << it.value().GetName();
         qDebug() << "winery number " << it.value().GetWineryNum();
@@ -437,7 +438,7 @@ bool MainWindow::WriteToFile()
     {
         QTextStream out(&wineryDataFile);
 
-        for (QMap<float, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
+        for (QMap<int, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
         {
             out << "name of winery: " << it.value().GetName() << endl;
             out << "winery number " << it.value().GetWineryNum() << endl;
@@ -518,7 +519,7 @@ void MainWindow::on_visit_all_clicked()
     int i=0;
     QVBoxLayout *layCart = new QVBoxLayout(this);
 
-    for (QMap<float, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
+    for (QMap<int, Winery>::iterator it = wineryList.begin(); it != wineryList.end(); ++it)
     {
           QVBoxLayout *layWineList = new QVBoxLayout(this);
 
@@ -554,5 +555,161 @@ void MainWindow::on_backToTripType_clicked()
 
 void MainWindow::on_next_clicked()
 {
-//    ui->list_of_wines_scroll_area->setLayout(wineryLayoutList.at(1));
+
+    // if (not at end ... )
+
+//    if (!ui->list_of_wines_scroll_area->layout()->isEmpty())
+//    {
+//        delete ui->list_of_wines_scroll_area->layout();
+//    }
+
+    ui->list_of_wines_scroll_area->setLayout(wineryLayoutList.at(3));
+}
+
+QList<Winery> MainWindow::ShortestPath()
+{
+    Winery currentWinery;
+    // store winery list into our very own temp list.
+    QMap<int, Winery> tempWineryList = wineryList;
+    QMap<float, int> distMap;
+    int wineryNum = 0;
+    QList<Winery> shortestPathList;
+
+
+    int distanceTravelled = 0;
+    bool notFound = true;
+
+    // perform shortest path if and only if we have nodes
+    if (!tempWineryList.isEmpty())
+    {
+        // find shortest distance to Villa, this will be the starting point. O(n)
+        currentWinery = closestToVilla(tempWineryList);
+
+        wineryNum = currentWinery.GetWineryNum();
+
+        distanceTravelled = currentWinery.GetDistanceToVilla();
+
+        // add to list if not already there.
+        shortestPathList.push_back(currentWinery);
+
+        // loop until ALL wineries have been traversed.
+
+        int index = 0;
+        int size = tempWineryList.size();
+        while (index < size)
+        {
+            notFound = true;
+            qDebug() << "IN LOOP: WINERY NUM IS: " << wineryNum;
+
+            // find next distance to visit.
+            distMap = wineryList[wineryNum].GetDistances();
+
+            // start 1 AFTER beginning (because beginning is distance to
+            // itself)
+            QMap<float, int>::iterator distIt = distMap.begin() + 1;
+            while (distIt!= distMap.end() && notFound)
+            {
+
+                // remember: value == winery num, key == distance (sorted by key/distance)
+                wineryNum = distIt.value();
+
+                // check if the winery exists (if not, we've already visited it)
+                if (tempWineryList.contains(wineryNum))
+                {
+
+                    // add to list
+                    shortestPathList.push_back(currentWinery);
+
+                    // update current winery
+                    currentWinery = tempWineryList[wineryNum];
+
+
+                    // remove from map
+                    tempWineryList.remove(wineryNum);
+
+                    notFound = false;
+                }
+                else
+                {
+                    distIt++;
+                }
+            }
+
+            if (notFound)
+            {
+                QMessageBox::information(this,"Error", "Something went wrong in Shortest Path ALGO!!");
+            }
+            // else, prepare for next iteration
+            else
+            {
+                // wineryNum already updated
+//                wineryNum = currentWinery.GetWineryNum();
+
+                distanceTravelled = currentWinery.GetDistanceToVilla();
+            }
+
+            index++;
+        }
+
+
+    }
+    else
+    {
+        QMessageBox::information(this, "Error", "Empty List, cannot perform any shortest path!");
+    }
+
+
+       return shortestPathList;
+
+
+}
+
+
+Winery MainWindow::closestToVilla(QMap<int, Winery>& localWineryList)
+{
+    // store lowest distance in this var
+    int lowest;
+    // stores temporary distance
+    int temp;
+    // stores index
+    int index;
+
+    lowest = localWineryList[1].GetDistanceToVilla();
+    index = 0;
+
+    // traverse map from 2 to size. O(n)
+    for (int traverse = 2; traverse < localWineryList.size(); traverse++)
+    {
+
+        temp = localWineryList[traverse].GetDistanceToVilla();
+        // if we find a lower distance, set to new lowest distance
+        if (temp < lowest)
+        {
+            // update lowest and index
+            lowest = temp;
+            index = traverse;
+        }
+
+        // else, check next iteration
+
+    }
+
+    // at the end of the loop, we should have the lowest/closest distance
+    // to the Villa. Return that index.
+
+    return localWineryList[index];
+
+}
+
+void MainWindow::on_shortest_trip_clicked()
+{
+    QList<Winery> wineries;
+
+    wineries = this->ShortestPath();
+
+    qDebug() << "\n\n\n OUTPUTTING SHORTEST TRIP\n";
+    for (QList<Winery>::iterator it = wineries.begin(); it != wineries.end(); it++)
+    {
+        qDebug() << "WINERY NUMBER " << (*it).GetWineryNum();
+    }
 }

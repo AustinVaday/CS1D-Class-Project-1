@@ -10,6 +10,7 @@
 #include "Winery.h"
 #include <QVBoxLayout>
 
+
 /* The following header files are included
  * in other header files...*/
 #include <QDir>
@@ -92,6 +93,12 @@ private slots:
 
     void on_next_clicked();
 
+    QList<Winery> ShortestPath();
+
+    Winery closestToVilla(QMap<int, Winery>& localWineryList);
+
+    void on_shortest_trip_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
@@ -102,7 +109,7 @@ private:
     QList<QCheckBox*> wineCheckBoxList1;
     QList<QCheckBox*> wineryCheckBoxList1;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
-    QMap<float, Winery> wineryList; // sort wineries by distance to VILLA
+    QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
 };

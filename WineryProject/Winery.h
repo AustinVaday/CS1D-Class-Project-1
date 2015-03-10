@@ -48,12 +48,10 @@ private:
     QString name;
     float distanceToCanyonVilla;
     int wineryNum;
-//    QQueue<int>  distance;
-
+    bool visited;
     // Map that sorts wineries by distance!
     QMap<float, int> distanceMap;                 // int: the winery number to compare to
                                                     // float: the distance to the winery (SORTED BY THIS)
-
     QMap<QString, Wine> wines;
 };
 
