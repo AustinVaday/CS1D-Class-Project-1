@@ -567,17 +567,14 @@ void MainWindow::on_next_clicked()
 }
 
 void MainWindow::ShortestPath(QList<Winery>& shortestPathList,
-                                       int& distanceTravelled)
+                                       float& distanceTravelled)
 {
     Winery currentWinery;
     // store winery list into a local temp list.
     QMap<int, Winery> tempWineryList = wineryList;
     QMap<float, int> distMap;
     int wineryNum = 0;
-//    QList<Winery> shortestPathList;
-
-
-    /*int */distanceTravelled = 0;
+    distanceTravelled = 0.0;
     bool notFound = true;
 
     // perform shortest path algo if and only if we have nodes
@@ -630,7 +627,13 @@ void MainWindow::ShortestPath(QList<Winery>& shortestPathList,
 //                    else
 //                    {
                         // keep adding up the distances
+                        qDebug() << "DIST TRAV - BEFORE: " << distanceTravelled;
                         distanceTravelled += distIt.key();
+                        qDebug() << "DIST TRAV - ADDED: " << distIt.key();
+                        qDebug() << "DIST TRAV - AFTER: " << distanceTravelled;
+
+
+
 //                    }
 
                     // add to list
@@ -648,10 +651,12 @@ void MainWindow::ShortestPath(QList<Winery>& shortestPathList,
             }
 
             // if END of iteration, the last winery distance will indicate
-            // that nothing was found, so push back that winery
+            // that nothing was found, so push back that winery, and add it's
+            // distance from the Villa (since we're going back to the Villa)
             if (notFound)
             {
                 shortestPathList.push_back(currentWinery);
+                distanceTravelled += currentWinery.GetDistanceToVilla();
 
             }
 
@@ -707,7 +712,7 @@ Winery MainWindow::closestToVilla(QMap<int, Winery>& localWineryList)
 void MainWindow::on_shortest_trip_clicked()
 {
     QList<Winery> wineries;
-    int totalDist;
+    float totalDist;
 
     // return shortest path of wineries, total distance traversed.
     ShortestPath(wineries, totalDist);

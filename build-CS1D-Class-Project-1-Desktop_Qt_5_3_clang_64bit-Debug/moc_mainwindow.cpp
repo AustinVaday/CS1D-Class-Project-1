@@ -21,7 +21,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[30];
-    char stringdata[638];
+    char stringdata[640];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -53,13 +53,13 @@ QT_MOC_LITERAL(19, 473, 15),
 QT_MOC_LITERAL(20, 489, 12),
 QT_MOC_LITERAL(21, 502, 14),
 QT_MOC_LITERAL(22, 517, 16),
-QT_MOC_LITERAL(23, 534, 4),
-QT_MOC_LITERAL(24, 539, 17),
-QT_MOC_LITERAL(25, 557, 14),
-QT_MOC_LITERAL(26, 572, 6),
-QT_MOC_LITERAL(27, 579, 17),
-QT_MOC_LITERAL(28, 597, 15),
-QT_MOC_LITERAL(29, 613, 24)
+QT_MOC_LITERAL(23, 534, 6),
+QT_MOC_LITERAL(24, 541, 17),
+QT_MOC_LITERAL(25, 559, 14),
+QT_MOC_LITERAL(26, 574, 6),
+QT_MOC_LITERAL(27, 581, 17),
+QT_MOC_LITERAL(28, 599, 15),
+QT_MOC_LITERAL(29, 615, 24)
     },
     "MainWindow\0on_actionHelp_triggered\0\0"
     "on_quitButton_clicked\0on_adminLogButton_clicked\0"
@@ -75,7 +75,7 @@ QT_MOC_LITERAL(29, 613, 24)
     "on_plan_trip_submit_button_clicked\0"
     "on_visit_all_clicked\0on_backToTripType_clicked\0"
     "on_next_clicked\0ShortestPath\0"
-    "QList<Winery>&\0shortestPathList\0int&\0"
+    "QList<Winery>&\0shortestPathList\0float&\0"
     "distanceTravelled\0closestToVilla\0"
     "Winery\0QMap<int,Winery>&\0localWineryList\0"
     "on_shortest_trip_clicked"
@@ -167,7 +167,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 15: _t->on_visit_all_clicked(); break;
         case 16: _t->on_backToTripType_clicked(); break;
         case 17: _t->on_next_clicked(); break;
-        case 18: _t->ShortestPath((*reinterpret_cast< QList<Winery>(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 18: _t->ShortestPath((*reinterpret_cast< QList<Winery>(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2]))); break;
         case 19: { Winery _r = _t->closestToVilla((*reinterpret_cast< QMap<int,Winery>(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< Winery*>(_a[0]) = _r; }  break;
         case 20: _t->on_shortest_trip_clicked(); break;
