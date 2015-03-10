@@ -93,7 +93,9 @@ private slots:
 
     void on_next_clicked();
 
-    QList<Winery> ShortestPath();
+    // return shortest path list and total distance travelled
+    void ShortestPath(QList<Winery>& shortestPathList,
+                                           int& distanceTravelled);
 
     Winery closestToVilla(QMap<int, Winery>& localWineryList);
 

@@ -566,39 +566,40 @@ void MainWindow::on_next_clicked()
     ui->list_of_wines_scroll_area->setLayout(wineryLayoutList.at(3));
 }
 
-QList<Winery> MainWindow::ShortestPath()
+void MainWindow::ShortestPath(QList<Winery>& shortestPathList,
+                                       int& distanceTravelled)
 {
     Winery currentWinery;
-    // store winery list into our very own temp list.
+    // store winery list into a local temp list.
     QMap<int, Winery> tempWineryList = wineryList;
     QMap<float, int> distMap;
     int wineryNum = 0;
-    QList<Winery> shortestPathList;
+//    QList<Winery> shortestPathList;
 
 
-    int distanceTravelled = 0;
+    /*int */distanceTravelled = 0;
     bool notFound = true;
 
-    // perform shortest path if and only if we have nodes
+    // perform shortest path algo if and only if we have nodes
     if (!tempWineryList.isEmpty())
     {
         // find shortest distance to Villa, this will be the starting point. O(n)
         currentWinery = closestToVilla(tempWineryList);
 
+        // starting winery num
         wineryNum = currentWinery.GetWineryNum();
 
+        // distance from villa to starting winery
         distanceTravelled = currentWinery.GetDistanceToVilla();
 
-        // add to list if not already there.
-        shortestPathList.push_back(currentWinery);
-
         // loop until ALL wineries have been traversed.
-
         int index = 0;
         int size = tempWineryList.size();
+
         while (index < size)
         {
             notFound = true;
+
             qDebug() << "IN LOOP: WINERY NUM IS: " << wineryNum;
 
             // find next distance to visit.
@@ -609,23 +610,34 @@ QList<Winery> MainWindow::ShortestPath()
             QMap<float, int>::iterator distIt = distMap.begin() + 1;
             while (distIt!= distMap.end() && notFound)
             {
-
-                // remember: value == winery num, key == distance (sorted by key/distance)
-                wineryNum = distIt.value();
-
                 // check if the winery exists (if not, we've already visited it)
-                if (tempWineryList.contains(wineryNum))
+                if (tempWineryList.contains(distIt.value()))
                 {
+                    // remove old from map
+                    tempWineryList.remove(wineryNum);
+
+
+                    // update the winery num
+                    // remember: value == winery num, key == distance (sorted by key/distance)
+                    wineryNum = distIt.value();
+
+
+//                    // if last iteration, add distance to villa
+//                    if (index = size - 1)
+//                    {
+//                        distanceTravelled += currentWinery.GetDistanceToVilla();
+//                    }
+//                    else
+//                    {
+                        // keep adding up the distances
+                        distanceTravelled += distIt.key();
+//                    }
 
                     // add to list
                     shortestPathList.push_back(currentWinery);
 
-                    // update current winery
+                    // update new current winery
                     currentWinery = tempWineryList[wineryNum];
-
-
-                    // remove from map
-                    tempWineryList.remove(wineryNum);
 
                     notFound = false;
                 }
@@ -635,32 +647,23 @@ QList<Winery> MainWindow::ShortestPath()
                 }
             }
 
+            // if END of iteration, the last winery distance will indicate
+            // that nothing was found, so push back that winery
             if (notFound)
             {
-                QMessageBox::information(this,"Error", "Something went wrong in Shortest Path ALGO!!");
-            }
-            // else, prepare for next iteration
-            else
-            {
-                // wineryNum already updated
-//                wineryNum = currentWinery.GetWineryNum();
+                shortestPathList.push_back(currentWinery);
 
-                distanceTravelled = currentWinery.GetDistanceToVilla();
             }
+
 
             index++;
         }
-
 
     }
     else
     {
         QMessageBox::information(this, "Error", "Empty List, cannot perform any shortest path!");
     }
-
-
-       return shortestPathList;
-
 
 }
 
@@ -704,10 +707,13 @@ Winery MainWindow::closestToVilla(QMap<int, Winery>& localWineryList)
 void MainWindow::on_shortest_trip_clicked()
 {
     QList<Winery> wineries;
+    int totalDist;
 
-    wineries = this->ShortestPath();
+    // return shortest path of wineries, total distance traversed.
+    ShortestPath(wineries, totalDist);
 
     qDebug() << "\n\n\n OUTPUTTING SHORTEST TRIP\n";
+    qDebug() << "TOTAL DISTANCE IS: " << totalDist;
     for (QList<Winery>::iterator it = wineries.begin(); it != wineries.end(); it++)
     {
         qDebug() << "WINERY NUMBER " << (*it).GetWineryNum();
