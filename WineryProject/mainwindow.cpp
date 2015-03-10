@@ -591,6 +591,7 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
     int wineryNum = 0;
     distanceTravelled = 0.0;
     bool notFound = true;
+    bool loopCondition;
 
     // store winery list into a local temp list.
     if (customTrip)
@@ -606,9 +607,17 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
     // perform shortest path algo if and only if we have nodes
     if (!tempWineryList.isEmpty())
     {
-        // find shortest distance to Villa, this will be the starting point. O(n)
-        currentWinery = closestToVilla(tempWineryList);
-
+        // if shortest trip, the user has selected a starting
+        // winery..
+        if (shortestTrip && beginningWinery != NULL)
+        {
+            currentWinery = *beginningWinery;
+        }
+        else
+        {
+            // find shortest distance to Villa, this will be the starting point. O(n)
+            currentWinery = closestToVilla(tempWineryList);
+        }
         // starting winery num
         wineryNum = currentWinery.GetWineryNum();
 
@@ -619,11 +628,28 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
         int index = 0;
         int size = tempWineryList.size();
 
-        while (index < size)
+        /* CONDITION OF OUTER LOOP*/
+        // if shortest trip, then user has selected
+        // number of wineries to visit. Make sure
+        // not to exceed this number
+        if (shortestTrip && wineriesToVisit != 0)
+        {
+            loopCondition = (index < size && index < wineriesToVisit);
+        }
+        else // if custom trip or entire trip
+        {
+            loopCondition = (index < size);
+        }
+
+        while (loopCondition)
         {
             notFound = true;
 
             // find next distance to visit.
+            // using the class variable wineryList here is OK
+            // because we map each winery num to a specific
+            // winery! So as long as the winery numbers are unique,
+            // the folowwing operation will always work.
             distMap = wineryList[wineryNum].GetDistances();
 
             // start 1 AFTER beginning (because beginning is distance to
@@ -674,8 +700,19 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
 
             }
 
-
             index++;
+
+            // if shortest trip, then user has selected
+            // number of wineries to visit. Make sure
+            // not to exceed this number
+            if (shortestTrip && wineriesToVisit != 0)
+            {
+                loopCondition = (index < size && index < wineriesToVisit);
+            }
+            else
+            {
+                loopCondition = (index < size);
+            }
         }
 
     }
@@ -725,12 +762,16 @@ Winery MainWindow::closestToVilla(QMap<int, Winery>& localWineryList)
 
 void MainWindow::on_shortest_trip_clicked()
 {
-    QList<Winery> wineries;
-    float totalDist;
+    QList<Winery>       wineries;
+    float               totalDist       = 0.0;
+    int                 wineriesToVisit = 0;
+    Winery*             beginningWinery = NULL;
+    QMap<int, Winery>*  customWineryList= NULL;
+
 
     // return shortest path of wineries, total distance traversed.
 
-    /* TRAVERSE ALL*/
+    /* ENTIRE TRIP */
     ShortestPath(wineries,
                  totalDist,
                  false,     // NOT shortest trip
@@ -739,10 +780,30 @@ void MainWindow::on_shortest_trip_clicked()
                  false,     // NOT custom Trip
                  NULL);     // no specified data
 
-    qDebug() << "\n\n\n OUTPUTTING SHORTEST TRIP\n";
+
+    qDebug() << "\n\n\n OUTPUTTING ENTIRE TRIP PATH\n";
     qDebug() << "TOTAL DISTANCE IS: " << totalDist;
     for (QList<Winery>::iterator it = wineries.begin(); it != wineries.end(); it++)
     {
         qDebug() << "WINERY NUMBER " << (*it).GetWineryNum();
     }
+
+
+    /* SHORTEST TRIP*/
+    ShortestPath(wineries,
+                 totalDist,
+                 true,                  // YES shortest trip
+                 beginningWinery,       // specified winery to begin
+                 wineriesToVisit,       // specified number of wineries to visit
+                 false,                 // NOT custom Trip
+                 NULL);                 // no specified data
+
+    /* CUSTOM TRIP */
+    ShortestPath(wineries,
+                 totalDist,
+                 false,             // NOT shortest trip
+                 NULL,              // no specified data
+                 0,                 // no specified data
+                 true,              // YES custom Trip
+                 customWineryList); // specified winery list to traverse
 }
