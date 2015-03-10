@@ -597,8 +597,6 @@ void MainWindow::ShortestPath(QList<Winery>& shortestPathList,
         {
             notFound = true;
 
-            qDebug() << "IN LOOP: WINERY NUM IS: " << wineryNum;
-
             // find next distance to visit.
             distMap = wineryList[wineryNum].GetDistances();
 
@@ -619,22 +617,12 @@ void MainWindow::ShortestPath(QList<Winery>& shortestPathList,
                     wineryNum = distIt.value();
 
 
-//                    // if last iteration, add distance to villa
-//                    if (index = size - 1)
-//                    {
-//                        distanceTravelled += currentWinery.GetDistanceToVilla();
-//                    }
-//                    else
-//                    {
-                        // keep adding up the distances
-                        qDebug() << "DIST TRAV - BEFORE: " << distanceTravelled;
-                        distanceTravelled += distIt.key();
-                        qDebug() << "DIST TRAV - ADDED: " << distIt.key();
-                        qDebug() << "DIST TRAV - AFTER: " << distanceTravelled;
+                    // keep adding up the distances
+//                    qDebug() << "DIST TRAV - BEFORE: " << distanceTravelled;
+                    distanceTravelled += distIt.key();
+//                    qDebug() << "DIST TRAV - ADDED: " << distIt.key();
+//                    qDebug() << "DIST TRAV - AFTER: " << distanceTravelled;
 
-
-
-//                    }
 
                     // add to list
                     shortestPathList.push_back(currentWinery);
