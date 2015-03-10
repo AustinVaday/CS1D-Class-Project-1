@@ -605,7 +605,7 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
                                                                         //      --> wineriesToVisit : 0
                                                                         //      --> customTrip : false
                                                                         //      --> customWineryList : NULL
-                              Winery*               beginningWinery,
+                              const Winery*         beginningWinery,        // CONST ptr so that cannot change the winery
                               int                   wineriesToVisit,
                               bool                  customTrip,         // For custom trip, you will need to enter data in for:
                                                                         //      --> customerWineryList
@@ -660,7 +660,7 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
 
         /* CONDITION OF OUTER LOOP*/
         // if shortest trip, then user has selected
-        // number of wineries to visit. Make sure
+        // a specific number of wineries to visit. Make sure
         // not to exceed this number
         if (shortestTrip && wineriesToVisit != 0)
         {
@@ -700,10 +700,22 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
 
 
                     // keep adding up the distances
-//                    qDebug() << "DIST TRAV - BEFORE: " << distanceTravelled;
-                    distanceTravelled += distIt.key();
-//                    qDebug() << "DIST TRAV - ADDED: " << distIt.key();
-//                    qDebug() << "DIST TRAV - AFTER: " << distanceTravelled;
+                    qDebug() << "DIST TRAV - BEFORE: " << distanceTravelled;
+
+                    // if we're doing a shortest trip and the shortest path size
+                    // is equal to that of one less than how many wineries we seek,
+                    // we know that it's our last location, so we need to get it's
+                    // distance to the villa instead.
+                    if (shortestTrip && shortestPathList.size() == wineriesToVisit - 1)
+                    {
+                        distanceTravelled += currentWinery.GetDistanceToVilla();
+                    }
+                    else
+                    {
+                        distanceTravelled += distIt.key();
+                    }
+                    qDebug() << "DIST TRAV - ADDED: " << distIt.key();
+                    qDebug() << "DIST TRAV - AFTER: " << distanceTravelled;
 
 
                     // add to list
@@ -796,7 +808,12 @@ void MainWindow::on_shortest_trip_clicked()
     float               totalDist       = 0.0;
     int                 wineriesToVisit = 0;
     Winery*             beginningWinery = NULL;
-    QMap<int, Winery>*  customWineryList= NULL;
+
+    /************** TEMP VALUES ******************/
+    // start from 8, traverse 3 wineries total
+    wineriesToVisit = 3;
+    beginningWinery = &(this->wineryList[8]);
+    /********************************************/
 
 
     // return shortest path of wineries, total distance traversed.
@@ -824,10 +841,7 @@ void MainWindow::on_custom_trip_clicked()
 {
     QList<Winery>       wineries;
     float               totalDist       = 0.0;
-    int                 wineriesToVisit = 0;
-    Winery*             beginningWinery = NULL;
     QMap<int, Winery>*  customWineryList= NULL;
-
 
     // return shortest path of wineries, total distance traversed.
 

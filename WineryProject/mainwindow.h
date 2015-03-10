@@ -108,7 +108,7 @@ private slots:
                                             //      --> wineriesToVisit : 0
                                             //      --> customTrip : false
                                             //      --> customWineryList : NULL
-  Winery*               beginningWinery,
+  const Winery*         beginningWinery,        // CONST ptr so that cannot change the winery
   int                   wineriesToVisit,
   bool                  customTrip,         // For custom trip, you will need to enter data in for:
                                             //      --> customerWineryList
