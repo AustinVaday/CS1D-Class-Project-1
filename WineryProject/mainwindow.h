@@ -94,8 +94,30 @@ private slots:
     void on_next_clicked();
 
     // return shortest path list and total distance travelled
-    void ShortestPath(QList<Winery>& shortestPathList,
-                                           float& distanceTravelled);
+//    void ShortestPath(QList<Winery>& shortestPathList,
+//                                           float& distanceTravelled);
+
+    /* READ THE SIDE-DOCUMENTATION. !IMPORTANT SEMANTICS! */
+    void ShortestPath
+ (QList<Winery>&        shortestPathList,   // the resulting shorted path
+  float&                distanceTravelled,  // the total distance travelled
+  bool                  shortestTrip,       // For shortest trip, you will need to enter data in for:
+                                            //      --> beginningWinery
+                                            //      --> wineriesToVisit
+                                            // and let the rest be as follows
+                                            //      --> wineriesToVisit : 0
+                                            //      --> customTrip : false
+                                            //      --> customWineryList : NULL
+  Winery*               beginningWinery,
+  int                   wineriesToVisit,
+  bool                  customTrip,         // For custom trip, you will need to enter data in for:
+                                            //      --> customerWineryList
+                                            // and let the rest be as follows
+                                            //      --> shortestTrip : false
+                                            //      --> beginningWinery : NULL
+
+  QMap<int,Winery>*   customWineryList);   // Map for CUSTOM TRIP
+
 
     Winery closestToVilla(QMap<int, Winery>& localWineryList);
 

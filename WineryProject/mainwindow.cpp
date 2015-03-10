@@ -566,16 +566,42 @@ void MainWindow::on_next_clicked()
     ui->list_of_wines_scroll_area->setLayout(wineryLayoutList.at(3));
 }
 
-void MainWindow::ShortestPath(QList<Winery>& shortestPathList,
-                                       float& distanceTravelled)
+void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the resulting shorted path
+                              float&                distanceTravelled,  // the total distance travelled
+                              bool                  shortestTrip,       // For shortest trip, you will need to enter data in for:
+                                                                        //      --> beginningWinery
+                                                                        //      --> wineriesToVisit
+                                                                        // and let the rest be as follows
+                                                                        //      --> wineriesToVisit : 0
+                                                                        //      --> customTrip : false
+                                                                        //      --> customWineryList : NULL
+                              Winery*               beginningWinery,
+                              int                   wineriesToVisit,
+                              bool                  customTrip,         // For custom trip, you will need to enter data in for:
+                                                                        //      --> customerWineryList
+                                                                        // and let the rest be as follows
+                                                                        //      --> shortestTrip : false
+                                                                        //      --> beginningWinery : NULL
+
+                              QMap<int,Winery>*   customWineryList)   // Map for CUSTOM TRIP
 {
     Winery currentWinery;
-    // store winery list into a local temp list.
-    QMap<int, Winery> tempWineryList = wineryList;
+    QMap<int, Winery> tempWineryList;
     QMap<float, int> distMap;
     int wineryNum = 0;
     distanceTravelled = 0.0;
     bool notFound = true;
+
+    // store winery list into a local temp list.
+    if (customTrip)
+    {
+        tempWineryList = *customWineryList;
+
+    }
+    else // if entire trip or shortest trip
+    {
+        tempWineryList = wineryList;
+    }
 
     // perform shortest path algo if and only if we have nodes
     if (!tempWineryList.isEmpty())
@@ -703,7 +729,15 @@ void MainWindow::on_shortest_trip_clicked()
     float totalDist;
 
     // return shortest path of wineries, total distance traversed.
-    ShortestPath(wineries, totalDist);
+
+    /* TRAVERSE ALL*/
+    ShortestPath(wineries,
+                 totalDist,
+                 false,     // NOT shortest trip
+                 NULL,      // no specifieddata
+                 0,         // no specified data
+                 false,     // NOT custom Trip
+                 NULL);     // no specified data
 
     qDebug() << "\n\n\n OUTPUTTING SHORTEST TRIP\n";
     qDebug() << "TOTAL DISTANCE IS: " << totalDist;

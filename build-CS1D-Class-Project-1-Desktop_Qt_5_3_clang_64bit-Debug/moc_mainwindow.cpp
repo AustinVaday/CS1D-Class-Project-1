@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[30];
-    char stringdata[640];
+    QByteArrayData data[37];
+    char stringdata[739];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -55,11 +55,18 @@ QT_MOC_LITERAL(21, 502, 14),
 QT_MOC_LITERAL(22, 517, 16),
 QT_MOC_LITERAL(23, 534, 6),
 QT_MOC_LITERAL(24, 541, 17),
-QT_MOC_LITERAL(25, 559, 14),
-QT_MOC_LITERAL(26, 574, 6),
-QT_MOC_LITERAL(27, 581, 17),
-QT_MOC_LITERAL(28, 599, 15),
-QT_MOC_LITERAL(29, 615, 24)
+QT_MOC_LITERAL(25, 559, 12),
+QT_MOC_LITERAL(26, 572, 7),
+QT_MOC_LITERAL(27, 580, 15),
+QT_MOC_LITERAL(28, 596, 15),
+QT_MOC_LITERAL(29, 612, 10),
+QT_MOC_LITERAL(30, 623, 17),
+QT_MOC_LITERAL(31, 641, 16),
+QT_MOC_LITERAL(32, 658, 14),
+QT_MOC_LITERAL(33, 673, 6),
+QT_MOC_LITERAL(34, 680, 17),
+QT_MOC_LITERAL(35, 698, 15),
+QT_MOC_LITERAL(36, 714, 24)
     },
     "MainWindow\0on_actionHelp_triggered\0\0"
     "on_quitButton_clicked\0on_adminLogButton_clicked\0"
@@ -76,8 +83,11 @@ QT_MOC_LITERAL(29, 615, 24)
     "on_visit_all_clicked\0on_backToTripType_clicked\0"
     "on_next_clicked\0ShortestPath\0"
     "QList<Winery>&\0shortestPathList\0float&\0"
-    "distanceTravelled\0closestToVilla\0"
-    "Winery\0QMap<int,Winery>&\0localWineryList\0"
+    "distanceTravelled\0shortestTrip\0Winery*\0"
+    "beginningWinery\0wineriesToVisit\0"
+    "customTrip\0QMap<int,Winery>*\0"
+    "customWineryList\0closestToVilla\0Winery\0"
+    "QMap<int,Winery>&\0localWineryList\0"
     "on_shortest_trip_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -114,9 +124,9 @@ static const uint qt_meta_data_MainWindow[] = {
       17,    0,  134,    2, 0x08 /* Private */,
       18,    0,  135,    2, 0x08 /* Private */,
       19,    0,  136,    2, 0x08 /* Private */,
-      20,    2,  137,    2, 0x08 /* Private */,
-      25,    1,  142,    2, 0x08 /* Private */,
-      29,    0,  145,    2, 0x08 /* Private */,
+      20,    7,  137,    2, 0x08 /* Private */,
+      32,    1,  152,    2, 0x08 /* Private */,
+      36,    0,  155,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -137,8 +147,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 21, 0x80000000 | 23,   22,   24,
-    0x80000000 | 26, 0x80000000 | 27,   28,
+    QMetaType::Void, 0x80000000 | 21, 0x80000000 | 23, QMetaType::Bool, 0x80000000 | 26, QMetaType::Int, QMetaType::Bool, 0x80000000 | 30,   22,   24,   25,   27,   28,   29,   31,
+    0x80000000 | 33, 0x80000000 | 34,   35,
     QMetaType::Void,
 
        0        // eod
@@ -167,7 +177,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 15: _t->on_visit_all_clicked(); break;
         case 16: _t->on_backToTripType_clicked(); break;
         case 17: _t->on_next_clicked(); break;
-        case 18: _t->ShortestPath((*reinterpret_cast< QList<Winery>(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2]))); break;
+        case 18: _t->ShortestPath((*reinterpret_cast< QList<Winery>(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])),(*reinterpret_cast< Winery*(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< bool(*)>(_a[6])),(*reinterpret_cast< QMap<int,Winery>*(*)>(_a[7]))); break;
         case 19: { Winery _r = _t->closestToVilla((*reinterpret_cast< QMap<int,Winery>(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< Winery*>(_a[0]) = _r; }  break;
         case 20: _t->on_shortest_trip_clicked(); break;
