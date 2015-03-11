@@ -93,10 +93,6 @@ private slots:
 
     void on_next_clicked();
 
-    // return shortest path list and total distance travelled
-//    void ShortestPath(QList<Winery>& shortestPathList,
-//                                           float& distanceTravelled);
-
     /* READ THE SIDE-DOCUMENTATION. !IMPORTANT SEMANTICS! */
     void ShortestPath
  (QList<Winery>&        shortestPathList,   // the resulting shorted path
@@ -105,7 +101,6 @@ private slots:
                                             //      --> beginningWinery
                                             //      --> wineriesToVisit
                                             // and let the rest be as follows
-                                            //      --> wineriesToVisit : 0
                                             //      --> customTrip : false
                                             //      --> customWineryList : NULL
   const Winery*         beginningWinery,        // CONST ptr so that cannot change the winery
@@ -113,6 +108,7 @@ private slots:
   bool                  customTrip,         // For custom trip, you will need to enter data in for:
                                             //      --> customerWineryList
                                             // and let the rest be as follows
+                                            //      --> wineriesToVisit : 0
                                             //      --> shortestTrip : false
                                             //      --> beginningWinery : NULL
 

@@ -9,7 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->addToCart->setEnabled(false);
+//    ui->addToCart->setEnabled(false);
+    QList<int> list;
+    
+    
+    
     wineObject = NULL;
     wineryObject = NULL;
     helpWindow = NULL;
