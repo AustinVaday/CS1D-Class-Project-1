@@ -579,15 +579,6 @@ void MainWindow::on_visit_all_clicked()
 
 
 
-
-
-
-
-
-
-
-
-
 }
 
 void MainWindow::on_backToTripType_clicked()
@@ -637,10 +628,12 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
     bool notFound = true;
     bool loopCondition;
 
+
     // store winery list into a local temp list.
     if (customTrip)
     {
         tempWineryList = *customWineryList;
+
 
     }
     else // if entire trip or shortest trip
@@ -659,11 +652,15 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
         }
         else
         {
+
             // find shortest distance to Villa, this will be the starting point. O(n)
             currentWinery = closestToVilla(tempWineryList);
+
+
         }
         // starting winery num
         wineryNum = currentWinery.GetWineryNum();
+
 
         // distance from villa to starting winery
         distanceTravelled = currentWinery.GetDistanceToVilla();
@@ -701,9 +698,11 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
             QMap<float, int>::iterator distIt = distMap.begin() + 1;
             while (distIt!= distMap.end() && notFound)
             {
+
                 // check if the winery exists (if not, we've already visited it)
                 if (tempWineryList.contains(distIt.value()))
                 {
+
                     // remove old from map
                     tempWineryList.remove(wineryNum);
 
@@ -789,22 +788,25 @@ Winery MainWindow::closestToVilla(QMap<int, Winery>& localWineryList)
     // stores index
     int index;
 
-    lowest = localWineryList[1].GetDistanceToVilla();
-    index = 0;
 
-    // traverse map from 2 to size. O(n)
-    for (int traverse = 2; traverse < localWineryList.size(); traverse++)
+    lowest = 10000000; // some arbritary lowest value
+    index = 1;  // if error, returns winery at index 1
+
+    // traverse map from 1 to size. O(n)
+    for (int traverse = 1; traverse < wineryList.size(); traverse++)
     {
-
-        temp = localWineryList[traverse].GetDistanceToVilla();
-        // if we find a lower distance, set to new lowest distance
-        if (temp < lowest)
+        if (localWineryList.contains(traverse))
         {
-            // update lowest and index
-            lowest = temp;
-            index = traverse;
-        }
+            temp = localWineryList[traverse].GetDistanceToVilla();
+            // if we find a lower distance, set to new lowest distance
+            if (temp < lowest)
+            {
+                // update lowest and index
+                lowest = temp;
+                index = traverse;
+            }
 
+            }
         // else, check next iteration
 
     }
@@ -812,6 +814,8 @@ Winery MainWindow::closestToVilla(QMap<int, Winery>& localWineryList)
     // at the end of the loop, we should have the lowest/closest distance
     // to the Villa. Return that index.
 
+    qDebug() << "INDEX BEFORE RETURN: " << index;
+    qDebug() << "WINERY NAME BEFORE RETURN " << localWineryList[index].GetName();
     return localWineryList[index];
 
 }
@@ -823,11 +827,11 @@ void MainWindow::on_shortest_trip_clicked()
     int                 wineriesToVisit = 0;
     Winery*             beginningWinery = NULL;
 
-    /************** TEMP VALUES ******************/
+    /************** TEMP VALUES TESTING ******************/
     // start from 8, traverse 3 wineries total
     wineriesToVisit = 3;
     beginningWinery = &(this->wineryList[8]);
-    /********************************************/
+    /*****************************************************/
 
 
     // return shortest path of wineries, total distance traversed.
@@ -857,6 +861,17 @@ void MainWindow::on_custom_trip_clicked()
     float               totalDist       = 0.0;
     QMap<int, Winery>*  customWineryList= NULL;
 
+    /************** TEMP VALUES TESTING ******************/
+    // add 4 random wineries to visit.
+    customWineryList = new QMap<int, Winery>;
+
+    customWineryList->insert(3, this->wineryList[3]);
+    customWineryList->insert(10, this->wineryList[10]);
+    customWineryList->insert(2, this->wineryList[2]);
+    customWineryList->insert(7, this->wineryList[7]);
+
+    /*****************************************************/
+
     // return shortest path of wineries, total distance traversed.
 
     /* CUSTOM TRIP */
@@ -875,5 +890,7 @@ void MainWindow::on_custom_trip_clicked()
     {
         qDebug() << "WINERY NUMBER " << (*it).GetWineryNum();
     }
+
+    delete customWineryList;
 
 }
