@@ -9,6 +9,7 @@
 #include <QCheckBox>
 #include "Winery.h"
 #include <QVBoxLayout>
+#include <QTableWidgetItem>
 
 
 /* The following header files are included
@@ -31,6 +32,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
     void setUser(char type);
+    void updateTableItems();
     char getUser();
 
     ~MainWindow();
@@ -121,6 +123,14 @@ private slots:
 
     void on_custom_trip_clicked();
 
+    void on_wineryTable_itemClicked(QTableWidgetItem *item);
+
+    void on_wineryTable_itemChanged(QTableWidgetItem *item);
+
+    void on_addNew_clicked();
+
+    void on_addNewWinery_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
@@ -134,6 +144,7 @@ private:
     QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
+    QTableWidgetItem *selectedWinery;
 };
 
 #endif // MAINWINDOW_H
