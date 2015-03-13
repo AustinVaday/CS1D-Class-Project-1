@@ -11,6 +11,7 @@
 #include <QVBoxLayout>
 #include <QRadioButton>
 #include <QTableWidgetItem>
+#include <QStackedWidget>
 
 
 /* The following header files are included
@@ -49,7 +50,7 @@ private slots:
 
     void on_planDayTripButton_clicked();
 
-    void on_tourWineriesButton_clicked();
+//    void on_tourWineriesButton_clicked();
 
 
     void on_admin_log_ok_button_clicked();
@@ -84,7 +85,7 @@ private slots:
 
     void on_passwordLine_returnPressed();
 
-    void on_plan_trip_submit_button_clicked();
+//    void on_plan_trip_submit_button_clicked();
 
 //    void on_pushButton_3_clicked();
 
@@ -124,7 +125,7 @@ private slots:
 
     void on_custom_trip_clicked();
 
-    void on_next_2_clicked();
+//    void on_next_2_clicked();
 
     void on_prev_winery_clicked();
 
@@ -134,7 +135,7 @@ private slots:
 
     void on_wineryTable_itemClicked(QTableWidgetItem *item);
 
-    void on_wineryTable_itemChanged(QTableWidgetItem *item);
+//    void on_wineryTable_itemChanged(QTableWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;
@@ -142,7 +143,8 @@ private:
     char userType; //'c' for customer, 'a' for admin, 'n' for none(no login made)
     bool ReadFromFile();
     bool WriteToFile();
-    QList<QWidget*> scrollAreaList;
+//    QList<QWidget*> scrollAreaList;
+    QStackedWidget * scrollAreaListStacked;
     QVector<QCheckBox*> wineCheckBoxList1;
     QList<QCheckBox*> wineCheckBoxCartList;
     QList<QRadioButton*> wineryRadioButtonList;

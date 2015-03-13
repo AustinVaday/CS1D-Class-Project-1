@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -609,7 +609,7 @@ password: password</string>
        <widget class="QPushButton" name="next">
         <property name="geometry">
          <rect>
-          <x>630</x>
+          <x>580</x>
           <y>460</y>
           <width>111</width>
           <height>41</height>
@@ -622,9 +622,9 @@ password: password</string>
        <widget class="QPushButton" name="prev_winery">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>30</x>
           <y>460</y>
-          <width>111</width>
+          <width>131</width>
           <height>41</height>
          </rect>
         </property>
@@ -699,11 +699,7 @@ password: password</string>
      <x>0</x>
      <y>0</y>
      <width>781</width>
-<<<<<<< HEAD
-     <height>26</height>
-=======
-     <height>21</height>
->>>>>>> origin/master
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

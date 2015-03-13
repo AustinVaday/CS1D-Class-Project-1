@@ -18,7 +18,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -27,6 +26,7 @@
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -63,21 +63,11 @@ public:
     QPushButton *visit_all;
     QPushButton *shortest_trip;
     QPushButton *custom_trip;
-    QWidget *page_tour_and_purchase;
-    QLabel *label_5;
+    QWidget *shortest_trip_3;
+    QLabel *selectWineryLabel;
     QPushButton *TourBack;
-    QListView *listView_3;
-    QLabel *label_13;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
-    QPushButton *pushButton_7;
-    QLabel *label_14;
-    QLabel *label_15;
-    QListView *listView_4;
-    QLabel *label_17;
-    QLabel *label_18;
-    QLabel *label_19;
-    QLabel *label_20;
+    QScrollArea *radio_button_scroll_area;
+    QWidget *scrollAreaWidgetContents_2;
     QWidget *page_admin_login;
     QStackedWidget *stackedWidget_2;
     QWidget *page_admin_login_form;
@@ -98,7 +88,9 @@ public:
     QLabel *label_16;
     QPushButton *admin_log_out_button;
     QPushButton *LogInBack;
-    QPushButton *pushButton;
+    QTableWidget *wineryTable;
+    QPushButton *addNewWinery;
+    QPushButton *addNew_2;
     QWidget *visit_all_wineries;
     QPushButton *backToTripType;
     QLabel *wineryName;
@@ -110,12 +102,18 @@ public:
     QLabel *cart;
     QPushButton *addToCart;
     QPushButton *next;
-    QWidget *page_8;
+    QPushButton *prev_winery;
+    QWidget *customt_trip;
     QPushButton *goBack;
+    QScrollArea *custom_trip_scroll_area;
+    QWidget *scrollAreaWidgetContents_3;
+    QLabel *selectWineryLabel_2;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
+    QToolBar *toolBar;
+    QToolBar *toolBar_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -231,56 +229,26 @@ public:
         verticalLayout_2->addWidget(custom_trip);
 
         stackedWidget->addWidget(page_plan_day_trip);
-        page_tour_and_purchase = new QWidget();
-        page_tour_and_purchase->setObjectName(QStringLiteral("page_tour_and_purchase"));
-        label_5 = new QLabel(page_tour_and_purchase);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(180, 20, 401, 61));
+        shortest_trip_3 = new QWidget();
+        shortest_trip_3->setObjectName(QStringLiteral("shortest_trip_3"));
+        selectWineryLabel = new QLabel(shortest_trip_3);
+        selectWineryLabel->setObjectName(QStringLiteral("selectWineryLabel"));
+        selectWineryLabel->setGeometry(QRect(200, 20, 371, 61));
         QFont font2;
         font2.setPointSize(24);
-        label_5->setFont(font2);
-        TourBack = new QPushButton(page_tour_and_purchase);
+        selectWineryLabel->setFont(font2);
+        TourBack = new QPushButton(shortest_trip_3);
         TourBack->setObjectName(QStringLiteral("TourBack"));
         TourBack->setGeometry(QRect(10, 10, 75, 23));
-        listView_3 = new QListView(page_tour_and_purchase);
-        listView_3->setObjectName(QStringLiteral("listView_3"));
-        listView_3->setGeometry(QRect(470, 170, 271, 341));
-        label_13 = new QLabel(page_tour_and_purchase);
-        label_13->setObjectName(QStringLiteral("label_13"));
-        label_13->setGeometry(QRect(530, 110, 161, 21));
-        label_13->setFont(font1);
-        pushButton_5 = new QPushButton(page_tour_and_purchase);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setGeometry(QRect(360, 170, 75, 23));
-        pushButton_6 = new QPushButton(page_tour_and_purchase);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setGeometry(QRect(360, 210, 75, 23));
-        pushButton_7 = new QPushButton(page_tour_and_purchase);
-        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setGeometry(QRect(360, 480, 75, 23));
-        label_14 = new QLabel(page_tour_and_purchase);
-        label_14->setObjectName(QStringLiteral("label_14"));
-        label_14->setGeometry(QRect(480, 150, 47, 13));
-        label_15 = new QLabel(page_tour_and_purchase);
-        label_15->setObjectName(QStringLiteral("label_15"));
-        label_15->setGeometry(QRect(660, 150, 47, 13));
-        listView_4 = new QListView(page_tour_and_purchase);
-        listView_4->setObjectName(QStringLiteral("listView_4"));
-        listView_4->setGeometry(QRect(20, 170, 291, 341));
-        label_17 = new QLabel(page_tour_and_purchase);
-        label_17->setObjectName(QStringLiteral("label_17"));
-        label_17->setGeometry(QRect(100, 100, 111, 31));
-        label_17->setFont(font1);
-        label_18 = new QLabel(page_tour_and_purchase);
-        label_18->setObjectName(QStringLiteral("label_18"));
-        label_18->setGeometry(QRect(30, 150, 47, 13));
-        label_19 = new QLabel(page_tour_and_purchase);
-        label_19->setObjectName(QStringLiteral("label_19"));
-        label_19->setGeometry(QRect(230, 150, 47, 13));
-        label_20 = new QLabel(page_tour_and_purchase);
-        label_20->setObjectName(QStringLiteral("label_20"));
-        label_20->setGeometry(QRect(220, 490, 47, 13));
-        stackedWidget->addWidget(page_tour_and_purchase);
+        radio_button_scroll_area = new QScrollArea(shortest_trip_3);
+        radio_button_scroll_area->setObjectName(QStringLiteral("radio_button_scroll_area"));
+        radio_button_scroll_area->setGeometry(QRect(30, 140, 271, 331));
+        radio_button_scroll_area->setWidgetResizable(true);
+        scrollAreaWidgetContents_2 = new QWidget();
+        scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 269, 329));
+        radio_button_scroll_area->setWidget(scrollAreaWidgetContents_2);
+        stackedWidget->addWidget(shortest_trip_3);
         page_admin_login = new QWidget();
         page_admin_login->setObjectName(QStringLiteral("page_admin_login"));
         stackedWidget_2 = new QStackedWidget(page_admin_login);
@@ -355,16 +323,28 @@ public:
         page_admin_login_success->setObjectName(QStringLiteral("page_admin_login_success"));
         label_16 = new QLabel(page_admin_login_success);
         label_16->setObjectName(QStringLiteral("label_16"));
-        label_16->setGeometry(QRect(290, 190, 261, 16));
+        label_16->setGeometry(QRect(240, 0, 261, 16));
         admin_log_out_button = new QPushButton(page_admin_login_success);
         admin_log_out_button->setObjectName(QStringLiteral("admin_log_out_button"));
-        admin_log_out_button->setGeometry(QRect(310, 270, 113, 32));
+        admin_log_out_button->setGeometry(QRect(10, 370, 113, 32));
         LogInBack = new QPushButton(page_admin_login_success);
         LogInBack->setObjectName(QStringLiteral("LogInBack"));
-        LogInBack->setGeometry(QRect(310, 230, 111, 31));
-        pushButton = new QPushButton(page_admin_login_success);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(0, 0, 75, 23));
+        LogInBack->setGeometry(QRect(10, 10, 111, 31));
+        wineryTable = new QTableWidget(page_admin_login_success);
+        wineryTable->setObjectName(QStringLiteral("wineryTable"));
+        wineryTable->setGeometry(QRect(30, 50, 591, 301));
+        wineryTable->setSortingEnabled(true);
+        wineryTable->horizontalHeader()->setCascadingSectionResizes(false);
+        wineryTable->horizontalHeader()->setDefaultSectionSize(125);
+        wineryTable->horizontalHeader()->setMinimumSectionSize(50);
+        wineryTable->horizontalHeader()->setStretchLastSection(true);
+        wineryTable->verticalHeader()->setStretchLastSection(false);
+        addNewWinery = new QPushButton(page_admin_login_success);
+        addNewWinery->setObjectName(QStringLiteral("addNewWinery"));
+        addNewWinery->setGeometry(QRect(360, 370, 111, 31));
+        addNew_2 = new QPushButton(page_admin_login_success);
+        addNew_2->setObjectName(QStringLiteral("addNew_2"));
+        addNew_2->setGeometry(QRect(500, 370, 111, 31));
         stackedWidget_2->addWidget(page_admin_login_success);
         stackedWidget->addWidget(page_admin_login);
         visit_all_wineries = new QWidget();
@@ -374,7 +354,7 @@ public:
         backToTripType->setGeometry(QRect(10, 10, 75, 23));
         wineryName = new QLabel(visit_all_wineries);
         wineryName->setObjectName(QStringLiteral("wineryName"));
-        wineryName->setGeometry(QRect(260, 20, 221, 51));
+        wineryName->setGeometry(QRect(260, 20, 231, 51));
         scrollArea = new QScrollArea(visit_all_wineries);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         scrollArea->setGeometry(QRect(40, 120, 221, 321));
@@ -402,14 +382,29 @@ public:
         addToCart->setGeometry(QRect(320, 150, 93, 28));
         next = new QPushButton(visit_all_wineries);
         next->setObjectName(QStringLiteral("next"));
-        next->setGeometry(QRect(630, 460, 111, 41));
+        next->setGeometry(QRect(580, 460, 111, 41));
+        prev_winery = new QPushButton(visit_all_wineries);
+        prev_winery->setObjectName(QStringLiteral("prev_winery"));
+        prev_winery->setGeometry(QRect(30, 460, 131, 41));
         stackedWidget->addWidget(visit_all_wineries);
-        page_8 = new QWidget();
-        page_8->setObjectName(QStringLiteral("page_8"));
-        goBack = new QPushButton(page_8);
+        customt_trip = new QWidget();
+        customt_trip->setObjectName(QStringLiteral("customt_trip"));
+        goBack = new QPushButton(customt_trip);
         goBack->setObjectName(QStringLiteral("goBack"));
         goBack->setGeometry(QRect(10, 10, 93, 28));
-        stackedWidget->addWidget(page_8);
+        custom_trip_scroll_area = new QScrollArea(customt_trip);
+        custom_trip_scroll_area->setObjectName(QStringLiteral("custom_trip_scroll_area"));
+        custom_trip_scroll_area->setGeometry(QRect(60, 130, 271, 331));
+        custom_trip_scroll_area->setWidgetResizable(true);
+        scrollAreaWidgetContents_3 = new QWidget();
+        scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 269, 329));
+        custom_trip_scroll_area->setWidget(scrollAreaWidgetContents_3);
+        selectWineryLabel_2 = new QLabel(customt_trip);
+        selectWineryLabel_2->setObjectName(QStringLiteral("selectWineryLabel_2"));
+        selectWineryLabel_2->setGeometry(QRect(200, 20, 371, 61));
+        selectWineryLabel_2->setFont(font2);
+        stackedWidget->addWidget(customt_trip);
 
         gridLayout_2->addWidget(stackedWidget, 0, 1, 1, 1);
 
@@ -426,13 +421,19 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
+        toolBar = new QToolBar(MainWindow);
+        toolBar->setObjectName(QStringLiteral("toolBar"));
+        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
+        toolBar_2 = new QToolBar(MainWindow);
+        toolBar_2->setObjectName(QStringLiteral("toolBar_2"));
+        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar_2);
 
         menuBar->addAction(menuMenu->menuAction());
         menuMenu->addAction(actionHelp);
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(5);
+        stackedWidget->setCurrentIndex(2);
         stackedWidget_2->setCurrentIndex(1);
 
 
@@ -460,18 +461,8 @@ public:
         visit_all->setText(QApplication::translate("MainWindow", "Visit All the Wineries", 0));
         shortest_trip->setText(QApplication::translate("MainWindow", "Shortest Trip", 0));
         custom_trip->setText(QApplication::translate("MainWindow", "Custom Trip", 0));
-        label_5->setText(QApplication::translate("MainWindow", "Welcome to (winery xyz)!", 0));
+        selectWineryLabel->setText(QString());
         TourBack->setText(QApplication::translate("MainWindow", "Back", 0));
-        label_13->setText(QApplication::translate("MainWindow", "Wineryxyz's Wines:", 0));
-        pushButton_5->setText(QApplication::translate("MainWindow", "Add to Cart", 0));
-        pushButton_6->setText(QApplication::translate("MainWindow", "Put it Back", 0));
-        pushButton_7->setText(QApplication::translate("MainWindow", "CheckOut", 0));
-        label_14->setText(QApplication::translate("MainWindow", "Wine:", 0));
-        label_15->setText(QApplication::translate("MainWindow", "Price:", 0));
-        label_17->setText(QApplication::translate("MainWindow", "Shopping Cart:", 0));
-        label_18->setText(QApplication::translate("MainWindow", "Wine:", 0));
-        label_19->setText(QApplication::translate("MainWindow", "Price:", 0));
-        label_20->setText(QApplication::translate("MainWindow", "Total:", 0));
         label_7->setText(QApplication::translate("MainWindow", "User Name :", 0));
         label_8->setText(QApplication::translate("MainWindow", "Password   :", 0));
         label_9->setText(QApplication::translate("MainWindow", "Admin Log In", 0));
@@ -480,7 +471,8 @@ public:
         label_16->setText(QApplication::translate("MainWindow", "Congrats, you are now logged in", 0));
         admin_log_out_button->setText(QApplication::translate("MainWindow", "Log Out", 0));
         LogInBack->setText(QApplication::translate("MainWindow", "Back to Main", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", 0));
+        addNewWinery->setText(QApplication::translate("MainWindow", "Add New Winery", 0));
+        addNew_2->setText(QApplication::translate("MainWindow", "Edit Selected Winery", 0));
         backToTripType->setText(QApplication::translate("MainWindow", "Back", 0));
 #ifndef QT_NO_TOOLTIP
         wineryName->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>", 0));
@@ -489,9 +481,13 @@ public:
         listOfWines->setText(QApplication::translate("MainWindow", "List of Wines", 0));
         cart->setText(QApplication::translate("MainWindow", "Cart", 0));
         addToCart->setText(QApplication::translate("MainWindow", "Add to Cart", 0));
-        next->setText(QApplication::translate("MainWindow", "Next", 0));
+        next->setText(QApplication::translate("MainWindow", "Next Winery", 0));
+        prev_winery->setText(QApplication::translate("MainWindow", "Previous Winery", 0));
         goBack->setText(QApplication::translate("MainWindow", "Back", 0));
+        selectWineryLabel_2->setText(QString());
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", 0));
+        toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
+        toolBar_2->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", 0));
     } // retranslateUi
 
 };
