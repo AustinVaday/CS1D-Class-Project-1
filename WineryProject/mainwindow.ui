@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -398,8 +398,8 @@ password: password</string>
          <widget class="QLabel" name="label_16">
           <property name="geometry">
            <rect>
-            <x>290</x>
-            <y>190</y>
+            <x>240</x>
+            <y>0</y>
             <width>261</width>
             <height>16</height>
            </rect>
@@ -411,8 +411,8 @@ password: password</string>
          <widget class="QPushButton" name="admin_log_out_button">
           <property name="geometry">
            <rect>
-            <x>310</x>
-            <y>270</y>
+            <x>10</x>
+            <y>370</y>
             <width>113</width>
             <height>32</height>
            </rect>
@@ -424,8 +424,8 @@ password: password</string>
          <widget class="QPushButton" name="LogInBack">
           <property name="geometry">
            <rect>
-            <x>310</x>
-            <y>230</y>
+            <x>10</x>
+            <y>10</y>
             <width>111</width>
             <height>31</height>
            </rect>
@@ -434,17 +434,58 @@ password: password</string>
            <string>Back to Main</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QTableWidget" name="wineryTable">
           <property name="geometry">
            <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>75</width>
-            <height>23</height>
+            <x>30</x>
+            <y>50</y>
+            <width>591</width>
+            <height>301</height>
+           </rect>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>125</number>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>50</number>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderStretchLastSection">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+         <widget class="QPushButton" name="addNewWinery">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>370</y>
+            <width>111</width>
+            <height>31</height>
            </rect>
           </property>
           <property name="text">
-           <string>PushButton</string>
+           <string>Add New Winery</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="addNew_2">
+          <property name="geometry">
+           <rect>
+            <x>500</x>
+            <y>370</y>
+            <width>111</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Edit Selected Winery</string>
           </property>
          </widget>
         </widget>
@@ -658,7 +699,11 @@ password: password</string>
      <x>0</x>
      <y>0</y>
      <width>781</width>
+<<<<<<< HEAD
      <height>26</height>
+=======
+     <height>21</height>
+>>>>>>> origin/master
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

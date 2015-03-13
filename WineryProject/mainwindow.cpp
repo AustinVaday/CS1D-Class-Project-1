@@ -56,6 +56,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->scrollAreaWidgetContents->setLayout(layList);
 
+    //Used to display wineries and wines in admin
+    QStringList headers;
+    headers << "Name" << "Distance From Villa";
+
+    ui->wineryTable->setShowGrid(true);
+    ui->wineryTable->setColumnCount(2);
+    ui->wineryTable->setRowCount(0);
+    ui->wineryTable->setHorizontalHeaderLabels(headers);
+    ui->wineryTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    updateTableItems();
+
 }
 
 MainWindow::~MainWindow()
@@ -81,6 +92,7 @@ MainWindow::~MainWindow()
     }
 
 }
+
 //GET/SET FOR USER DATA
 void MainWindow::setUser(char type)
 {
@@ -952,5 +964,35 @@ void MainWindow::on_goBack_clicked()
 {
     ui->customt_trip->hide();
     ui->page_plan_day_trip->show();
-
 }
+void MainWindow::updateTableItems()
+{
+    static int row = 0;
+
+    for(int index = 1; index < wineryList.size(); index++)
+    {
+        if(ui->wineryTable->rowCount() < row + 1)
+        {
+            ui->wineryTable->setRowCount(row + 1);
+        }
+
+        Winery item = wineryList.operator [](index);
+
+        QStringList itemList;
+        itemList << item.GetName();
+        itemList.append((new QString())->setNum(item.GetDistanceToVilla()));
+
+        for(int column = 0; column < 2; column++){
+            QTableWidgetItem *newItem = new QTableWidgetItem(itemList.at(column));
+            ui->wineryTable->setItem(row, column, newItem);
+        }
+        row++;
+    }
+    row = 0;
+}
+
+void MainWindow::on_wineryTable_itemClicked(QTableWidgetItem *item)
+{
+    selectedWinery = item;
+}
+

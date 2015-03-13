@@ -10,6 +10,7 @@
 #include "Winery.h"
 #include <QVBoxLayout>
 #include <QRadioButton>
+#include <QTableWidgetItem>
 
 
 /* The following header files are included
@@ -32,6 +33,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
     void setUser(char type);
+    void updateTableItems();
     char getUser();
 
     ~MainWindow();
@@ -122,7 +124,6 @@ private slots:
 
     void on_custom_trip_clicked();
 
-
     void on_next_2_clicked();
 
     void on_prev_winery_clicked();
@@ -130,6 +131,10 @@ private slots:
     void on_addToCart_clicked();
 
     void on_goBack_clicked();
+
+    void on_wineryTable_itemClicked(QTableWidgetItem *item);
+
+    void on_wineryTable_itemChanged(QTableWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;
@@ -147,6 +152,8 @@ private:
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
     int wineryNum = 1;
+
+    QTableWidgetItem *selectedWinery;
 };
 
 #endif // MAINWINDOW_H
