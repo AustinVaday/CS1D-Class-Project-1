@@ -9,6 +9,7 @@
 #include <QCheckBox>
 #include "Winery.h"
 #include <QVBoxLayout>
+#include <QRadioButton>
 
 
 /* The following header files are included
@@ -121,19 +122,31 @@ private slots:
 
     void on_custom_trip_clicked();
 
+
+    void on_next_2_clicked();
+
+    void on_prev_winery_clicked();
+
+    void on_addToCart_clicked();
+
+    void on_goBack_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
     char userType; //'c' for customer, 'a' for admin, 'n' for none(no login made)
     bool ReadFromFile();
     bool WriteToFile();
-    QList<QVBoxLayout*> wineryLayoutList;
-    QList<QCheckBox*> wineCheckBoxList1;
-    QList<QCheckBox*> wineryCheckBoxList1;
+    QList<QWidget*> scrollAreaList;
+    QVector<QCheckBox*> wineCheckBoxList1;
+    QList<QCheckBox*> wineCheckBoxCartList;
+    QList<QRadioButton*> wineryRadioButtonList;
+    QList<QString> names;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
     QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
+    int wineryNum = 1;
 };
 
 #endif // MAINWINDOW_H
