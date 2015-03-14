@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[53];
-    char stringdata[1079];
+    QByteArrayData data[42];
+    char stringdata[848];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,64 +37,55 @@ QT_MOC_LITERAL(3, 36, 21), // "on_quitButton_clicked"
 QT_MOC_LITERAL(4, 58, 25), // "on_adminLogButton_clicked"
 QT_MOC_LITERAL(5, 84, 33), // "on_viewListWineriesButton_cli..."
 QT_MOC_LITERAL(6, 118, 28), // "on_planDayTripButton_clicked"
-QT_MOC_LITERAL(7, 147, 30), // "on_admin_log_ok_button_clicked"
-QT_MOC_LITERAL(8, 178, 35), // "on_adming_log_cancel_button_c..."
-QT_MOC_LITERAL(9, 214, 31), // "on_admin_log_out_button_clicked"
-QT_MOC_LITERAL(10, 246, 19), // "on_ViewBack_clicked"
-QT_MOC_LITERAL(11, 266, 23), // "on_PlanTripBack_clicked"
-QT_MOC_LITERAL(12, 290, 19), // "on_TourBack_clicked"
-QT_MOC_LITERAL(13, 310, 20), // "on_LogInBack_clicked"
-QT_MOC_LITERAL(14, 331, 29), // "on_passwordLine_returnPressed"
-QT_MOC_LITERAL(15, 361, 20), // "on_visit_all_clicked"
-QT_MOC_LITERAL(16, 382, 25), // "on_backToTripType_clicked"
-QT_MOC_LITERAL(17, 408, 15), // "on_next_clicked"
-QT_MOC_LITERAL(18, 424, 12), // "ShortestPath"
-QT_MOC_LITERAL(19, 437, 14), // "QList<Winery>&"
-QT_MOC_LITERAL(20, 452, 16), // "shortestPathList"
-QT_MOC_LITERAL(21, 469, 6), // "float&"
-QT_MOC_LITERAL(22, 476, 17), // "distanceTravelled"
-QT_MOC_LITERAL(23, 494, 12), // "shortestTrip"
-QT_MOC_LITERAL(24, 507, 13), // "const Winery*"
-QT_MOC_LITERAL(25, 521, 15), // "beginningWinery"
-QT_MOC_LITERAL(26, 537, 15), // "wineriesToVisit"
-QT_MOC_LITERAL(27, 553, 10), // "customTrip"
-QT_MOC_LITERAL(28, 564, 17), // "QMap<int,Winery>*"
-QT_MOC_LITERAL(29, 582, 16), // "customWineryList"
-QT_MOC_LITERAL(30, 599, 14), // "closestToVilla"
-QT_MOC_LITERAL(31, 614, 6), // "Winery"
-QT_MOC_LITERAL(32, 621, 17), // "QMap<int,Winery>&"
-QT_MOC_LITERAL(33, 639, 15), // "localWineryList"
-QT_MOC_LITERAL(34, 655, 24), // "on_shortest_trip_clicked"
-QT_MOC_LITERAL(35, 680, 22), // "on_custom_trip_clicked"
-QT_MOC_LITERAL(36, 703, 22), // "on_prev_winery_clicked"
-QT_MOC_LITERAL(37, 726, 20), // "on_addToCart_clicked"
-QT_MOC_LITERAL(38, 747, 17), // "on_goBack_clicked"
-QT_MOC_LITERAL(39, 765, 26), // "on_wineryTable_itemClicked"
-QT_MOC_LITERAL(40, 792, 17), // "QTableWidgetItem*"
-QT_MOC_LITERAL(41, 810, 4), // "item"
-QT_MOC_LITERAL(42, 815, 23), // "on_addNewWinery_clicked"
-QT_MOC_LITERAL(43, 839, 23), // "on_pushButton_6_clicked"
-QT_MOC_LITERAL(44, 863, 19), // "on_addNew_2_clicked"
-QT_MOC_LITERAL(45, 883, 23), // "on_pushButton_7_clicked"
-QT_MOC_LITERAL(46, 907, 23), // "on_pushButton_3_clicked"
-QT_MOC_LITERAL(47, 931, 26), // "on_AddWineryButton_clicked"
-QT_MOC_LITERAL(48, 958, 24), // "on_backAddWinery_clicked"
-QT_MOC_LITERAL(49, 983, 23), // "on_AddWinesBack_clicked"
-QT_MOC_LITERAL(50, 1007, 23), // "on_pushButton_2_clicked"
-QT_MOC_LITERAL(51, 1031, 23), // "on_pushButton_4_clicked"
-QT_MOC_LITERAL(52, 1055, 23) // "on_pushButton_8_clicked"
+QT_MOC_LITERAL(7, 147, 29), // "on_tourWineriesButton_clicked"
+QT_MOC_LITERAL(8, 177, 30), // "on_admin_log_ok_button_clicked"
+QT_MOC_LITERAL(9, 208, 35), // "on_adming_log_cancel_button_c..."
+QT_MOC_LITERAL(10, 244, 31), // "on_admin_log_out_button_clicked"
+QT_MOC_LITERAL(11, 276, 19), // "on_ViewBack_clicked"
+QT_MOC_LITERAL(12, 296, 23), // "on_PlanTripBack_clicked"
+QT_MOC_LITERAL(13, 320, 19), // "on_TourBack_clicked"
+QT_MOC_LITERAL(14, 340, 20), // "on_LogInBack_clicked"
+QT_MOC_LITERAL(15, 361, 29), // "on_passwordLine_returnPressed"
+QT_MOC_LITERAL(16, 391, 34), // "on_plan_trip_submit_button_cl..."
+QT_MOC_LITERAL(17, 426, 20), // "on_visit_all_clicked"
+QT_MOC_LITERAL(18, 447, 25), // "on_backToTripType_clicked"
+QT_MOC_LITERAL(19, 473, 15), // "on_next_clicked"
+QT_MOC_LITERAL(20, 489, 12), // "ShortestPath"
+QT_MOC_LITERAL(21, 502, 14), // "QList<Winery>&"
+QT_MOC_LITERAL(22, 517, 16), // "shortestPathList"
+QT_MOC_LITERAL(23, 534, 6), // "float&"
+QT_MOC_LITERAL(24, 541, 17), // "distanceTravelled"
+QT_MOC_LITERAL(25, 559, 12), // "shortestTrip"
+QT_MOC_LITERAL(26, 572, 13), // "const Winery*"
+QT_MOC_LITERAL(27, 586, 15), // "beginningWinery"
+QT_MOC_LITERAL(28, 602, 15), // "wineriesToVisit"
+QT_MOC_LITERAL(29, 618, 10), // "customTrip"
+QT_MOC_LITERAL(30, 629, 17), // "QMap<int,Winery>*"
+QT_MOC_LITERAL(31, 647, 16), // "customWineryList"
+QT_MOC_LITERAL(32, 664, 14), // "closestToVilla"
+QT_MOC_LITERAL(33, 679, 6), // "Winery"
+QT_MOC_LITERAL(34, 686, 17), // "QMap<int,Winery>&"
+QT_MOC_LITERAL(35, 704, 15), // "localWineryList"
+QT_MOC_LITERAL(36, 720, 24), // "on_shortest_trip_clicked"
+QT_MOC_LITERAL(37, 745, 22), // "on_custom_trip_clicked"
+QT_MOC_LITERAL(38, 768, 17), // "on_next_2_clicked"
+QT_MOC_LITERAL(39, 786, 22), // "on_prev_winery_clicked"
+QT_MOC_LITERAL(40, 809, 20), // "on_addToCart_clicked"
+QT_MOC_LITERAL(41, 830, 17) // "on_goBack_clicked"
 
     },
     "MainWindow\0on_actionHelp_triggered\0\0"
     "on_quitButton_clicked\0on_adminLogButton_clicked\0"
     "on_viewListWineriesButton_clicked\0"
     "on_planDayTripButton_clicked\0"
+    "on_tourWineriesButton_clicked\0"
     "on_admin_log_ok_button_clicked\0"
     "on_adming_log_cancel_button_clicked\0"
     "on_admin_log_out_button_clicked\0"
     "on_ViewBack_clicked\0on_PlanTripBack_clicked\0"
     "on_TourBack_clicked\0on_LogInBack_clicked\0"
     "on_passwordLine_returnPressed\0"
+    "on_plan_trip_submit_button_clicked\0"
     "on_visit_all_clicked\0on_backToTripType_clicked\0"
     "on_next_clicked\0ShortestPath\0"
     "QList<Winery>&\0shortestPathList\0float&\0"
@@ -104,16 +95,9 @@ QT_MOC_LITERAL(52, 1055, 23) // "on_pushButton_8_clicked"
     "customWineryList\0closestToVilla\0Winery\0"
     "QMap<int,Winery>&\0localWineryList\0"
     "on_shortest_trip_clicked\0"
-    "on_custom_trip_clicked\0on_prev_winery_clicked\0"
-    "on_addToCart_clicked\0on_goBack_clicked\0"
-    "on_wineryTable_itemClicked\0QTableWidgetItem*\0"
-    "item\0on_addNewWinery_clicked\0"
-    "on_pushButton_6_clicked\0on_addNew_2_clicked\0"
-    "on_pushButton_7_clicked\0on_pushButton_3_clicked\0"
-    "on_AddWineryButton_clicked\0"
-    "on_backAddWinery_clicked\0"
-    "on_AddWinesBack_clicked\0on_pushButton_2_clicked\0"
-    "on_pushButton_4_clicked\0on_pushButton_8_clicked"
+    "on_custom_trip_clicked\0on_next_2_clicked\0"
+    "on_prev_winery_clicked\0on_addToCart_clicked\0"
+    "on_goBack_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -123,7 +107,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      35,   14, // methods
+      26,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -131,41 +115,32 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  189,    2, 0x08 /* Private */,
-       3,    0,  190,    2, 0x08 /* Private */,
-       4,    0,  191,    2, 0x08 /* Private */,
-       5,    0,  192,    2, 0x08 /* Private */,
-       6,    0,  193,    2, 0x08 /* Private */,
-       7,    0,  194,    2, 0x08 /* Private */,
-       8,    0,  195,    2, 0x08 /* Private */,
-       9,    0,  196,    2, 0x08 /* Private */,
-      10,    0,  197,    2, 0x08 /* Private */,
-      11,    0,  198,    2, 0x08 /* Private */,
-      12,    0,  199,    2, 0x08 /* Private */,
-      13,    0,  200,    2, 0x08 /* Private */,
-      14,    0,  201,    2, 0x08 /* Private */,
-      15,    0,  202,    2, 0x08 /* Private */,
-      16,    0,  203,    2, 0x08 /* Private */,
-      17,    0,  204,    2, 0x08 /* Private */,
-      18,    7,  205,    2, 0x08 /* Private */,
-      30,    1,  220,    2, 0x08 /* Private */,
-      34,    0,  223,    2, 0x08 /* Private */,
-      35,    0,  224,    2, 0x08 /* Private */,
-      36,    0,  225,    2, 0x08 /* Private */,
-      37,    0,  226,    2, 0x08 /* Private */,
-      38,    0,  227,    2, 0x08 /* Private */,
-      39,    1,  228,    2, 0x08 /* Private */,
-      42,    0,  231,    2, 0x08 /* Private */,
-      43,    0,  232,    2, 0x08 /* Private */,
-      44,    0,  233,    2, 0x08 /* Private */,
-      45,    0,  234,    2, 0x08 /* Private */,
-      46,    0,  235,    2, 0x08 /* Private */,
-      47,    0,  236,    2, 0x08 /* Private */,
-      48,    0,  237,    2, 0x08 /* Private */,
-      49,    0,  238,    2, 0x08 /* Private */,
-      50,    0,  239,    2, 0x08 /* Private */,
-      51,    0,  240,    2, 0x08 /* Private */,
-      52,    0,  241,    2, 0x08 /* Private */,
+       1,    0,  144,    2, 0x08 /* Private */,
+       3,    0,  145,    2, 0x08 /* Private */,
+       4,    0,  146,    2, 0x08 /* Private */,
+       5,    0,  147,    2, 0x08 /* Private */,
+       6,    0,  148,    2, 0x08 /* Private */,
+       7,    0,  149,    2, 0x08 /* Private */,
+       8,    0,  150,    2, 0x08 /* Private */,
+       9,    0,  151,    2, 0x08 /* Private */,
+      10,    0,  152,    2, 0x08 /* Private */,
+      11,    0,  153,    2, 0x08 /* Private */,
+      12,    0,  154,    2, 0x08 /* Private */,
+      13,    0,  155,    2, 0x08 /* Private */,
+      14,    0,  156,    2, 0x08 /* Private */,
+      15,    0,  157,    2, 0x08 /* Private */,
+      16,    0,  158,    2, 0x08 /* Private */,
+      17,    0,  159,    2, 0x08 /* Private */,
+      18,    0,  160,    2, 0x08 /* Private */,
+      19,    0,  161,    2, 0x08 /* Private */,
+      20,    7,  162,    2, 0x08 /* Private */,
+      32,    1,  177,    2, 0x08 /* Private */,
+      36,    0,  180,    2, 0x08 /* Private */,
+      37,    0,  181,    2, 0x08 /* Private */,
+      38,    0,  182,    2, 0x08 /* Private */,
+      39,    0,  183,    2, 0x08 /* Private */,
+      40,    0,  184,    2, 0x08 /* Private */,
+      41,    0,  185,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -184,19 +159,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 21, QMetaType::Bool, 0x80000000 | 24, QMetaType::Int, QMetaType::Bool, 0x80000000 | 28,   20,   22,   23,   25,   26,   27,   29,
-    0x80000000 | 31, 0x80000000 | 32,   33,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 40,   41,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 21, 0x80000000 | 23, QMetaType::Bool, 0x80000000 | 26, QMetaType::Int, QMetaType::Bool, 0x80000000 | 30,   22,   24,   25,   27,   28,   29,   31,
+    0x80000000 | 33, 0x80000000 | 34,   35,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -216,38 +182,26 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->on_quitButton_clicked(); break;
         case 2: _t->on_adminLogButton_clicked(); break;
         case 3: _t->on_viewListWineriesButton_clicked(); break;
-        case 4: _t->on_planDayTripButton_clicked(); break;
-        case 5: _t->on_admin_log_ok_button_clicked(); break;
-        case 6: _t->on_adming_log_cancel_button_clicked(); break;
-        case 7: _t->on_admin_log_out_button_clicked(); break;
-        case 8: _t->on_ViewBack_clicked(); break;
-        case 9: _t->on_PlanTripBack_clicked(); break;
-        case 10: _t->on_TourBack_clicked(); break;
-        case 11: _t->on_LogInBack_clicked(); break;
-        case 12: _t->on_passwordLine_returnPressed(); break;
-        case 13: _t->on_visit_all_clicked(); break;
-        case 14: _t->on_backToTripType_clicked(); break;
-        case 15: _t->on_next_clicked(); break;
-        case 16: _t->ShortestPath((*reinterpret_cast< QList<Winery>(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])),(*reinterpret_cast< const Winery*(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< bool(*)>(_a[6])),(*reinterpret_cast< QMap<int,Winery>*(*)>(_a[7]))); break;
-        case 17: { Winery _r = _t->closestToVilla((*reinterpret_cast< QMap<int,Winery>(*)>(_a[1])));
+        case 4: _t->on_planDayTripButton_clicked(); break;       
+        case 6: _t->on_admin_log_ok_button_clicked(); break;
+        case 7: _t->on_adming_log_cancel_button_clicked(); break;
+        case 8: _t->on_admin_log_out_button_clicked(); break;
+        case 9: _t->on_ViewBack_clicked(); break;
+        case 10: _t->on_PlanTripBack_clicked(); break;
+        case 11: _t->on_TourBack_clicked(); break;
+        case 12: _t->on_LogInBack_clicked(); break;
+        case 13: _t->on_passwordLine_returnPressed(); break;
+        case 15: _t->on_visit_all_clicked(); break;
+        case 16: _t->on_backToTripType_clicked(); break;
+        case 17: _t->on_next_clicked(); break;
+        case 18: _t->ShortestPath((*reinterpret_cast< QList<Winery>(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])),(*reinterpret_cast< const Winery*(*)>(_a[4])),(*reinterpret_cast< int(*)>(_a[5])),(*reinterpret_cast< bool(*)>(_a[6])),(*reinterpret_cast< QMap<int,Winery>*(*)>(_a[7]))); break;
+        case 19: { Winery _r = _t->closestToVilla((*reinterpret_cast< QMap<int,Winery>(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< Winery*>(_a[0]) = _r; }  break;
-        case 18: _t->on_shortest_trip_clicked(); break;
-        case 19: _t->on_custom_trip_clicked(); break;
-        case 20: _t->on_prev_winery_clicked(); break;
-        case 21: _t->on_addToCart_clicked(); break;
-        case 22: _t->on_goBack_clicked(); break;
-        case 23: _t->on_wineryTable_itemClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
-        case 24: _t->on_addNewWinery_clicked(); break;
-        case 25: _t->on_pushButton_6_clicked(); break;
-        case 26: _t->on_addNew_2_clicked(); break;
-        case 27: _t->on_pushButton_7_clicked(); break;
-        case 28: _t->on_pushButton_3_clicked(); break;
-        case 29: _t->on_AddWineryButton_clicked(); break;
-        case 30: _t->on_backAddWinery_clicked(); break;
-        case 31: _t->on_AddWinesBack_clicked(); break;
-        case 32: _t->on_pushButton_2_clicked(); break;
-        case 33: _t->on_pushButton_4_clicked(); break;
-        case 34: _t->on_pushButton_8_clicked(); break;
+        case 20: _t->on_shortest_trip_clicked(); break;
+        case 21: _t->on_custom_trip_clicked(); break;       
+        case 23: _t->on_prev_winery_clicked(); break;
+        case 24: _t->on_addToCart_clicked(); break;
+        case 25: _t->on_goBack_clicked(); break;
         default: ;
         }
     }
@@ -278,13 +232,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 35)
+        if (_id < 26)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 35;
+        _id -= 26;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 35)
+        if (_id < 26)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 35;
+        _id -= 26;
     }
     return _id;
 }

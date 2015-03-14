@@ -137,28 +137,6 @@ private slots:
 
 //    void on_wineryTable_itemChanged(QTableWidgetItem *item);
 
-    void on_addNewWinery_clicked();
-
-    void on_pushButton_6_clicked();
-
-    void on_addNew_2_clicked();
-
-    void on_pushButton_7_clicked();
-
-    void on_pushButton_3_clicked();
-
-    void on_AddWineryButton_clicked();
-
-    void on_backAddWinery_clicked();
-
-    void on_AddWinesBack_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_8_clicked();
-
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
