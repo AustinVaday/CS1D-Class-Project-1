@@ -1062,3 +1062,79 @@ void MainWindow::on_wineryTable_itemClicked(QTableWidgetItem *item)
     selectedWinery = item;
 }
 
+//login->addWinery
+void MainWindow::on_addNewWinery_clicked()
+{
+    ui->page_admin_login_success->hide();
+    ui->AddNewWinery->show();
+}
+
+//back from add new winery
+void MainWindow::on_pushButton_6_clicked()
+{
+    ui->AddNewWinery->hide();
+    ui->page_admin_login_success->show();
+}
+
+//login to edit winery
+void MainWindow::on_addNew_2_clicked()
+{
+    ui->page_admin_login_success->hide();
+    ui->EditWinery->show();
+}
+
+//back from edit winery
+void MainWindow::on_pushButton_7_clicked()
+{
+     ui->page_admin_login_success->show();
+     ui->EditWinery->hide();
+}
+
+//Edit to specific edit
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->EditWinery->hide();
+    ui->EditSpecificWinery->show();
+}
+
+//Add winery to add new wines in that winery
+void MainWindow::on_AddWineryButton_clicked()
+{
+    ui->AddNewWinery->hide();
+    ui->AddWines->show();
+}
+
+//back from add new winery
+void MainWindow::on_backAddWinery_clicked()
+{
+    ui->AddNewWinery->hide();
+    ui->page_admin_login_success->show();
+}
+
+void MainWindow::on_AddWinesBack_clicked()
+{
+    ui->AddWines->hide();
+    ui->page_admin_login_success->show();
+}
+
+//back from edit specific
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->EditSpecificWinery->hide();
+    ui->EditWinery->show();
+}
+
+//edit wine in specific winery
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->EditSpecificWinery->hide();
+    ui->EditWine->show();
+}
+
+
+//back from edit wine to edit specific
+void MainWindow::on_pushButton_8_clicked()
+{
+    ui->EditWine->hide();
+    ui->EditSpecificWinery->show();
+}
