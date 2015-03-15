@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>7</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -536,7 +536,7 @@ password: password</string>
          <string>Distance from Villa:</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="wineName">
+       <widget class="QLineEdit" name="addWineryName">
         <property name="geometry">
          <rect>
           <x>280</x>
@@ -546,7 +546,7 @@ password: password</string>
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="wineDistance">
+       <widget class="QLineEdit" name="addWineFrmVilla">
         <property name="geometry">
          <rect>
           <x>280</x>
@@ -572,7 +572,7 @@ password: password</string>
          <string>Winery Number:</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="wineNum">
+       <widget class="QLineEdit" name="addWineryNum">
         <property name="geometry">
          <rect>
           <x>280</x>

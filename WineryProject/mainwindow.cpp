@@ -1066,6 +1066,7 @@ void MainWindow::on_wineryTable_itemClicked(QTableWidgetItem *item)
 void MainWindow::on_addNewWinery_clicked()
 {
     ui->page_admin_login_success->hide();
+    ui->stackedWidget->currentWidget()->hide();
     ui->AddNewWinery->show();
 }
 
@@ -1100,6 +1101,11 @@ void MainWindow::on_pushButton_3_clicked()
 //Add winery to add new wines in that winery
 void MainWindow::on_AddWineryButton_clicked()
 {
+    Winery *temp = new Winery();
+    temp->SetName(ui->addWineryName->text());
+    temp->setDistanceToVilla(ui->addWineFrmVilla->text().toFloat());
+    temp->SetWineryNum(ui->addWineryNum->text().toInt());
+    wineryList.insert(temp->GetDistanceToVilla(),*temp);
     ui->AddNewWinery->hide();
     ui->AddWines->show();
 }
