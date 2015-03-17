@@ -159,23 +159,27 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_removeFromCart_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
     char userType; //'c' for customer, 'a' for admin, 'n' for none(no login made)
     bool ReadFromFile();
     bool WriteToFile();
-//    QList<QWidget*> scrollAreaList;
     QStackedWidget * scrollAreaListStacked;
     QVector<QCheckBox*> wineCheckBoxList1;
+    QList<int> prices;
     QList<QCheckBox*> wineCheckBoxCartList;
     QList<QRadioButton*> wineryRadioButtonList;
+    QVector<QCheckBox*> cartList;
     QList<QString> names;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
     QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
     int wineryNum = 1;
+    int totalCost = 0;
 
     QTableWidgetItem *selectedWinery;
 };

@@ -96,10 +96,10 @@ public:
     QLabel *Title;
     QLabel *nameLabel;
     QLabel *distanceLabel;
-    QLineEdit *wineName;
-    QLineEdit *wineDistance;
+    QLineEdit *addWineryName;
+    QLineEdit *addWineFrmVilla;
     QLabel *wineryNumberLabel;
-    QLineEdit *wineNum;
+    QLineEdit *addWineryNum;
     QPushButton *AddWineryButton;
     QPushButton *backAddWinery;
     QWidget *AddWines;
@@ -162,6 +162,7 @@ public:
     QPushButton *addToCart;
     QPushButton *next;
     QPushButton *prev_winery;
+    QPushButton *removeFromCart;
     QWidget *customt_trip;
     QPushButton *goBack;
     QScrollArea *custom_trip_scroll_area;
@@ -422,19 +423,19 @@ public:
         distanceLabel = new QLabel(AddNewWinery);
         distanceLabel->setObjectName(QStringLiteral("distanceLabel"));
         distanceLabel->setGeometry(QRect(180, 160, 101, 21));
-        wineName = new QLineEdit(AddNewWinery);
-        wineName->setObjectName(QStringLiteral("wineName"));
-        wineName->setGeometry(QRect(280, 130, 113, 20));
-        wineDistance = new QLineEdit(AddNewWinery);
-        wineDistance->setObjectName(QStringLiteral("wineDistance"));
-        wineDistance->setGeometry(QRect(280, 160, 113, 20));
+        addWineryName = new QLineEdit(AddNewWinery);
+        addWineryName->setObjectName(QStringLiteral("addWineryName"));
+        addWineryName->setGeometry(QRect(280, 130, 113, 20));
+        addWineFrmVilla = new QLineEdit(AddNewWinery);
+        addWineFrmVilla->setObjectName(QStringLiteral("addWineFrmVilla"));
+        addWineFrmVilla->setGeometry(QRect(280, 160, 113, 20));
         wineryNumberLabel = new QLabel(AddNewWinery);
         wineryNumberLabel->setObjectName(QStringLiteral("wineryNumberLabel"));
         wineryNumberLabel->setGeometry(QRect(190, 190, 81, 16));
         wineryNumberLabel->setFrameShape(QFrame::NoFrame);
-        wineNum = new QLineEdit(AddNewWinery);
-        wineNum->setObjectName(QStringLiteral("wineNum"));
-        wineNum->setGeometry(QRect(280, 190, 113, 20));
+        addWineryNum = new QLineEdit(AddNewWinery);
+        addWineryNum->setObjectName(QStringLiteral("addWineryNum"));
+        addWineryNum->setGeometry(QRect(280, 190, 113, 20));
         AddWineryButton = new QPushButton(AddNewWinery);
         AddWineryButton->setObjectName(QStringLiteral("AddWineryButton"));
         AddWineryButton->setGeometry(QRect(290, 230, 75, 23));
@@ -601,7 +602,7 @@ public:
         backToTripType->setGeometry(QRect(10, 10, 75, 23));
         wineryName = new QLabel(visit_all_wineries);
         wineryName->setObjectName(QStringLiteral("wineryName"));
-        wineryName->setGeometry(QRect(260, 20, 231, 51));
+        wineryName->setGeometry(QRect(260, 20, 271, 51));
         scrollArea = new QScrollArea(visit_all_wineries);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         scrollArea->setGeometry(QRect(40, 120, 221, 321));
@@ -633,6 +634,9 @@ public:
         prev_winery = new QPushButton(visit_all_wineries);
         prev_winery->setObjectName(QStringLiteral("prev_winery"));
         prev_winery->setGeometry(QRect(30, 460, 131, 41));
+        removeFromCart = new QPushButton(visit_all_wineries);
+        removeFromCart->setObjectName(QStringLiteral("removeFromCart"));
+        removeFromCart->setGeometry(QRect(310, 240, 111, 28));
         stackedWidget->addWidget(visit_all_wineries);
         customt_trip = new QWidget();
         customt_trip->setObjectName(QStringLiteral("customt_trip"));
@@ -667,7 +671,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 781, 21));
+        menuBar->setGeometry(QRect(0, 0, 781, 26));
         menuMenu = new QMenu(menuBar);
         menuMenu->setObjectName(QStringLiteral("menuMenu"));
         MainWindow->setMenuBar(menuBar);
@@ -689,7 +693,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(7);
+        stackedWidget->setCurrentIndex(10);
         stackedWidget_2->setCurrentIndex(1);
 
 
@@ -775,6 +779,7 @@ public:
         addToCart->setText(QApplication::translate("MainWindow", "Add to Cart", 0));
         next->setText(QApplication::translate("MainWindow", "Next Winery", 0));
         prev_winery->setText(QApplication::translate("MainWindow", "Previous Winery", 0));
+        removeFromCart->setText(QApplication::translate("MainWindow", "Remove from Cart", 0));
         goBack->setText(QApplication::translate("MainWindow", "Back", 0));
         selectWineryLabel_2->setText(QString());
         label_4->setText(QApplication::translate("MainWindow", "Select Wineries:", 0));

@@ -520,8 +520,7 @@ void MainWindow::on_visit_all_clicked()
 
 //    wineCheckBoxList1.clear();
 
-
-    QList<Winery>       wineries;
+    QList<Winery> wineries;
     float               totalDist       = 0.0;
 
 
@@ -540,7 +539,7 @@ void MainWindow::on_visit_all_clicked()
     qDebug() << "\n\n\n OUTPUTTING ENTIRE TRIP PATH\n";
     qDebug() << "TOTAL DISTANCE IS: " << totalDist;
 
-
+ ui-> wineryName->setText(wineries[0].GetName());
 
  for (int l = 0; l < wineries.size(); l++)
  {
@@ -560,27 +559,20 @@ void MainWindow::on_visit_all_clicked()
           year = QString::number(it3.value().GetYear());
           price = QString::number(it3.value().GetPrice());
 
-          wineCheckbox = new QCheckBox(it3.value().GetName() + '\n' + year + '\n' +'$' + price, this);
+          wineCheckbox = new QCheckBox(it3.value().GetName() + ' ' + year + '\n' + "Price: $" + price, this);
+          prices.push_back(it3.value().GetPrice());
           layWineList->addWidget(wineCheckbox);
           wineriesWidget->setLayout(layWineList);
           wineCheckBoxList1.push_back(wineCheckbox);
       }
 
-
-      qDebug() << "569";
-
       scrollAreaListStacked->addWidget(wineriesWidget);
-//      scrollAreaList.push_back(wineriesWidget);
     }
-           qDebug() << "571";
-       ui->scrollArea->setWidget(scrollAreaListStacked);
-//       ui->scrollArea->setWidget(scrollAreaList.at(0));
 
-       qDebug() << "574";
+       ui->scrollArea->setWidget(scrollAreaListStacked);
+
        scrollAreaListStacked->setCurrentIndex(0);
 
-//       ui->scrollArea->setWidget(scrollAreaList.at(1));
-       qDebug() << "579";
        ui->wineryName->setStyleSheet("font: 16pt;");
 }
 
@@ -599,12 +591,10 @@ void MainWindow::on_next_clicked()
     if(wineryNum < scrollAreaListStacked->count() - 1)
     {
         wineryNum++;
-//        ui->scrollArea->setWidget(scrollAreaList.at(wineryNum-1));
+
         scrollAreaListStacked->setCurrentIndex(wineryNum - 1);
 
         ui-> wineryName->setText(names[wineryNum-1]);
-
-//        ui->next->setEnabled(true);
 
     }
     else
@@ -612,7 +602,6 @@ void MainWindow::on_next_clicked()
         QMessageBox messageBox;
         messageBox.critical(0,"Error","You have reached an end!");
 
-//        ui->next->setEnabled(false);
     }
 
 
@@ -631,17 +620,12 @@ void MainWindow::on_prev_winery_clicked()
 
          ui-> wineryName->setText(names[wineryNum-1]);
 
-//         ui->prev_winery->setEnabled(true);
-//         ui->next->setEnabled(true);
-
-
     }
     else
     {
         QMessageBox messageBox;
         messageBox.critical(0,"Error","You have reached an end!");
 
-//        ui->prev_winery->setEnabled(false);
     }
 }
 
@@ -920,8 +904,6 @@ void MainWindow::on_custom_trip_clicked()
     ui->page_plan_day_trip->hide();
     ui->customt_trip->show();
 
-    qDebug() << "blaaaaaaa " << wineryList.size();
-
     QCheckBox *customList;
     QVBoxLayout *customLayout = new QVBoxLayout();
 
@@ -978,53 +960,73 @@ void MainWindow::on_custom_trip_clicked()
 
 void MainWindow::on_addToCart_clicked()
 {
-
     QWidget *cartWidget = new QWidget();
     QVBoxLayout *cartLayout = new QVBoxLayout();
     bool atLeastOnce = false;
-//    QCheckBox   *temp;
-//    QVector<QCheckBox*>* tempList = new QVector<QCheckBox*> (wineCheckBoxList1);
+    QCheckBox   *temp;
 
 
     for(int count = 0; count < wineCheckBoxList1.size(); count++)
     {
 
-
-        qDebug() << "test " << count;
         if(wineCheckBoxList1.at(count)->isChecked())
         {
-
-//            temp = new QCheckBox(tempList->at(count));
-
-
-//            temp->show();
-
-//            cartLayout->addWidget(temp);
-
-           cartLayout->addWidget(wineCheckBoxList1.at(count));
-
+                temp = new QCheckBox(wineCheckBoxList1.at(count)->text());
+                cartList.push_back(temp);
 
            atLeastOnce = true;
 
         }
 
+        wineCheckBoxList1.at(count)->setChecked(false);
     }
+
 
     if (atLeastOnce)
     {
-        cartWidget->setLayout(cartLayout);
 
+        for(int numCheckBox = 0; numCheckBox < cartList.size(); numCheckBox++)
+        {
+           cartLayout->addWidget(cartList.at(numCheckBox));
+        }
+
+        cartWidget->setLayout(cartLayout);
         ui->scrollArea_2->setWidget(cartWidget);
+    }
+
+}
+
+
+void MainWindow::on_removeFromCart_clicked()
+{
+    QWidget *cartWidgetUpdated = new QWidget();
+    QVBoxLayout *cartLayoutUpdated = new QVBoxLayout();
+    bool atLeastOnce = false;
+
+    for(int i = 0; i < cartList.size(); i++)
+    {
+       if(cartList.at(i)->isChecked())
+       {
+           atLeastOnce = true;
+           cartList.remove(i);
+           i--;         
+       }
 
     }
 
-//    for(int count = 0; count < wineCheckBoxList1.size(); count++)
-//    {
-//        wineCheckBoxList1[count]->show();
-//    }
+     if(atLeastOnce)
+     {
+         for(int j = 0; j < cartList.size(); j++)
+         {
+             cartLayoutUpdated->addWidget(cartList.at(j));
+         }
 
 
+         cartWidgetUpdated->setLayout(cartLayoutUpdated);
+         ui->scrollArea_2->setWidget(cartWidgetUpdated);
+     }
 }
+
 
 void MainWindow::on_goBack_clicked()
 {
@@ -1144,3 +1146,4 @@ void MainWindow::on_pushButton_8_clicked()
     ui->EditWine->hide();
     ui->EditSpecificWinery->show();
 }
+

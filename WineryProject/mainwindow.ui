@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>10</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -1206,7 +1206,7 @@ password: password</string>
          <rect>
           <x>260</x>
           <y>20</y>
-          <width>231</width>
+          <width>271</width>
           <height>51</height>
          </rect>
         </property>
@@ -1328,6 +1328,19 @@ password: password</string>
          <string>Previous Winery</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="removeFromCart">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>240</y>
+          <width>111</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Remove from Cart</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="customt_trip">
        <widget class="QPushButton" name="goBack">
@@ -1426,7 +1439,7 @@ password: password</string>
      <x>0</x>
      <y>0</y>
      <width>781</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
