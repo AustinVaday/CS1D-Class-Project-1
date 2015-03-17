@@ -520,6 +520,7 @@ void MainWindow::on_visit_all_clicked()
 
 //    wineCheckBoxList1.clear();
 
+
     QList<Winery> wineries;
     float               totalDist       = 0.0;
 
@@ -540,6 +541,20 @@ void MainWindow::on_visit_all_clicked()
     qDebug() << "TOTAL DISTANCE IS: " << totalDist;
 
  ui-> wineryName->setText(wineries[0].GetName());
+ if(cartPrices.size() != 0)
+ {
+     total = 0;
+     for(int g=0; g<cartPrices.size();g++)
+     {
+         total = total + cartPrices.at(g);
+     }
+      ui->subtotal->setText("Total: $" + QString::number(total));
+ }
+ else
+ {
+    ui->subtotal->setText("Total: $0");
+ }
+
 
  for (int l = 0; l < wineries.size(); l++)
  {
@@ -560,7 +575,7 @@ void MainWindow::on_visit_all_clicked()
           price = QString::number(it3.value().GetPrice());
 
           wineCheckbox = new QCheckBox(it3.value().GetName() + ' ' + year + '\n' + "Price: $" + price, this);
-          prices.push_back(it3.value().GetPrice());
+          winePrices.push_back(it3.value().GetPrice());
           layWineList->addWidget(wineCheckbox);
           wineriesWidget->setLayout(layWineList);
           wineCheckBoxList1.push_back(wineCheckbox);
@@ -965,7 +980,6 @@ void MainWindow::on_addToCart_clicked()
     bool atLeastOnce = false;
     QCheckBox   *temp;
 
-
     for(int count = 0; count < wineCheckBoxList1.size(); count++)
     {
 
@@ -973,6 +987,7 @@ void MainWindow::on_addToCart_clicked()
         {
                 temp = new QCheckBox(wineCheckBoxList1.at(count)->text());
                 cartList.push_back(temp);
+                cartPrices.push_back(winePrices.at(count));
 
            atLeastOnce = true;
 
@@ -992,7 +1007,19 @@ void MainWindow::on_addToCart_clicked()
 
         cartWidget->setLayout(cartLayout);
         ui->scrollArea_2->setWidget(cartWidget);
+
+        total = 0;
+        for(int g=0; g<cartPrices.size();g++)
+        {
+            total = total + cartPrices.at(g);
+        }
+        qDebug() << "total: " + QString::number(total);
+        qDebug() << "size: " << cartPrices.size();
+
+        ui->subtotal->setText("Total: $" + QString::number(total));
     }
+
+
 
 }
 
@@ -1009,6 +1036,7 @@ void MainWindow::on_removeFromCart_clicked()
        {
            atLeastOnce = true;
            cartList.remove(i);
+           cartPrices.removeAt(i);
            i--;         
        }
 
@@ -1024,6 +1052,14 @@ void MainWindow::on_removeFromCart_clicked()
 
          cartWidgetUpdated->setLayout(cartLayoutUpdated);
          ui->scrollArea_2->setWidget(cartWidgetUpdated);
+
+         total = 0;
+         for(int g=0; g<cartPrices.size();g++)
+         {
+             total = total + cartPrices.at(g);
+         }
+
+         ui->subtotal->setText("Total: $" + QString::number(total));
      }
 }
 

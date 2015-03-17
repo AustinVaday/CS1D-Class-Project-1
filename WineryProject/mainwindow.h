@@ -169,17 +169,18 @@ private:
     bool WriteToFile();
     QStackedWidget * scrollAreaListStacked;
     QVector<QCheckBox*> wineCheckBoxList1;
-    QList<int> prices;
     QList<QCheckBox*> wineCheckBoxCartList;
     QList<QRadioButton*> wineryRadioButtonList;
     QVector<QCheckBox*> cartList;
     QList<QString> names;
+    QList<int> winePrices;
+    QList<int> cartPrices;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
     QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
     int wineryNum = 1;
-    int totalCost = 0;
+    int total = 0;
 
     QTableWidgetItem *selectedWinery;
 };
