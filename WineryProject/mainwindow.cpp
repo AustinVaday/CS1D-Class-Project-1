@@ -1189,7 +1189,6 @@ void MainWindow::on_AddWineryButton_clicked()
 
         ui->pageDistanceTo->show();
         ui->DistanceWineryName->setText(wineryList.operator [](wineryNum).GetName());
-        tempDist.insert(wineryObject->GetDistanceToVilla(),0);
         ui->DistanceToWinery->setFocus();
     }
 }
@@ -1275,7 +1274,11 @@ void MainWindow::on_AddWine_clicked()
 
 void MainWindow::on_doneAddWine_clicked()
 {
-    wineryList.insert(wineryObject->GetDistanceToVilla(),*wineryObject);
+    wineryList.insert(wineryObject->GetWineryNum(),*wineryObject);
+    for (int index = 0; index < wineryList.size()-2; index++)
+    {
+        wineryList[index].AddDistance(wineryObject->GetDistances()[wineryObject->GetWineryNum()], wineryObject->GetWineryNum());
+    }
     ui->AddWines->hide();
     ui->page_admin_login->show();
     ui->page_admin_login_success->show();
@@ -1283,7 +1286,7 @@ void MainWindow::on_doneAddWine_clicked()
 
 void MainWindow::on_NextToAddWine_clicked()
 {
-    if (wineryNum < wineryObject->GetWineryNum() - 1 && ui->DistanceToWinery->text() != "")
+    if (wineryNum < wineryObject->GetWineryNum() && ui->DistanceToWinery->text() != "")
     {
         wineryObject->AddDistance(wineryNum,ui->DistanceToWinery->text().toFloat());
         tempDist.insert(ui->DistanceToWinery->text().toFloat(),wineryNum);
@@ -1291,11 +1294,13 @@ void MainWindow::on_NextToAddWine_clicked()
         wineryNum++;
         ui->DistanceToWinery->setFocus();
     }
-    else if (wineryNum >= wineryObject->GetWineryNum() - 1)
+
+    if (wineryNum >= wineryObject->GetWineryNum())
     {
         ui->pageDistanceTo->hide();
         ui->page_admin_login->hide();
         wineryNum = 1;
+        tempDist.insert(0, wineryObject->GetWineryNum());
         wineryObject->SetDistances(tempDist);
 
         QStringList headers;
