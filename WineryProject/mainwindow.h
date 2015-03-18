@@ -35,7 +35,7 @@ public:
 
     void setUser(char type);
     void updateWineryTableItems();
-    void updateWineTableItems(Winery display);
+    void updateWineTableItems();
     char getUser();
 
     ~MainWindow();
@@ -166,6 +166,10 @@ private slots:
 
     void on_doneAddWine_clicked();
 
+    void on_NextToAddWine_clicked();
+
+    void on_BacktoAddWinery_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
@@ -188,6 +192,9 @@ private:
     int total = 0;
 
     QTableWidgetItem *selectedWinery;
+    QMap<float, int> tempDist;
+    QMap<QString, Wine> tempWines;
+
 };
 
 #endif // MAINWINDOW_H
