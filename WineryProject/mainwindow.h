@@ -162,6 +162,8 @@ private slots:
 
     void on_removeFromCart_clicked();
 
+    void on_AddWine_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;

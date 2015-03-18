@@ -1125,8 +1125,9 @@ void MainWindow::on_wineryTable_itemClicked(QTableWidgetItem *item)
 //login->addWinery
 void MainWindow::on_addNewWinery_clicked()
 {
+    ui->page_admin_login->hide();
     ui->page_admin_login_success->hide();
-    ui->stackedWidget->currentWidget()->hide();
+
     ui->AddNewWinery->show();
 }
 
@@ -1243,3 +1244,27 @@ void MainWindow::on_pushButton_8_clicked()
     ui->EditSpecificWinery->show();
 }
 
+
+void MainWindow::on_AddWine_clicked()
+{
+//    Wine *temp = new Wine();
+//    temp->SetName(ui->addWineName);
+//    temp->setYear(ui->addWineYear->text().toInt());
+//    temp->SetWineryNum(ui->addWinePrice->text().toFloat());
+//    wineryList.insert(temp->GetDistanceToVilla(),*temp);
+
+//    QStringList headers;
+//    headers << "Name" << "Year" << "Price";
+
+//    ui->WineTable->setShowGrid(true);
+//    ui->WineTable->setColumnCount(3);
+//    ui->WineTable->setRowCount(0);
+//    ui->WineTable->setHorizontalHeaderLabels(headers);
+//    ui->WineTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+//    updateWineTableItems(*temp);
+
+//    ui->AddNewWinery->hide();
+//    ui->stackedWidget->currentWidget()->hide();
+
+//    ui->AddWines->show();
+}
