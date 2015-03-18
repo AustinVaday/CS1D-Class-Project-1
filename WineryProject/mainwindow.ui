@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -491,7 +491,7 @@ password: password</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="AddNewWinery">
+      <widget class="QWidget" name="AddWinery">
        <widget class="QLabel" name="Title">
         <property name="geometry">
          <rect>
@@ -728,7 +728,7 @@ password: password</string>
        <widget class="QPushButton" name="AddWine">
         <property name="geometry">
          <rect>
-          <x>390</x>
+          <x>360</x>
           <y>220</y>
           <width>75</width>
           <height>23</height>
@@ -749,6 +749,19 @@ password: password</string>
         </property>
         <property name="text">
          <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="doneAddWine">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>220</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Done</string>
         </property>
        </widget>
       </widget>

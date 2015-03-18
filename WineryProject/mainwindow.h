@@ -164,6 +164,8 @@ private slots:
 
     void on_AddWine_clicked();
 
+    void on_doneAddWine_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
