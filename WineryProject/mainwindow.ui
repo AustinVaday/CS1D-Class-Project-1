@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>10</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -300,14 +300,14 @@ password: password</string>
        <widget class="QStackedWidget" name="stackedWidget_2">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>20</y>
+          <x>-10</x>
+          <y>10</y>
           <width>771</width>
           <height>521</height>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_admin_login_form">
          <widget class="QWidget" name="layoutWidget_3">
@@ -628,7 +628,7 @@ password: password</string>
          <string>Add Wines to new Winery</string>
         </property>
        </widget>
-       <widget class="QListView" name="WineList">
+       <widget class="QTableWidget" name="WineTable">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -771,47 +771,6 @@ password: password</string>
          <string>Edit Winery</string>
         </property>
        </widget>
-       <widget class="QListView" name="WineList_2">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>90</y>
-          <width>351</width>
-          <height>351</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="PickWineryEdit">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>60</y>
-          <width>191</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Pick Winery to Edit</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>450</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Edit</string>
-        </property>
-       </widget>
        <widget class="QPushButton" name="pushButton_7">
         <property name="geometry">
          <rect>
@@ -823,6 +782,88 @@ password: password</string>
         </property>
         <property name="text">
          <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="yearLabel_3">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>130</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Wine Year:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="winePrice_3">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>160</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wineName_4">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>100</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="nameLabel_4">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>100</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Wine Name:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="priceLabel_3">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>160</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Wine Price:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wineYear_3">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>130</y>
+          <width>113</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="AddWine_3">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>210</y>
+          <width>121</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add Wine to Winery</string>
         </property>
        </widget>
       </widget>
@@ -1452,7 +1493,7 @@ password: password</string>
      <x>0</x>
      <y>0</y>
      <width>781</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

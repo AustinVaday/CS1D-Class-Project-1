@@ -34,7 +34,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
     void setUser(char type);
-    void updateTableItems();
+    void updateWineryTableItems();
+    void updateWineTableItems(Winery display);
     char getUser();
 
     ~MainWindow();

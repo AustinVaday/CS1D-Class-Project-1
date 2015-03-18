@@ -66,8 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->wineryTable->setRowCount(0);
     ui->wineryTable->setHorizontalHeaderLabels(headers);
     ui->wineryTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    updateTableItems();
-
+    updateWineryTableItems();
 }
 
 MainWindow::~MainWindow()
@@ -131,6 +130,7 @@ void MainWindow::on_adminLogButton_clicked()
     }
     else if (userType == 'a')
     {
+        ui->page_admin_login->show();
         ui->page_admin_login_success->show();
     }
 
@@ -161,8 +161,6 @@ void MainWindow::on_admin_log_ok_button_clicked()
     if (ui->userNameLine->text() == "admin" &&    (ui->passwordLine->text() == "password"
                                                 || ui->passwordLine->text() == "admin"))
     {
-        QMessageBox::information(this, "Notification", "Access Granted!");
-
         userType = 'a'; //set user to admin
 
         //restore to previous state
@@ -175,10 +173,7 @@ void MainWindow::on_admin_log_ok_button_clicked()
         ui->page_admin_login_form->hide();
         ui->page_admin_login_success->show();
     }
-    else
-    {
-        QMessageBox::information(this, "Notification", "Access NOT Granted!");
-    }
+
 }
 
 void MainWindow::on_adming_log_cancel_button_clicked()
@@ -1069,7 +1064,8 @@ void MainWindow::on_goBack_clicked()
     ui->customt_trip->hide();
     ui->page_plan_day_trip->show();
 }
-void MainWindow::updateTableItems()
+
+void MainWindow::updateWineryTableItems()
 {
     static int row = 0;
 
@@ -1095,6 +1091,32 @@ void MainWindow::updateTableItems()
     row = 0;
 }
 
+void MainWindow::updateWineTableItems(Winery display)
+{
+    static int row = 0;
+
+    for(int index = 1; index < display.GetWines().size(); index++)
+    {
+        if(ui->WineTable->rowCount() < row + 1)
+        {
+            ui->WineTable->setRowCount(row + 1);
+        }
+
+        Wine item = display.GetWines().operator []((QString)index);
+
+        QStringList itemList;
+        itemList << (QString)item.GetName() << (QString)item.GetYear();
+        itemList.append((new QString())->setNum(item.GetPrice()));
+
+        for(int column = 0; column < 3; column++){
+            QTableWidgetItem *newItem = new QTableWidgetItem(itemList.at(column));
+            ui->WineTable->setItem(row, column, newItem);
+        }
+        row++;
+    }
+    row = 0;
+}
+
 void MainWindow::on_wineryTable_itemClicked(QTableWidgetItem *item)
 {
     selectedWinery = item;
@@ -1112,6 +1134,8 @@ void MainWindow::on_addNewWinery_clicked()
 void MainWindow::on_pushButton_6_clicked()
 {
     ui->AddNewWinery->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
     ui->page_admin_login_success->show();
 }
 
@@ -1119,20 +1143,27 @@ void MainWindow::on_pushButton_6_clicked()
 void MainWindow::on_addNew_2_clicked()
 {
     ui->page_admin_login_success->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
     ui->EditWinery->show();
 }
 
 //back from edit winery
 void MainWindow::on_pushButton_7_clicked()
 {
-     ui->page_admin_login_success->show();
+     ui->stackedWidget->currentWidget()->hide();
      ui->EditWinery->hide();
+
+     ui->page_admin_login->show();
+     ui->page_admin_login_success->show();
 }
 
 //Edit to specific edit
 void MainWindow::on_pushButton_3_clicked()
 {
     ui->EditWinery->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
     ui->EditSpecificWinery->show();
 }
 
@@ -1144,7 +1175,20 @@ void MainWindow::on_AddWineryButton_clicked()
     temp->setDistanceToVilla(ui->addWineFrmVilla->text().toFloat());
     temp->SetWineryNum(ui->addWineryNum->text().toInt());
     wineryList.insert(temp->GetDistanceToVilla(),*temp);
+
+    QStringList headers;
+    headers << "Name" << "Year" << "Price";
+
+    ui->WineTable->setShowGrid(true);
+    ui->WineTable->setColumnCount(3);
+    ui->WineTable->setRowCount(0);
+    ui->WineTable->setHorizontalHeaderLabels(headers);
+    ui->WineTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    updateWineTableItems(*temp);
+
     ui->AddNewWinery->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
     ui->AddWines->show();
 }
 
@@ -1152,12 +1196,22 @@ void MainWindow::on_AddWineryButton_clicked()
 void MainWindow::on_backAddWinery_clicked()
 {
     ui->AddNewWinery->hide();
+    ui->page_admin_login->hide();
+    ui->page_admin_login_form->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
+    ui->page_admin_login->show();
+
+    ui->page_admin_login_success->setHidden(false);
     ui->page_admin_login_success->show();
 }
 
 void MainWindow::on_AddWinesBack_clicked()
 {
     ui->AddWines->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
+    ui->page_admin_login->show();
     ui->page_admin_login_success->show();
 }
 
@@ -1165,6 +1219,8 @@ void MainWindow::on_AddWinesBack_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->EditSpecificWinery->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
     ui->EditWinery->show();
 }
 
@@ -1172,6 +1228,8 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_pushButton_4_clicked()
 {
     ui->EditSpecificWinery->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
     ui->EditWine->show();
 }
 
@@ -1180,6 +1238,8 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_8_clicked()
 {
     ui->EditWine->hide();
+    ui->stackedWidget->currentWidget()->hide();
+
     ui->EditSpecificWinery->show();
 }
 
