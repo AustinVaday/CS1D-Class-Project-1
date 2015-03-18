@@ -1125,10 +1125,9 @@ void MainWindow::on_wineryTable_itemClicked(QTableWidgetItem *item)
 //login->addWinery
 void MainWindow::on_addNewWinery_clicked()
 {
-    ui->page_admin_login->hide();
     ui->page_admin_login_success->hide();
 
-    ui->addNewWinery->show();
+    ui->AddWinery->show();
 }
 
 //back from add new winery
@@ -1171,6 +1170,9 @@ void MainWindow::on_pushButton_3_clicked()
 //Add winery to add new wines in that winery
 void MainWindow::on_AddWineryButton_clicked()
 {
+    if (!(ui->addWineryName->text() == "" || ui->addWineryNum->text() == "" || ui->addWineFrmVilla->text() == ""))
+    {
+
     Winery *temp = new Winery();
     temp->SetName(ui->addWineryName->text());
     temp->setDistanceToVilla(ui->addWineFrmVilla->text().toFloat());
@@ -1192,16 +1194,18 @@ void MainWindow::on_AddWineryButton_clicked()
     ui->addWineFrmVilla->clear();
     ui->addWineryNum->clear();
 
-    ui->addNewWinery->hide();
-    ui->stackedWidget->currentWidget()->hide();
+    ui->AddWinery->hide();
+    ui->page_admin_login->hide();
 
     ui->AddWines->show();
+    }
+
 }
 
 //back from add new winery
 void MainWindow::on_backAddWinery_clicked()
 {
-    ui->addNewWinery->hide();
+    ui->AddWinery->hide();
     ui->page_admin_login->hide();
     ui->page_admin_login_form->hide();
     ui->stackedWidget->currentWidget()->hide();
