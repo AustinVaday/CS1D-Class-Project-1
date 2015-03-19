@@ -763,8 +763,29 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
                     qDebug() << "DIST TRAV - AFTER: " << distanceTravelled;
 
 
-                    // add to list
-                    shortestPathList.push_back(currentWinery);
+                    // PREP FOR ADDING TO LIST.. MAKE SURE WE DON'T ADD TWICE
+                    bool wineryExists = false;
+                    QList<Winery>::iterator iterator = shortestPathList.begin();
+                    while (iterator != shortestPathList.end() && !wineryExists)
+                    {
+                        if (  (*iterator).GetWineryNum() == currentWinery.GetWineryNum()
+                            &&(*iterator).GetName()      == currentWinery.GetName())
+                        {
+                            wineryExists = true;
+                        }
+                        else
+                        {
+                            iterator++;
+                        }
+                    }
+
+                    // add to list if winery does not already exist in the list
+                    if (!wineryExists)
+                    {
+                        qDebug() << "ADDING TO LIST: " << currentWinery.GetName();
+                        shortestPathList.push_back(currentWinery);
+                    }
+
 
                     // update new current winery
                     currentWinery = tempWineryList[wineryNum];
@@ -782,8 +803,30 @@ void MainWindow::ShortestPath(QList<Winery>&        shortestPathList,   // the r
             // distance from the Villa (since we're going back to the Villa)
             if (notFound)
             {
-                shortestPathList.push_back(currentWinery);
-                distanceTravelled += currentWinery.GetDistanceToVilla();
+                // PREP FOR ADDING TO LIST.. MAKE SURE WE DON'T ADD TWICE
+                bool wineryExists = false;
+                QList<Winery>::iterator iterator = shortestPathList.begin();
+                while (iterator != shortestPathList.end() && !wineryExists)
+                {
+                    if (  (*iterator).GetWineryNum() == currentWinery.GetWineryNum()
+                        &&(*iterator).GetName()      == currentWinery.GetName())
+                    {
+                        wineryExists = true;
+                    }
+                    else
+                    {
+                        iterator++;
+                    }
+                }
+
+                // add to list if winery does not already exist in the list
+                if (!wineryExists)
+                {
+                    qDebug() << "ADDING TO LIST: " << currentWinery.GetName();
+                    shortestPathList.push_back(currentWinery);
+                    distanceTravelled += currentWinery.GetDistanceToVilla();
+
+                }
 
             }
 
