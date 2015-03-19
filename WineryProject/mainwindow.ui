@@ -18,7 +18,7 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>6</number>
+       <number>11</number>
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -240,7 +240,7 @@ password: password</string>
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="shortest_trip_3">
+      <widget class="QWidget" name="page_shortest_trip">
        <widget class="QLabel" name="selectWineryLabel">
         <property name="geometry">
          <rect>
@@ -294,6 +294,19 @@ password: password</string>
           </rect>
          </property>
         </widget>
+       </widget>
+       <widget class="QPushButton" name="startShortest">
+        <property name="geometry">
+         <rect>
+          <x>600</x>
+          <y>440</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Start</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="page_admin_login">
@@ -687,7 +700,7 @@ password: password</string>
          <rect>
           <x>320</x>
           <y>200</y>
-          <width>61</width>
+          <width>95</width>
           <height>51</height>
          </rect>
         </property>
@@ -1334,7 +1347,7 @@ password: password</string>
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="visit_all_wineries">
+      <widget class="QWidget" name="page_purchase_wines">
        <widget class="QPushButton" name="backToTripType">
         <property name="geometry">
          <rect>
@@ -1599,7 +1612,7 @@ password: password</string>
      <x>0</x>
      <y>0</y>
      <width>781</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

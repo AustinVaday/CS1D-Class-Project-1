@@ -12,6 +12,7 @@
 #include <QRadioButton>
 #include <QTableWidgetItem>
 #include <QStackedWidget>
+#include <QInputDialog>
 
 
 /* The following header files are included
@@ -170,6 +171,8 @@ private slots:
 
     void on_BacktoAddWinery_clicked();
 
+    void on_startShortest_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
@@ -188,7 +191,8 @@ private:
     QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
-    int wineryNum = 1;
+    int wineryNum = 0;
+     int currWinery = 0;
     int total = 0;
 
     QTableWidgetItem *selectedWinery;
