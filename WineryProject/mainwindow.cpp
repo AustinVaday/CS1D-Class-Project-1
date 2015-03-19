@@ -1277,7 +1277,6 @@ void MainWindow::on_BacktoAddWinery_clicked()
     ui->AddWinery->show();
 }
 
-<<<<<<< HEAD
 void MainWindow::on_backFromEditWinery_clicked()
 {
     ui->EditWinery->hide();
@@ -1329,7 +1328,8 @@ void MainWindow::on_AddWine_3_clicked()
 void MainWindow::on_EditExistWine_clicked()
 {
     on_AddWine_3_clicked();
-=======
+}
+
 void MainWindow::on_startShortest_clicked()
 {
     QList<Winery>       wineries;
@@ -1380,11 +1380,4 @@ void MainWindow::on_startShortest_clicked()
 
     }
 
-
-
-
-
-
-
->>>>>>> refs/remotes/origin/master
 }

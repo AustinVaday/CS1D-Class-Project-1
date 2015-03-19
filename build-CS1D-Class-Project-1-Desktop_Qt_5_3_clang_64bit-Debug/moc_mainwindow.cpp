@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[58];
-    char stringdata[1199];
+    QByteArrayData data[56];
+    char stringdata[1162];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -73,21 +73,19 @@ QT_MOC_LITERAL(39, 765, 26),
 QT_MOC_LITERAL(40, 792, 17),
 QT_MOC_LITERAL(41, 810, 4),
 QT_MOC_LITERAL(42, 815, 23),
-QT_MOC_LITERAL(43, 839, 23),
-QT_MOC_LITERAL(44, 863, 19),
-QT_MOC_LITERAL(45, 883, 23),
-QT_MOC_LITERAL(46, 907, 23),
-QT_MOC_LITERAL(47, 931, 26),
-QT_MOC_LITERAL(48, 958, 24),
-QT_MOC_LITERAL(49, 983, 23),
-QT_MOC_LITERAL(50, 1007, 23),
-QT_MOC_LITERAL(51, 1031, 23),
-QT_MOC_LITERAL(52, 1055, 23),
-QT_MOC_LITERAL(53, 1079, 25),
-QT_MOC_LITERAL(54, 1105, 18),
-QT_MOC_LITERAL(55, 1124, 22),
-QT_MOC_LITERAL(56, 1147, 24),
-QT_MOC_LITERAL(57, 1172, 26)
+QT_MOC_LITERAL(43, 839, 26),
+QT_MOC_LITERAL(44, 866, 24),
+QT_MOC_LITERAL(45, 891, 23),
+QT_MOC_LITERAL(46, 915, 25),
+QT_MOC_LITERAL(47, 941, 18),
+QT_MOC_LITERAL(48, 960, 22),
+QT_MOC_LITERAL(49, 983, 24),
+QT_MOC_LITERAL(50, 1008, 26),
+QT_MOC_LITERAL(51, 1035, 29),
+QT_MOC_LITERAL(52, 1065, 25),
+QT_MOC_LITERAL(53, 1091, 20),
+QT_MOC_LITERAL(54, 1112, 24),
+QT_MOC_LITERAL(55, 1137, 24)
     },
     "MainWindow\0on_actionHelp_triggered\0\0"
     "on_quitButton_clicked\0on_adminLogButton_clicked\0"
@@ -112,15 +110,16 @@ QT_MOC_LITERAL(57, 1172, 26)
     "on_addToCart_clicked\0on_goBack_clicked\0"
     "on_wineryTable_itemClicked\0QTableWidgetItem*\0"
     "item\0on_addNewWinery_clicked\0"
-    "on_pushButton_6_clicked\0on_addNew_2_clicked\0"
-    "on_pushButton_7_clicked\0on_pushButton_3_clicked\0"
     "on_AddWineryButton_clicked\0"
     "on_backAddWinery_clicked\0"
-    "on_AddWinesBack_clicked\0on_pushButton_2_clicked\0"
-    "on_pushButton_4_clicked\0on_pushButton_8_clicked\0"
+    "on_AddWinesBack_clicked\0"
     "on_removeFromCart_clicked\0on_AddWine_clicked\0"
     "on_doneAddWine_clicked\0on_NextToAddWine_clicked\0"
-    "on_BacktoAddWinery_clicked"
+    "on_BacktoAddWinery_clicked\0"
+    "on_backFromEditWinery_clicked\0"
+    "on_goToEditWinery_clicked\0"
+    "on_AddWine_3_clicked\0on_EditExistWine_clicked\0"
+    "on_startShortest_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -130,7 +129,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      40,   14, // methods
+      38,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -138,46 +137,44 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  214,    2, 0x08 /* Private */,
-       3,    0,  215,    2, 0x08 /* Private */,
-       4,    0,  216,    2, 0x08 /* Private */,
-       5,    0,  217,    2, 0x08 /* Private */,
-       6,    0,  218,    2, 0x08 /* Private */,
-       7,    0,  219,    2, 0x08 /* Private */,
-       8,    0,  220,    2, 0x08 /* Private */,
-       9,    0,  221,    2, 0x08 /* Private */,
-      10,    0,  222,    2, 0x08 /* Private */,
-      11,    0,  223,    2, 0x08 /* Private */,
-      12,    0,  224,    2, 0x08 /* Private */,
-      13,    0,  225,    2, 0x08 /* Private */,
-      14,    0,  226,    2, 0x08 /* Private */,
-      15,    0,  227,    2, 0x08 /* Private */,
-      16,    0,  228,    2, 0x08 /* Private */,
-      17,    0,  229,    2, 0x08 /* Private */,
-      18,    7,  230,    2, 0x08 /* Private */,
-      30,    1,  245,    2, 0x08 /* Private */,
-      34,    0,  248,    2, 0x08 /* Private */,
-      35,    0,  249,    2, 0x08 /* Private */,
-      36,    0,  250,    2, 0x08 /* Private */,
-      37,    0,  251,    2, 0x08 /* Private */,
-      38,    0,  252,    2, 0x08 /* Private */,
-      39,    1,  253,    2, 0x08 /* Private */,
-      42,    0,  256,    2, 0x08 /* Private */,
-      43,    0,  257,    2, 0x08 /* Private */,
-      44,    0,  258,    2, 0x08 /* Private */,
-      45,    0,  259,    2, 0x08 /* Private */,
-      46,    0,  260,    2, 0x08 /* Private */,
-      47,    0,  261,    2, 0x08 /* Private */,
-      48,    0,  262,    2, 0x08 /* Private */,
-      49,    0,  263,    2, 0x08 /* Private */,
-      50,    0,  264,    2, 0x08 /* Private */,
-      51,    0,  265,    2, 0x08 /* Private */,
-      52,    0,  266,    2, 0x08 /* Private */,
-      53,    0,  267,    2, 0x08 /* Private */,
-      54,    0,  268,    2, 0x08 /* Private */,
-      55,    0,  269,    2, 0x08 /* Private */,
-      56,    0,  270,    2, 0x08 /* Private */,
-      57,    0,  271,    2, 0x08 /* Private */,
+       1,    0,  204,    2, 0x08 /* Private */,
+       3,    0,  205,    2, 0x08 /* Private */,
+       4,    0,  206,    2, 0x08 /* Private */,
+       5,    0,  207,    2, 0x08 /* Private */,
+       6,    0,  208,    2, 0x08 /* Private */,
+       7,    0,  209,    2, 0x08 /* Private */,
+       8,    0,  210,    2, 0x08 /* Private */,
+       9,    0,  211,    2, 0x08 /* Private */,
+      10,    0,  212,    2, 0x08 /* Private */,
+      11,    0,  213,    2, 0x08 /* Private */,
+      12,    0,  214,    2, 0x08 /* Private */,
+      13,    0,  215,    2, 0x08 /* Private */,
+      14,    0,  216,    2, 0x08 /* Private */,
+      15,    0,  217,    2, 0x08 /* Private */,
+      16,    0,  218,    2, 0x08 /* Private */,
+      17,    0,  219,    2, 0x08 /* Private */,
+      18,    7,  220,    2, 0x08 /* Private */,
+      30,    1,  235,    2, 0x08 /* Private */,
+      34,    0,  238,    2, 0x08 /* Private */,
+      35,    0,  239,    2, 0x08 /* Private */,
+      36,    0,  240,    2, 0x08 /* Private */,
+      37,    0,  241,    2, 0x08 /* Private */,
+      38,    0,  242,    2, 0x08 /* Private */,
+      39,    1,  243,    2, 0x08 /* Private */,
+      42,    0,  246,    2, 0x08 /* Private */,
+      43,    0,  247,    2, 0x08 /* Private */,
+      44,    0,  248,    2, 0x08 /* Private */,
+      45,    0,  249,    2, 0x08 /* Private */,
+      46,    0,  250,    2, 0x08 /* Private */,
+      47,    0,  251,    2, 0x08 /* Private */,
+      48,    0,  252,    2, 0x08 /* Private */,
+      49,    0,  253,    2, 0x08 /* Private */,
+      50,    0,  254,    2, 0x08 /* Private */,
+      51,    0,  255,    2, 0x08 /* Private */,
+      52,    0,  256,    2, 0x08 /* Private */,
+      53,    0,  257,    2, 0x08 /* Private */,
+      54,    0,  258,    2, 0x08 /* Private */,
+      55,    0,  259,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -204,8 +201,6 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 40,   41,
-    QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -255,21 +250,19 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 22: _t->on_goBack_clicked(); break;
         case 23: _t->on_wineryTable_itemClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
         case 24: _t->on_addNewWinery_clicked(); break;
-        case 25: _t->on_pushButton_6_clicked(); break;
-        case 26: _t->on_addNew_2_clicked(); break;
-        case 27: _t->on_pushButton_7_clicked(); break;
-        case 28: _t->on_pushButton_3_clicked(); break;
-        case 29: _t->on_AddWineryButton_clicked(); break;
-        case 30: _t->on_backAddWinery_clicked(); break;
-        case 31: _t->on_AddWinesBack_clicked(); break;
-        case 32: _t->on_pushButton_2_clicked(); break;
-        case 33: _t->on_pushButton_4_clicked(); break;
-        case 34: _t->on_pushButton_8_clicked(); break;
-        case 35: _t->on_removeFromCart_clicked(); break;
-        case 36: _t->on_AddWine_clicked(); break;
-        case 37: _t->on_doneAddWine_clicked(); break;
-        case 38: _t->on_NextToAddWine_clicked(); break;
-        case 39: _t->on_BacktoAddWinery_clicked(); break;
+        case 25: _t->on_AddWineryButton_clicked(); break;
+        case 26: _t->on_backAddWinery_clicked(); break;
+        case 27: _t->on_AddWinesBack_clicked(); break;
+        case 28: _t->on_removeFromCart_clicked(); break;
+        case 29: _t->on_AddWine_clicked(); break;
+        case 30: _t->on_doneAddWine_clicked(); break;
+        case 31: _t->on_NextToAddWine_clicked(); break;
+        case 32: _t->on_BacktoAddWinery_clicked(); break;
+        case 33: _t->on_backFromEditWinery_clicked(); break;
+        case 34: _t->on_goToEditWinery_clicked(); break;
+        case 35: _t->on_AddWine_3_clicked(); break;
+        case 36: _t->on_EditExistWine_clicked(); break;
+        case 37: _t->on_startShortest_clicked(); break;
         default: ;
         }
     }
@@ -300,13 +293,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 40)
+        if (_id < 38)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 40;
+        _id -= 38;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 40)
+        if (_id < 38)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 40;
+        _id -= 38;
     }
     return _id;
 }
