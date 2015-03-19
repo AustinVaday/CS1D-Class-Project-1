@@ -1094,25 +1094,30 @@ void MainWindow::updateWineryTableItems()
 void MainWindow::updateWineTableItems()
 {
     static int row = 0;
+    QMap<QString, Wine>::Iterator it;
+    it = wineryObject->GetWines().begin();
 
-    for(int index = 1; index < wineryObject->GetWines().size(); index++)
-    {
+    for(int index = 0; index < wineryObject->GetWines().size(); index++)
+    {        
         if(ui->WineTable->rowCount() < row + 1)
         {
             ui->WineTable->setRowCount(row + 1);
         }
 
-        Wine item = wineryObject->GetWines().operator []((QString)index);
+        Wine item = *it;
 
         QStringList itemList;
-        itemList << (QString)item.GetName() << (QString)item.GetYear();
-        itemList.append((new QString())->setNum(item.GetPrice()));
+        QString out[2];
+        out[0].setNum(item.GetYear());
+        out[1].setNum(item.GetPrice());
+        itemList << (QString)item.GetName() << out[0] << out[1];
 
         for(int column = 0; column < 3; column++){
             QTableWidgetItem *newItem = new QTableWidgetItem(itemList.at(column));
             ui->WineTable->setItem(row, column, newItem);
         }
         row++;
+        it++;
     }
     row = 0;
 }
@@ -1275,13 +1280,14 @@ void MainWindow::on_AddWine_clicked()
 void MainWindow::on_doneAddWine_clicked()
 {
     wineryList.insert(wineryObject->GetWineryNum(),*wineryObject);
-    for (int index = 0; index < wineryList.size()-2; index++)
+    for (int index = 1; index < wineryList.size()-1; index++)
     {
-        wineryList[index].AddDistance(wineryObject->GetDistances()[wineryObject->GetWineryNum()], wineryObject->GetWineryNum());
+        wineryList[index].AddDistance(wineryObject->GetWineryNum(), wineryObject->GetDistances().values().at(index));
     }
     ui->AddWines->hide();
     ui->page_admin_login->show();
     ui->page_admin_login_success->show();
+    wineryObject = NULL;
 }
 
 void MainWindow::on_NextToAddWine_clicked()
@@ -1289,7 +1295,6 @@ void MainWindow::on_NextToAddWine_clicked()
     if (wineryNum < wineryObject->GetWineryNum() && ui->DistanceToWinery->text() != "")
     {
         wineryObject->AddDistance(wineryNum,ui->DistanceToWinery->text().toFloat());
-        tempDist.insert(ui->DistanceToWinery->text().toFloat(),wineryNum);
 
         wineryNum++;
         ui->DistanceToWinery->setFocus();
@@ -1300,8 +1305,7 @@ void MainWindow::on_NextToAddWine_clicked()
         ui->pageDistanceTo->hide();
         ui->page_admin_login->hide();
         wineryNum = 1;
-        tempDist.insert(0, wineryObject->GetWineryNum());
-        wineryObject->SetDistances(tempDist);
+        wineryObject->AddDistance(wineryObject->GetWineryNum(),0.0);
 
         QStringList headers;
         headers << "Name" << "Year" << "Price";
@@ -1322,6 +1326,7 @@ void MainWindow::on_NextToAddWine_clicked()
 void MainWindow::on_BacktoAddWinery_clicked()
 {
     ui->DistanceToWinery->clear();
+    wineryNum = 1;
     ui->pageDistanceTo->hide();
     ui->AddWinery->show();
 }
