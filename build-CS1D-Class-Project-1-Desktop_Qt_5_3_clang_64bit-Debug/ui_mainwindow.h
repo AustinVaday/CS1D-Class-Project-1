@@ -180,13 +180,19 @@ public:
     QPushButton *prev_winery;
     QPushButton *removeFromCart;
     QLabel *subtotal;
-    QWidget *customt_trip;
+    QWidget *page_custom_trip;
     QPushButton *goBack;
     QScrollArea *custom_trip_scroll_area;
     QWidget *scrollAreaWidgetContents_3;
     QLabel *selectWineryLabel_2;
     QLabel *label_4;
-    QPushButton *pushButton;
+    QWidget *page_trip_end;
+    QPushButton *mainMenu;
+    QPushButton *exit;
+    QLabel *endTitle;
+    QLabel *numWines;
+    QLabel *total;
+    QLabel *distance;
     QMenuBar *menuBar;
     QMenu *menuMenu;
     QToolBar *mainToolBar;
@@ -198,7 +204,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(781, 594);
+        MainWindow->resize(781, 593);
         actionHelp = new QAction(MainWindow);
         actionHelp->setObjectName(QStringLiteral("actionHelp"));
         centralWidget = new QWidget(MainWindow);
@@ -312,7 +318,7 @@ public:
         page_shortest_trip->setObjectName(QStringLiteral("page_shortest_trip"));
         selectWineryLabel = new QLabel(page_shortest_trip);
         selectWineryLabel->setObjectName(QStringLiteral("selectWineryLabel"));
-        selectWineryLabel->setGeometry(QRect(200, 20, 371, 61));
+        selectWineryLabel->setGeometry(QRect(210, 40, 331, 61));
         QFont font2;
         font2.setPointSize(24);
         selectWineryLabel->setFont(font2);
@@ -321,7 +327,7 @@ public:
         TourBack->setGeometry(QRect(10, 10, 75, 23));
         radio_button_scroll_area = new QScrollArea(page_shortest_trip);
         radio_button_scroll_area->setObjectName(QStringLiteral("radio_button_scroll_area"));
-        radio_button_scroll_area->setGeometry(QRect(30, 140, 271, 331));
+        radio_button_scroll_area->setGeometry(QRect(240, 140, 271, 331));
         radio_button_scroll_area->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
@@ -711,40 +717,55 @@ public:
         subtotal->setObjectName(QStringLiteral("subtotal"));
         subtotal->setGeometry(QRect(480, 460, 81, 41));
         stackedWidget->addWidget(page_purchase_wines);
-        customt_trip = new QWidget();
-        customt_trip->setObjectName(QStringLiteral("customt_trip"));
-        goBack = new QPushButton(customt_trip);
+        page_custom_trip = new QWidget();
+        page_custom_trip->setObjectName(QStringLiteral("page_custom_trip"));
+        goBack = new QPushButton(page_custom_trip);
         goBack->setObjectName(QStringLiteral("goBack"));
-        goBack->setGeometry(QRect(10, 10, 93, 28));
-        custom_trip_scroll_area = new QScrollArea(customt_trip);
+        goBack->setGeometry(QRect(10, 10, 81, 21));
+        custom_trip_scroll_area = new QScrollArea(page_custom_trip);
         custom_trip_scroll_area->setObjectName(QStringLiteral("custom_trip_scroll_area"));
-        custom_trip_scroll_area->setGeometry(QRect(60, 130, 271, 331));
+        custom_trip_scroll_area->setGeometry(QRect(240, 140, 271, 331));
         custom_trip_scroll_area->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
         scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 269, 329));
         custom_trip_scroll_area->setWidget(scrollAreaWidgetContents_3);
-        selectWineryLabel_2 = new QLabel(customt_trip);
+        selectWineryLabel_2 = new QLabel(page_custom_trip);
         selectWineryLabel_2->setObjectName(QStringLiteral("selectWineryLabel_2"));
-        selectWineryLabel_2->setGeometry(QRect(200, 20, 371, 61));
+        selectWineryLabel_2->setGeometry(QRect(170, 40, 371, 61));
         selectWineryLabel_2->setFont(font2);
-        label_4 = new QLabel(customt_trip);
+        label_4 = new QLabel(page_custom_trip);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(120, 90, 151, 31));
-        QFont font4;
-        font4.setPointSize(14);
-        label_4->setFont(font4);
-        pushButton = new QPushButton(customt_trip);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(60, 470, 75, 23));
-        stackedWidget->addWidget(customt_trip);
+        label_4->setGeometry(QRect(600, 440, 111, 41));
+        stackedWidget->addWidget(page_custom_trip);
+        page_trip_end = new QWidget();
+        page_trip_end->setObjectName(QStringLiteral("page_trip_end"));
+        mainMenu = new QPushButton(page_trip_end);
+        mainMenu->setObjectName(QStringLiteral("mainMenu"));
+        mainMenu->setGeometry(QRect(320, 400, 93, 28));
+        exit = new QPushButton(page_trip_end);
+        exit->setObjectName(QStringLiteral("exit"));
+        exit->setGeometry(QRect(320, 440, 93, 28));
+        endTitle = new QLabel(page_trip_end);
+        endTitle->setObjectName(QStringLiteral("endTitle"));
+        endTitle->setGeometry(QRect(170, 20, 441, 71));
+        numWines = new QLabel(page_trip_end);
+        numWines->setObjectName(QStringLiteral("numWines"));
+        numWines->setGeometry(QRect(40, 120, 471, 31));
+        total = new QLabel(page_trip_end);
+        total->setObjectName(QStringLiteral("total"));
+        total->setGeometry(QRect(40, 160, 421, 31));
+        distance = new QLabel(page_trip_end);
+        distance->setObjectName(QStringLiteral("distance"));
+        distance->setGeometry(QRect(40, 200, 451, 31));
+        stackedWidget->addWidget(page_trip_end);
 
         gridLayout_2->addWidget(stackedWidget, 0, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 781, 26));
+        menuBar->setGeometry(QRect(0, 0, 781, 22));
         menuMenu = new QMenu(menuBar);
         menuMenu->setObjectName(QStringLiteral("menuMenu"));
         MainWindow->setMenuBar(menuBar);
@@ -766,7 +787,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(11);
+        stackedWidget->setCurrentIndex(9);
         stackedWidget_2->setCurrentIndex(1);
 
 
@@ -794,7 +815,7 @@ public:
         visit_all->setText(QApplication::translate("MainWindow", "Visit All the Wineries", 0));
         shortest_trip->setText(QApplication::translate("MainWindow", "Shortest Trip", 0));
         custom_trip->setText(QApplication::translate("MainWindow", "Custom Trip", 0));
-        selectWineryLabel->setText(QString());
+        selectWineryLabel->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">Select the beginning winery</span></p></body></html>", 0));
         TourBack->setText(QApplication::translate("MainWindow", "Back", 0));
         startShortest->setText(QApplication::translate("MainWindow", "Start", 0));
         label_7->setText(QApplication::translate("MainWindow", "User Name :", 0));
@@ -866,8 +887,13 @@ public:
         subtotal->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         goBack->setText(QApplication::translate("MainWindow", "Back", 0));
         selectWineryLabel_2->setText(QString());
-        label_4->setText(QApplication::translate("MainWindow", "Select Wineries:", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Add", 0));
+        label_4->setText(QApplication::translate("MainWindow", "Start", 0));
+        mainMenu->setText(QApplication::translate("MainWindow", "Main Manu", 0));
+        exit->setText(QApplication::translate("MainWindow", "Exit", 0));
+        endTitle->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">Wellcome back to Canyon Villa!</span></p></body></html>", 0));
+        numWines->setText(QString());
+        total->setText(QString());
+        distance->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">TextLabel</span></p></body></html>", 0));
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
         toolBar_2->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", 0));

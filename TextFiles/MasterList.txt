@@ -6,10 +6,11 @@ distance to other wineries - 0
 
 name of winery: Adelaida Cellars
 winery number 1
-distance to other wineries - 10
+distance to other wineries - 11
 1 0
 10 3.5
 7 5.8
+11 6
 8 6.9
 9 11.2
 4 11.5
@@ -31,8 +32,9 @@ Zinfandel
 
 name of winery: Castoro Cellars
 winery number 2
-distance to other wineries - 10
+distance to other wineries - 11
 2 0
+11 1e-06
 5 0.1
 6 4.2
 9 5.2
@@ -59,8 +61,9 @@ Zinfandel
 
 name of winery: Chumeia
 winery number 3
-distance to other wineries - 10
+distance to other wineries - 11
 3 0
+11 2
 4 4.3
 6 14.3
 2 15.1
@@ -81,9 +84,10 @@ Voignier
 
 name of winery: Eberle Winery
 winery number 4
-distance to other wineries - 10
+distance to other wineries - 11
 4 0
 3 4.3
+11 5
 5 8.1
 6 9.4
 1 11.5
@@ -106,11 +110,12 @@ Zinfandel
 
 name of winery: Jan Kris Winery
 winery number 5
-distance to other wineries - 10
+distance to other wineries - 11
 5 0
 2 0.1
 6 4.5
 9 5.1
+11 6
 4 8.1
 8 8.4
 7 8.5
@@ -118,7 +123,10 @@ distance to other wineries - 10
 1 13.3
 3 16.1
 2 miles to Canyon Villa
-2 wines offered
+3 wines offered
+Kris
+2014
+232
 Zinfandel
 2002
 14
@@ -128,11 +136,12 @@ Zinfandel Port
 
 name of winery: L'Aventure
 winery number 6
-distance to other wineries - 10
+distance to other wineries - 11
 6 0
 2 4.2
 5 4.5
 9 5.1
+11 8
 4 9.4
 8 11.1
 7 11.2
@@ -147,13 +156,14 @@ Optimus
 
 name of winery: Norman Vineyards
 winery number 7
-distance to other wineries - 10
+distance to other wineries - 11
 7 0
 8 0.7
 10 4
 1 5.8
 9 5.8
 5 8.5
+11 9
 2 10.3
 6 11.2
 4 14.4
@@ -175,9 +185,10 @@ Zinfandel "The Monster"
 
 name of winery: Opolo Vineyards
 winery number 8
-distance to other wineries - 10
+distance to other wineries - 11
 8 0
 7 0.7
+11 3
 10 4.7
 9 5.7
 1 6.9
@@ -200,8 +211,9 @@ Zinfandel
 
 name of winery: Pipestone Vineyards
 winery number 9
-distance to other wineries - 10
+distance to other wineries - 11
 9 0
+11 2
 5 5.1
 6 5.1
 2 5.2
@@ -222,10 +234,11 @@ Viognier
 
 name of winery: Tablas Creek Vineyard
 winery number 10
-distance to other wineries - 10
+distance to other wineries - 11
 10 0
 1 3.5
 7 4
+11 4
 8 4.7
 9 9.5
 2 11
@@ -244,4 +257,30 @@ Cote de Rouge
 Roussane
 2002
 14
+
+name of winery: Jonny
+winery number 11
+distance to other wineries - 11
+11 0
+3 2
+9 2
+8 3
+10 4
+0 5
+4 5
+1 6
+5 6
+6 8
+7 9
+23 miles to Canyon Villa
+3 wines offered
+Wine1
+2011
+12
+Wine2
+2013
+131
+Wine3
+2014
+1231
 

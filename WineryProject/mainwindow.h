@@ -167,6 +167,12 @@ private slots:
 
     void on_startShortest_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_mainMenu_clicked();
+
+     void on_exit_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpWindow *helpWindow;
@@ -174,20 +180,23 @@ private:
     bool ReadFromFile();
     bool WriteToFile();
     QStackedWidget * scrollAreaListStacked;
+    QWidget *cartWidget = NULL;
     QVector<QCheckBox*> wineCheckBoxList1;
-    QList<QCheckBox*> wineCheckBoxCartList;
+    QList<QCheckBox*> customWineries;
     QList<QRadioButton*> wineryRadioButtonList;
+    QList<QWidget*> wineriesWidgetList;
     QVector<QCheckBox*> cartList;
     QList<QString> names;
     QList<int> winePrices;
     QList<int> cartPrices;
+    QList<int> currentTotal;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
     QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
     int wineryNum = 0;
      int currWinery = 0;
-    int total = 0;
+    int total;
 
     QTableWidgetItem *selectedWinery = NULL;
     QMap<float, int> tempDist;
