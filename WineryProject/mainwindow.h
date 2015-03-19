@@ -32,7 +32,6 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-
     explicit MainWindow(QWidget *parent = 0);
 
     void setUser(char type);
@@ -142,25 +141,11 @@ private slots:
 
     void on_addNewWinery_clicked();
 
-    void on_pushButton_6_clicked();
-
-    void on_addNew_2_clicked();
-
-    void on_pushButton_7_clicked();
-
-    void on_pushButton_3_clicked();
-
     void on_AddWineryButton_clicked();
 
     void on_backAddWinery_clicked();
 
     void on_AddWinesBack_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_8_clicked();
 
     void on_removeFromCart_clicked();
 
@@ -172,13 +157,15 @@ private slots:
 
     void on_BacktoAddWinery_clicked();
 
+    void on_backFromEditWinery_clicked();
+
+    void on_goToEditWinery_clicked();
+
+    void on_AddWine_3_clicked();
+
+    void on_EditExistWine_clicked();
+
     void on_startShortest_clicked();
-
-    void on_pushButton_clicked();
-
-    void on_mainMenu_clicked();
-
-    void on_exit_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -187,26 +174,22 @@ private:
     bool ReadFromFile();
     bool WriteToFile();
     QStackedWidget * scrollAreaListStacked;
-    QWidget *cartWidget = NULL;
     QVector<QCheckBox*> wineCheckBoxList1;
-    QList<QCheckBox*> customWineries;
+    QList<QCheckBox*> wineCheckBoxCartList;
     QList<QRadioButton*> wineryRadioButtonList;
-    QList<QWidget*> wineriesWidgetList;
     QVector<QCheckBox*> cartList;
     QList<QString> names;
     QList<int> winePrices;
     QList<int> cartPrices;
-    QList<int> currentTotal;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
     QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
     int wineryNum = 0;
-    int currWinery = 0;
-    int total;
+     int currWinery = 0;
+    int total = 0;
 
-
-    QTableWidgetItem *selectedWinery;
+    QTableWidgetItem *selectedWinery = NULL;
     QMap<float, int> tempDist;
     QMap<QString, Wine> tempWines;
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>781</width>
-    <height>593</height>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,11 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+<<<<<<< HEAD
+       <number>8</number>
+=======
+       <number>11</number>
+>>>>>>> refs/remotes/origin/master
       </property>
       <widget class="QWidget" name="page_main_window">
        <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -244,9 +248,9 @@ password: password</string>
        <widget class="QLabel" name="selectWineryLabel">
         <property name="geometry">
          <rect>
-          <x>210</x>
-          <y>40</y>
-          <width>331</width>
+          <x>200</x>
+          <y>20</y>
+          <width>371</width>
           <height>61</height>
          </rect>
         </property>
@@ -256,7 +260,7 @@ password: password</string>
          </font>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Select the beginning winery&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string/>
         </property>
        </widget>
        <widget class="QPushButton" name="TourBack">
@@ -275,7 +279,7 @@ password: password</string>
        <widget class="QScrollArea" name="radio_button_scroll_area">
         <property name="geometry">
          <rect>
-          <x>240</x>
+          <x>30</x>
           <y>140</y>
           <width>271</width>
           <height>331</height>
@@ -488,7 +492,7 @@ password: password</string>
            <string>Add New Winery</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="addNew_2">
+         <widget class="QPushButton" name="goToEditWinery">
           <property name="geometry">
            <rect>
             <x>500</x>
@@ -875,9 +879,9 @@ password: password</string>
        <widget class="QLabel" name="EditWineTitle">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>10</y>
-          <width>121</width>
+          <x>210</x>
+          <y>20</y>
+          <width>331</width>
           <height>41</height>
          </rect>
         </property>
@@ -887,10 +891,10 @@ password: password</string>
          </font>
         </property>
         <property name="text">
-         <string>Edit Winery</string>
+         <string/>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="backFromEditWinery">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -975,14 +979,27 @@ password: password</string>
        <widget class="QPushButton" name="AddWine_3">
         <property name="geometry">
          <rect>
-          <x>290</x>
+          <x>240</x>
           <y>210</y>
-          <width>121</width>
+          <width>71</width>
           <height>23</height>
          </rect>
         </property>
         <property name="text">
-         <string>Add Wine to Winery</string>
+         <string>Add</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="EditExistWine">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>210</y>
+          <width>71</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Edit</string>
         </property>
        </widget>
       </widget>
@@ -1515,14 +1532,14 @@ password: password</string>
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_custom_trip">
+      <widget class="QWidget" name="customt_trip">
        <widget class="QPushButton" name="goBack">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>81</width>
-          <height>21</height>
+          <width>93</width>
+          <height>28</height>
          </rect>
         </property>
         <property name="text">
@@ -1532,8 +1549,8 @@ password: password</string>
        <widget class="QScrollArea" name="custom_trip_scroll_area">
         <property name="geometry">
          <rect>
-          <x>240</x>
-          <y>140</y>
+          <x>60</x>
+          <y>130</y>
           <width>271</width>
           <height>331</height>
          </rect>
@@ -1555,9 +1572,9 @@ password: password</string>
        <widget class="QLabel" name="selectWineryLabel_2">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>40</y>
-          <width>411</width>
+          <x>200</x>
+          <y>20</y>
+          <width>371</width>
           <height>61</height>
          </rect>
         </property>
@@ -1567,100 +1584,38 @@ password: password</string>
          </font>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Select all wineries you wish to visit&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>90</y>
+          <width>151</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Select Wineries:</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>440</y>
-          <width>111</width>
-          <height>41</height>
+          <x>60</x>
+          <y>470</y>
+          <width>75</width>
+          <height>23</height>
          </rect>
         </property>
         <property name="text">
-         <string>Start</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="page_trip_end">
-       <widget class="QPushButton" name="mainMenu">
-        <property name="geometry">
-         <rect>
-          <x>320</x>
-          <y>400</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Main Manu</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="exit">
-        <property name="geometry">
-         <rect>
-          <x>320</x>
-          <y>440</y>
-          <width>93</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Exit</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="endTitle">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>20</y>
-          <width>441</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Wellcome back to Canyon Villa!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="numWines">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>120</y>
-          <width>471</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="total">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>160</y>
-          <width>421</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="distance">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>200</y>
-          <width>451</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>Add</string>
         </property>
        </widget>
       </widget>
