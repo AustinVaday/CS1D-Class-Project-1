@@ -189,7 +189,7 @@ private:
     QList<QString> names;
     QList<int> winePrices;
     QList<int> cartPrices;
-    QList<int> currentTotal;
+    QList<QString> cartNames;
 //    SortedList<Winery, float> wineryList;   // sort wineries by distance to VILLA
     QMap<int, Winery> wineryList;              // sort wineries by winery number
     Wine    *wineObject = NULL;
@@ -198,7 +198,8 @@ private:
      int currWinery = 0;
     int total;
 
-    QTableWidgetItem *selectedWinery = NULL;
+
+    QTableWidgetItem *selectedWinery;
     QMap<float, int> tempDist;
     QMap<QString, Wine> tempWines;
 

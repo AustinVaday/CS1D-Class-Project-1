@@ -179,7 +179,7 @@ public:
     QPushButton *next;
     QPushButton *prev_winery;
     QPushButton *removeFromCart;
-    QLabel *subtotal;
+    QLabel *subtotal_2;
     QWidget *page_custom_trip;
     QPushButton *goBack;
     QScrollArea *custom_trip_scroll_area;
@@ -713,9 +713,9 @@ public:
         removeFromCart = new QPushButton(page_purchase_wines);
         removeFromCart->setObjectName(QStringLiteral("removeFromCart"));
         removeFromCart->setGeometry(QRect(310, 240, 111, 28));
-        subtotal = new QLabel(page_purchase_wines);
-        subtotal->setObjectName(QStringLiteral("subtotal"));
-        subtotal->setGeometry(QRect(480, 460, 81, 41));
+        subtotal_2 = new QLabel(page_purchase_wines);
+        subtotal_2->setObjectName(QStringLiteral("subtotal_2"));
+        subtotal_2->setGeometry(QRect(460, 460, 81, 31));
         stackedWidget->addWidget(page_purchase_wines);
         page_custom_trip = new QWidget();
         page_custom_trip->setObjectName(QStringLiteral("page_custom_trip"));
@@ -787,7 +787,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(12);
+        stackedWidget->setCurrentIndex(11);
         stackedWidget_2->setCurrentIndex(1);
 
 
@@ -884,7 +884,7 @@ public:
         next->setText(QApplication::translate("MainWindow", "Next Winery", 0));
         prev_winery->setText(QApplication::translate("MainWindow", "Previous Winery", 0));
         removeFromCart->setText(QApplication::translate("MainWindow", "Remove from Cart", 0));
-        subtotal->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        subtotal_2->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         goBack->setText(QApplication::translate("MainWindow", "Back", 0));
         selectWineryLabel_2->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "Start", 0));

@@ -535,8 +535,9 @@ void MainWindow::on_visit_all_clicked()
          cartPrices.clear();
          cartList.clear();
 
-         ui->numWines->setText("Number of wines purchased: 0");
-         ui->total->setText("Total: $0");
+    ui->numWines->setText("Number of wines purchased: 0");
+    ui->total->setText("Total: $0");
+    ui->subtotal_2->setText("Total: $0");
 
          cartWidget = new QWidget;
          ui->scrollArea_2->setWidget(cartWidget);
@@ -567,9 +568,12 @@ void MainWindow::on_visit_all_clicked()
 
  ui-> wineryName->setText(wineries[0].GetName());
 
- ui->subtotal->setText("Total: $0");
+//<<<<<<< HEAD
+// ui->subtotal->setText("Total: $0");
 
- qDebug() << "size " << wineries.size();
+// qDebug() << "size " << wineries.size();
+//=======
+//>>>>>>> b198dbead46cb49794d357d7f2a0f0893aa8250a
 
  for (int l = 0; l < wineries.size(); l++)
  {
@@ -631,19 +635,18 @@ void MainWindow::on_next_clicked()
     }
     else
     {
+
         ui->next->setEnabled(false);
         ui->page_purchase_wines->hide();
         ui->page_trip_end->show();
 
     }
 
-
 }
 
 void MainWindow::on_prev_winery_clicked()
 {
     qDebug() << "WINERY NUM (PREV) IS: " << wineryNum;
-
 
     if(currWinery > 0)
     {
@@ -659,7 +662,6 @@ void MainWindow::on_prev_winery_clicked()
     else
     {
        ui->prev_winery->setEnabled(false);
-
     }
 }
 
@@ -974,11 +976,16 @@ void MainWindow::on_addToCart_clicked()
     bool atLeastOnce = false;
     QCheckBox   *temp;
 
+
     for(int count = 0; count < wineCheckBoxList1.size(); count++)
     {
 
+        qDebug() << "CURRENT TOTAL";
+
         if(wineCheckBoxList1.at(count)->isChecked())
         {
+
+
                 temp = new QCheckBox(wineCheckBoxList1.at(count)->text());
                 cartList.push_back(temp);
                 cartPrices.push_back(winePrices.at(count));
@@ -986,6 +993,7 @@ void MainWindow::on_addToCart_clicked()
            atLeastOnce = true;
 
         }
+
 
         wineCheckBoxList1.at(count)->setChecked(false);
     }
@@ -1010,7 +1018,7 @@ void MainWindow::on_addToCart_clicked()
         qDebug() << "total: " + QString::number(total);
         qDebug() << "size: " << cartPrices.size();
 
-        ui->subtotal->setText("Total: $" + QString::number(total));
+        ui->subtotal_2->setText("Total: $" + QString::number(total));
     }
 
        ui->numWines->setText("Number of wines purchased: " + QString::number(cartList.size()));
@@ -1025,11 +1033,13 @@ void MainWindow::on_removeFromCart_clicked()
     QVBoxLayout *cartLayoutUpdated = new QVBoxLayout();
     bool atLeastOnce = false;
 
+
     for(int i = 0; i < cartList.size(); i++)
     {
        if(cartList.at(i)->isChecked())
        {
            atLeastOnce = true;
+
            cartList.remove(i);
            cartPrices.removeAt(i);
            i--;         
@@ -1054,8 +1064,12 @@ void MainWindow::on_removeFromCart_clicked()
              total = total + cartPrices.at(g);
          }
 
-         ui->subtotal->setText("Total: $" + QString::number(total));
+         ui->subtotal_2->setText("Total: $" + QString::number(total));
      }
+
+
+     ui->numWines->setText("Number of wines purchased: " + QString::number(cartList.size()));
+     ui->total->setText("Total: $" + QString::number(total));
 }
 
 
@@ -1342,8 +1356,9 @@ void MainWindow::on_startShortest_clicked()
          cartPrices.clear();
          cartList.clear();
 
-         ui->numWines->setText("Number of wines purchased: 0");
-         ui->total->setText("Total: $0");
+    ui->numWines->setText("Number of wines purchased: 0");
+    ui->total->setText("Total: $0");
+    ui->subtotal_2->setText("Total: $0");
 
          cartWidget = new QWidget;
          ui->scrollArea_2->setWidget(cartWidget);
@@ -1388,9 +1403,12 @@ void MainWindow::on_startShortest_clicked()
 
 
 
-            ui-> wineryName->setText(wineries[0].GetName());
+//<<<<<<< HEAD
+//            ui-> wineryName->setText(wineries[0].GetName());
 
-                     ui->subtotal->setText("Total: $0");
+//                     ui->subtotal->setText("Total: $0");
+//=======
+//>>>>>>> b198dbead46cb49794d357d7f2a0f0893aa8250a
 
 
                      for (int l = 0; l < wineries.size(); l++)
@@ -1450,11 +1468,10 @@ void MainWindow::on_pushButton_clicked()
      float               totalDist       = 0.0;
      QMap<int, Winery>*  customWineryList= NULL;
 
-     bool checked = false;
-     currWinery = 0;
-
-     QString year;
-     QString price;
+    bool checked = false;
+    currWinery = 0;
+    QString year;
+    QString price;
 
      QCheckBox *wineCheckbox;
      QVBoxLayout *layWineList;
@@ -1464,8 +1481,9 @@ void MainWindow::on_pushButton_clicked()
      cartPrices.clear();
      cartList.clear();
 
-     ui->numWines->setText("Number of wines purchased: 0");
-     ui->total->setText("Total: $0");
+    ui->numWines->setText("Number of wines purchased: 0");
+    ui->total->setText("Total: $0");
+    ui->subtotal_2->setText("Total: $0");
 
      customWineryList = new QMap<int, Winery>;
      cartWidget = new QWidget;
@@ -1511,8 +1529,11 @@ void MainWindow::on_pushButton_clicked()
 
          ui-> wineryName->setText(wineries[0].GetName());
 
-         ui->subtotal->setText("Total: $0");
+//<<<<<<< HEAD
+//         ui->subtotal->setText("Total: $0");
 
+//=======
+//>>>>>>> b198dbead46cb49794d357d7f2a0f0893aa8250a
 
          for (int l = 0; l < wineries.size(); l++)
          {
