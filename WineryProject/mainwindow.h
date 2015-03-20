@@ -37,6 +37,7 @@ public:
     void setUser(char type);
     void updateWineryTableItems();
     void updateWineTableItems();
+    void updateWineTableItems2();
     char getUser();
 
     ~MainWindow();
@@ -195,6 +196,7 @@ private:
     Wine    *wineObject = NULL;
     Winery  *wineryObject = NULL;
     int wineryNum = 0;
+    int wineryNum2 = 1;
      int currWinery = 0;
     int total;
 

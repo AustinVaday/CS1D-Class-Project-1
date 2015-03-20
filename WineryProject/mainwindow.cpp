@@ -1083,7 +1083,7 @@ void MainWindow::updateWineryTableItems()
 {
     static int row = 0;
 
-    for(int index = 1; index < wineryList.size(); index++)
+    for(int index = 1; index < wineryList.size()+1; index++)
     {
         if(ui->wineryTable->rowCount() < row + 1)
         {
@@ -1120,11 +1120,37 @@ void MainWindow::updateWineTableItems()
         QString out[3];
         out[0] = item.GetName();
         out[1].setNum(item.GetYear());
-        out[2].number(item.GetPrice());
+        out[2] = QString::number(float(item.GetPrice()));
 
         for(int column = 0; column < 3; column++){
             QTableWidgetItem *newItem = new QTableWidgetItem(out[column]);
             ui->WineTable->setItem(row, column, newItem);
+        }
+        row++;
+    }
+    row = 0;
+}
+
+void MainWindow::updateWineTableItems2()
+{
+    static int row = 0;
+    for(int index = 0; index < wineryObject->GetWines().size(); index++)
+    {
+        if(ui->WineTable_2->rowCount() < row + 1)
+        {
+            ui->WineTable_2->setRowCount(row + 1);
+        }
+
+        Wine item = wineryObject->GetWines().values().operator [](index);
+
+        QString out[3];
+        out[0] = item.GetName();
+        out[1].setNum(item.GetYear());
+        out[2] = QString::number(float(item.GetPrice()));
+
+        for(int column = 0; column < 3; column++){
+            QTableWidgetItem *newItem = new QTableWidgetItem(out[column]);
+            ui->WineTable_2->setItem(row, column, newItem);
         }
         row++;
     }
@@ -1165,7 +1191,7 @@ void MainWindow::on_AddWineryButton_clicked()
         ui->AddWinery->hide();
 
         ui->pageDistanceTo->show();
-        ui->DistanceWineryName->setText(wineryList.operator [](wineryNum).GetName());
+        ui->DistanceWineryName->setText(wineryList.operator [](wineryNum2).GetName());
         ui->DistanceToWinery->setFocus();
     }
 }
@@ -1235,6 +1261,7 @@ void MainWindow::on_doneAddWine_clicked()
         wineryList[index].AddDistance(wineryObject->GetWineryNum(), wineryObject->GetDistances().key(index));
     }
     ui->AddWines->hide();
+    updateWineryTableItems();
     ui->page_admin_login->show();
     ui->page_admin_login_success->show();
     delete wineryObject;
@@ -1243,19 +1270,19 @@ void MainWindow::on_doneAddWine_clicked()
 
 void MainWindow::on_NextToAddWine_clicked()
 {
-    if (wineryNum < wineryObject->GetWineryNum() && ui->DistanceToWinery->text() != "")
+    if (wineryNum2 < wineryObject->GetWineryNum() && ui->DistanceToWinery->text() != "")
     {
-        wineryObject->AddDistance(wineryNum,ui->DistanceToWinery->text().toFloat());
+        wineryObject->AddDistance(wineryNum2,ui->DistanceToWinery->text().toFloat());
 
-        wineryNum++;
+        wineryNum2++;
         ui->DistanceToWinery->setFocus();
     }
 
-    if (wineryNum >= wineryObject->GetWineryNum())
+    if (wineryNum2 >= wineryObject->GetWineryNum())
     {
         ui->pageDistanceTo->hide();
         ui->page_admin_login->hide();
-        wineryNum = 1;
+        wineryNum2 = 1;
         wineryObject->AddDistance(wineryObject->GetWineryNum(),0.0);
 
         QStringList headers;
@@ -1270,14 +1297,14 @@ void MainWindow::on_NextToAddWine_clicked()
 
         ui->AddWines->show();
     }
-    ui->DistanceWineryName->setText(wineryList.operator [](wineryNum).GetName());
+    ui->DistanceWineryName->setText(wineryList.operator [](wineryNum2).GetName());
     ui->DistanceToWinery->clear();
 }
 
 void MainWindow::on_BacktoAddWinery_clicked()
 {
     ui->DistanceToWinery->clear();
-    wineryNum = 1;
+    wineryNum2 = 1;
     ui->pageDistanceTo->hide();
     ui->AddWinery->show();
 }
@@ -1299,6 +1326,15 @@ void MainWindow::on_goToEditWinery_clicked()
         ui->page_admin_login->hide();
         ui->page_admin_login_success->hide();
         *wineryObject = wineryList.values().takeAt(selectedWinery->row()+1);
+        QStringList headers;
+        headers << "Name" << "Year" << "Price";
+
+        ui->WineTable_2->setShowGrid(true);
+        ui->WineTable_2->setColumnCount(3);
+        ui->WineTable_2->setRowCount(0);
+        ui->WineTable_2->setHorizontalHeaderLabels(headers);
+        ui->WineTable_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        updateWineTableItems2();
         ui->EditWineTitle->setText("Editing: " + wineryObject->GetName());
 
         ui->EditWinery->show();
