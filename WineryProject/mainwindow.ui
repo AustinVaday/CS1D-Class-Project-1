@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>781</width>
-    <height>593</height>
+    <width>786</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,28 +18,9 @@
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>8</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page_main_window">
-       <widget class="QPlainTextEdit" name="plainTextEdit">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>400</y>
-          <width>151</width>
-          <height>91</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="plainText">
-         <string>TEMP ADMIN LOGIN:
-
-username: admin
-password: password</string>
-        </property>
-       </widget>
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
@@ -275,8 +256,8 @@ password: password</string>
        <widget class="QScrollArea" name="radio_button_scroll_area">
         <property name="geometry">
          <rect>
-          <x>240</x>
-          <y>140</y>
+          <x>100</x>
+          <y>120</y>
           <width>271</width>
           <height>331</height>
          </rect>
@@ -298,8 +279,8 @@ password: password</string>
        <widget class="QPushButton" name="startShortest">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>440</y>
+          <x>420</x>
+          <y>410</y>
           <width>111</width>
           <height>41</height>
          </rect>
@@ -1002,9 +983,9 @@ password: password</string>
         <property name="geometry">
          <rect>
           <x>200</x>
-          <y>280</y>
+          <y>250</y>
           <width>321</width>
-          <height>201</height>
+          <height>181</height>
          </rect>
         </property>
        </widget>
@@ -1555,7 +1536,7 @@ password: password</string>
        <widget class="QScrollArea" name="custom_trip_scroll_area">
         <property name="geometry">
          <rect>
-          <x>240</x>
+          <x>140</x>
           <y>140</y>
           <width>271</width>
           <height>331</height>
@@ -1575,12 +1556,25 @@ password: password</string>
          </property>
         </widget>
        </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>440</y>
+          <width>113</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
        <widget class="QLabel" name="selectWineryLabel_2">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>40</y>
-          <width>371</width>
+          <x>260</x>
+          <y>50</y>
+          <width>331</width>
           <height>61</height>
          </rect>
         </property>
@@ -1590,20 +1584,7 @@ password: password</string>
          </font>
         </property>
         <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>580</x>
-          <y>440</y>
-          <width>113</width>
-          <height>32</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Start</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Select the wineries&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -1696,7 +1677,7 @@ password: password</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>781</width>
+     <width>786</width>
      <height>21</height>
     </rect>
    </property>

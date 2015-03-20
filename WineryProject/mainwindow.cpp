@@ -56,11 +56,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    if (WriteToFile())
-    {
-        QMessageBox::information(this, "Success", "Write to file success!");
-    }
-
     delete ui;
     delete scrollAreaListStacked;
     if (helpWindow != NULL)
@@ -183,6 +178,13 @@ void MainWindow::on_admin_log_ok_button_clicked()
         // GRANT ACCESS TO ADMIN WIDGET
         ui->page_admin_login_form->hide();
         ui->page_admin_login_success->show();
+    }
+    else
+    {
+        ui->passwordLine->clear();
+        ui->userNameLine->clear();
+        QMessageBox::information(this, "Invalid", "Please try again.");
+
     }
 
 }
@@ -1325,7 +1327,7 @@ void MainWindow::on_goToEditWinery_clicked()
         wineryObject = new Winery();
         ui->page_admin_login->hide();
         ui->page_admin_login_success->hide();
-        *wineryObject = wineryList.values().takeAt(selectedWinery->row()+1);
+        *wineryObject = wineryList.values().takeAt(selectedWinery->row());
         QStringList headers;
         headers << "Name" << "Year" << "Price";
 
@@ -1439,8 +1441,7 @@ void MainWindow::on_startShortest_clicked()
 
 
 
-//<<<<<<< HEAD
-//            ui-> wineryName->setText(wineries[0].GetName());
+            ui-> wineryName->setText(wineries[0].GetName());
 
 //                     ui->subtotal->setText("Total: $0");
 //=======
