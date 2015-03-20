@@ -185,7 +185,7 @@ public:
     QScrollArea *custom_trip_scroll_area;
     QWidget *scrollAreaWidgetContents_3;
     QLabel *selectWineryLabel_2;
-    QLabel *label_4;
+    QPushButton *pushButton;
     QWidget *page_trip_end;
     QPushButton *mainMenu;
     QPushButton *exit;
@@ -734,9 +734,9 @@ public:
         selectWineryLabel_2->setObjectName(QStringLiteral("selectWineryLabel_2"));
         selectWineryLabel_2->setGeometry(QRect(170, 40, 371, 61));
         selectWineryLabel_2->setFont(font2);
-        label_4 = new QLabel(page_custom_trip);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(600, 440, 111, 41));
+        pushButton = new QPushButton(page_custom_trip);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(580, 440, 113, 32));
         stackedWidget->addWidget(page_custom_trip);
         page_trip_end = new QWidget();
         page_trip_end->setObjectName(QStringLiteral("page_trip_end"));
@@ -787,7 +787,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(9);
+        stackedWidget->setCurrentIndex(12);
         stackedWidget_2->setCurrentIndex(1);
 
 
@@ -887,7 +887,7 @@ public:
         subtotal->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         goBack->setText(QApplication::translate("MainWindow", "Back", 0));
         selectWineryLabel_2->setText(QString());
-        label_4->setText(QApplication::translate("MainWindow", "Start", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Start", 0));
         mainMenu->setText(QApplication::translate("MainWindow", "Main Manu", 0));
         exit->setText(QApplication::translate("MainWindow", "Exit", 0));
         endTitle->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">Wellcome back to Canyon Villa!</span></p></body></html>", 0));
