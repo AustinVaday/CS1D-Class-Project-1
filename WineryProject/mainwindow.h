@@ -201,7 +201,7 @@ private:
     int total;
 
 
-    QTableWidgetItem *selectedWinery;
+    QTableWidgetItem *selectedWinery = NULL;
     QMap<float, int> tempDist;
     QMap<QString, Wine> tempWines;
 
